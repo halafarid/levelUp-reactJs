@@ -1,25 +1,40 @@
 import React from 'react';
 import {FormCheck} from 'react-bootstrap';
 const Filters = () => {
+
+    const levels = ['Beginner','Intermediate','Expert','All Levels']
+    const Categories = ['Development','Finance','Accounting','IT & Software']
+
     return ( 
         <React.Fragment>
             <div className="filter">
-                <p>Filter By : </p>
+                <p className="filter__text" >Filter By : </p>
+                
                 <div className="filter__items-container">
-                    <div >
-                    <p> The difficulty level of the course</p>
-                    <FormCheck type="checkbox"  />
-                    <p>Beginner</p>
-                    </div>
+            
+                    <p >All categories</p>
+                    {Categories.map(Category=>(
+                        <div className="filter__checkbox-container">
+                        <FormCheck  type="checkbox" />
+                        <span >{Category}</span>
+                        </div>
+                    ))}
+                 
                 </div>
-                <hr></hr>
+                <hr className="filter__hr"></hr>
                 <div className="filter__items-container">
-                    <div>
-                    <p>All categories</p>
-                    <FormCheck type="checkbox"  />
-                    <p>Development</p>
-                    </div>
+                 
+                    <p > The difficulty level of the course</p>
+                    {levels.map(level=>(
+                        <div className="filter__checkbox-container">
+                        <FormCheck type="checkbox" />
+                        <span >{level}</span>
+                        </div>
+                    ))}
+                  
                 </div>
+                <hr className="filter__hr"></hr>
+
             </div>
 
         </React.Fragment>
