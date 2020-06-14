@@ -3,6 +3,7 @@ import { Container } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
+import CourseDetails from './components/courseDetails';
 
 class App extends Component {
   state = {  }
@@ -11,7 +12,7 @@ class App extends Component {
       <React.Fragment>
         {/* NavBar */}
         <Container>
-          <h1>Welcome to our app</h1>
+          <CourseDetails />
         </Container>
       </React.Fragment>
     );
