@@ -1,21 +1,22 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 const Navbar = () => {
     
     return (
 
         <React.Fragment>
 
-            <div>
+           
                 <nav className="fixed-top navbar navbar-expand-lg  py-3 border-bottom">
                     <div className="container">
                         <div className="logo">
                         </div>
                         <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
                             <ul className="navbar-nav ml-auto">
-                                <li className="nav-item"><a href="#" className="nav-link text-uppercase font-weight-bold text-white">Home <span className="sr-only">(current)</span></a></li>
-                                <li className="nav-item"><a href="#" className="nav-link text-uppercase font-weight-bold text-white">About</a></li>
-                                <li className="nav-item"><a href="#" className="nav-link text-uppercase font-weight-bold text-white">Profile</a></li>
-                                <li className="nav-item"><a href="#" className="nav-link text-uppercase font-weight-bold text-white">Following</a></li>
+                                <li className="nav-item"><Link to="/home" className="nav-link text-uppercase font-weight-bold text-white">Home <span className="sr-only">(current)</span></Link></li>
+                                <li className="nav-item"><Link to="/about" className="nav-link text-uppercase font-weight-bold text-white">About</Link></li>
+                                <li className="nav-item"><Link to="/myProfile" className="nav-link text-uppercase font-weight-bold text-white">Profile</Link></li>
+                                <li className="nav-item"><Link to="/follows" className="nav-link text-uppercase font-weight-bold text-white">Following</Link></li>
                             </ul>
                             <form className="form-inline my-2 my-lg-0">
                                 <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
@@ -24,18 +25,7 @@ const Navbar = () => {
                         </div>
                     </div>
                 </nav>
-                <div className="bg">
-                    <div className="bg-layer">
-                        <div className="col-md-18 bg-text">
-                            <h1 className="text-white font-weight-bold">LevelUp Free Online Training Courses</h1>
-                            <br />
-                            <p className="h4 text-white">Libris vivendo eloquentiam ex ius, nec id splendide abhorreant, eu pro alii error homero.</p>
-                            <br />
-                            <button className="btn btn-info btn-lg " type="submit">Get Started!</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+              
 
         </React.Fragment>
     );
