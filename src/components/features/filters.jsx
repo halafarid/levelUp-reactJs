@@ -16,7 +16,7 @@ const Filters = () => {
                 <div className="filter__items-container">
                     <div>
                     <p>All categories</p>
-                    <Form.Check type="checkbox"  />
+                    <FormCheck type="checkbox"  />
                     <p>Development</p>
                     </div>
                 </div>
