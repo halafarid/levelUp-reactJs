@@ -1,9 +1,38 @@
-import React from 'react';
+import React ,{ useState}from 'react';
+import {Card} from 'react-bootstrap';
+import {Container} from 'react-bootstrap';
+// import Img from './namrata-parmar.jpg'
+import {AiFillStar,AiOutlineStar} from 'react-icons/ai'
+const InstructorCard = props => {
 
-const InstructorCard = () => {
+  
     return ( 
+        
         <React.Fragment>
-        <h1>InstructorCard</h1>
+          <Container> 
+            <div className="InstCard">
+             <Card >
+                <Card.Img  className="card__card-img" src={require("../../namrata-parmar.jpg")} alt="Instructor"/>
+                <Card.Body>
+                    <Card.Title className="card__card-title">{props.Instructor.name}</Card.Title>
+                    <Card.Text className="card__card-text">
+                      {props.Instructor.job}
+                     </Card.Text>
+                    <div className="rating">
+                    <AiFillStar/>
+                    <AiFillStar />
+                    <AiFillStar />
+                    <AiFillStar />
+                    <AiOutlineStar/>
+                    <span className="rating__num">{props.Instructor.rating}</span>
+                    </div>
+                    <p className="card-text card-text--color"> {props.Instructor.reviews} Reviews </p>
+                </Card.Body>
+
+            </Card>
+            </div>
+
+            </Container>
         </React.Fragment>
     );
 }
