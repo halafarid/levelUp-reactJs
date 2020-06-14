@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
 import { Route, Redirect ,Switch } from "react-router-dom";
-import CourseCard from './components/cards/courseCard';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
@@ -21,6 +20,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <Navbar />
+
           <Switch>
             <Route path="/home" render={()=>(<Home/>)} />
             <Route

@@ -88,10 +88,17 @@
        color: $info;
     }
 }
-// .cardsContainer
-// {
-//     display: flex;
-//     justify-content: center;
-//     flex-direction: row;
-//     flex-wrap: wrap;
-// }
+.cardsContainer
+{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 75%;
+}
+
+.cont
+{
+    display: flex;
+    flex-direction: row;
+}
