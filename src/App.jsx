@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
 import { Route, Redirect ,Switch } from "react-router-dom";
+import CourseCard from './components/cards/courseCard';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
+import Filters from './components/features/filters';
 
 import Navbar from './components/core/navbar'
 import Home from './components/core/home'
