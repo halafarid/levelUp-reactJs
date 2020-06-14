@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
+import CourseCard from './components/cards/courseCard';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
@@ -11,7 +12,16 @@ class App extends Component {
       <React.Fragment>
         {/* NavBar */}
         <Container>
-          <h1>Welcome to our app</h1>
+          {/* <h1>Welcome to our app</h1> */}
+       {/* <div className="cardsContainer"> */}
+       <CourseCard/>
+         {/* <CourseCard/>
+         <CourseCard/>
+         <CourseCard/>
+         <CourseCard/>
+         <CourseCard/> */}
+       {/* </div> */}
+
         </Container>
       </React.Fragment>
     );
