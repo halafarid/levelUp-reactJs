@@ -13,6 +13,7 @@ import PageNotFound from './components/core/pageNotFound'
 import UserProfile from './components/profile/userProfile'
 import Follows from './components/follows'
 import CourseDetails from './components/courseDetails';
+import Payment from './components/features/payment';
 
 const App =props=> {
  
@@ -80,10 +81,10 @@ const App =props=> {
             />
             <Route path="/notfound" component={PageNotFound} />
             <Route path="/follows" component={Follows} />
+            <Route path="/shoppingcart" component={Payment} />
             <Route path="/courses/details" component={CourseDetails} />
             <Redirect exact from="/" to="/home" />
             <Redirect to="/notfound" />
-     
         </Switch>
       </React.Fragment>
     );

@@ -1,6 +1,7 @@
 import React from 'react';
 import BackGround from './backGround'
 import InstructorCard from '../cards/instructorCard'
+import CourseCard from '../cards/courseCard';
 
 const Home = props => {
     return ( 
@@ -15,6 +16,7 @@ const Home = props => {
         ))
 
         }
+        <CourseCard/>
         </div>
         </React.Fragment>
     );

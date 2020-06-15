@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import {AiOutlineTeam , AiFillStar ,AiOutlineStar} from  'react-icons/ai';
 
 
@@ -29,9 +31,8 @@ const CourseCard = (props) => {
 
                     {stars.map(star=> <AiFillStar className="CourseCard__star" ></AiFillStar>)}
                    <AiOutlineStar className="CourseCard__star "></AiOutlineStar>
-                   <button className=" CourseCard__btn CourseCard__text--font">Add to cart</button>
+                   <Link className=" CourseCard__btn CourseCard__text--font"  to="/shoppingcart">Add to cart</Link>
                    </div>
-
                    </div>
                </div>
                </div>
