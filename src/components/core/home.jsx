@@ -6,16 +6,18 @@ const Home = props => {
     return ( 
         <React.Fragment>
             <BackGround/>
-            <div className="InstCard"> 
+            
+         <div className="InstCard"> 
         {props.Instructor.map(instructor=>(
             <InstructorCard
              key={instructor.id}
              Instructor={instructor}
             />
         ))
-
         }
         </div>
+        
+       
         </React.Fragment>
     );
 }
