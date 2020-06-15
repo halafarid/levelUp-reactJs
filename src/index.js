@@ -27,7 +27,7 @@ ReactDOM.render(
   <PaymentCard/>
 </div> */}
 
-    {/* <App /> */}
+    <App />
 {/* 
     <div className="cont">
     <Filters/>

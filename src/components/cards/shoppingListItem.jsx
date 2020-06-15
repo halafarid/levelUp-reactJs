@@ -17,10 +17,7 @@ const ShoppingListItem = (props) => {
                   <span className="shoppingList__Text--sm shoppingList__Text--span">Merna Nashaat</span>
                 
              </div>
-              <div className="shoppingList__qty">
-                  <p>QTY</p>
-                  <input type="number"></input>
-              </div>
+              
                 </div>
                 <hr className="shoppingList__hr"></hr>
                 <div className="shoppingList__btnContainer">
