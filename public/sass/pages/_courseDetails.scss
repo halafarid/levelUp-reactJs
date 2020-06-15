@@ -20,7 +20,10 @@
         
         &-name {
             color: $primary;
-            font-size: $font-lg;
+            
+            &--lg {
+                font-size: $font-lg;
+            }
         }
     }
 
@@ -37,6 +40,10 @@
             max-width: 50px;
             margin-bottom: 20px;
             border-radius: 50%;
+
+            &--lg {
+                max-width: 100px;
+            }
         }
 
         &-icon {
@@ -53,6 +60,10 @@
             color: $warning;
             font-size: $font-lg;
             margin-right: 10px;
+
+            &--ml {
+                margin-left: 30px;
+            }
         }
         &-reviews {
             color: $info;
@@ -62,16 +73,16 @@
 
     &__details {        
         &-info {
-            margin: 30px 0 40px;
+            margin: 0 0 40px;
         }
         
         &-img {
             width: 100%;
+            margin-bottom: 40px;
         }
 
         &-desc {
             line-height: 2;
-            margin-top: 40px;
             font-family: $family-secondary;
         }
 
@@ -128,8 +139,31 @@
             align-items: baseline;
         }
     }
-}
 
-.test {
-    color: $info;
+    &__tabs {
+        margin: 40px 0;
+        background-color: $info;
+
+        &-link {
+            color: $secondary-dark !important;
+            
+            &.active {
+                background-color: $secondary-dark !important;
+                color: $white !important;
+            }
+        }
+    }
+
+    &__reviews {
+        margin-bottom: 40px;
+    }
+
+    &__review {
+        color: $secondary;
+
+        &-stars {
+            cursor: pointer;
+
+        }
+    }
 }
