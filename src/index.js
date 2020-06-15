@@ -6,15 +6,33 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 import Filters from './components/features/filters';
 import CourseCard from './components/cards/courseCard';
+import ShoppingListItem from './components/cards/shoppingListItem';
+import PaymentCard from './components/cards/paymentCard';
 
 ReactDOM.render(
   <BrowserRouter>
+
+<div className="flex">
+  
+  <div className="flex-col">
+  
+  <ShoppingListItem/>
+  <ShoppingListItem/>
+  <ShoppingListItem/>
+  <ShoppingListItem/>
+  <ShoppingListItem/>
+  <ShoppingListItem/>
+
+  </div>
+  <PaymentCard/>
+</div>
+
     {/* <App /> */}
 {/* 
     <div className="cont">
     <Filters/>
     <div className="cardsContainer">
-    <CourseCard/>
+    // <CourseCard/>
     <CourseCard/>
     <CourseCard/>
     <CourseCard/>
