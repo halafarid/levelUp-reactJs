@@ -6,8 +6,8 @@ const Payment = (props) => {
     const items=[1,2,3,4,5,6,7,8,9];
     return ( 
         <React.Fragment>
-            <div className="flex">
-            <div className="flex-col">
+            <div className="paymentCardsContainer">
+            <div className="paymentCardsContainer__sub">
             {items.map(item=> <ShoppingListItem />)}
             </div>
                 <PaymentCard/>
