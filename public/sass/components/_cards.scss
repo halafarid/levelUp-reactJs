@@ -90,16 +90,25 @@
 .InstCard {
     display: flex;
     justify-content: center;
+  
 
     .card {
         width: 18rem;
         background-color: $dark;
+        cursor: pointer;
 
         &:hover {
             box-shadow: 1px 2px 1px 3px #e0a800
         }
+        &--borderless{
+            cursor:default;
+            &:hover{
+            box-shadow: none;
+            }
+           }
 
         &__card-img {
+            
             border-radius: 50% 20%;
             padding: 25px 20px 20px;
             ;

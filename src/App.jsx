@@ -14,6 +14,8 @@ import PageNotFound from './components/core/pageNotFound'
 import UserProfile from './components/profile/userProfile'
 import Follows from './components/follows'
 import CourseDetails from './components/courseDetails';
+import Footer from './components/core/footer';
+import InstructorProfile from './components/profile/instructorProfile';
 
 const App =props=> {
  
@@ -78,13 +80,18 @@ const App =props=> {
                 <UserProfile />
               )}
             />
+            <Route path="/instructorProfile"
+            render={()=>(
+              <InstructorProfile/>
+            )}
+            />
             <Route path="/notfound" component={PageNotFound} />
             <Route path="/follows" component={Follows} />
             <Route path="/courses/details" component={CourseDetails} />
             <Redirect exact from="/" to="/home" />
             <Redirect to="/notfound" />
-     
         </Switch>
+        <Footer/>
       </React.Fragment>
     );
   }
