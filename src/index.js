@@ -29,21 +29,7 @@ ReactDOM.render(
 
     <App />
 {/* 
-    <div className="cont">
-    <Filters/>
-    <div className="cardsContainer">
-    // <CourseCard/>
-    <CourseCard/>
-    <CourseCard/>
-    <CourseCard/>
-    <CourseCard/>
-    <CourseCard/>
-    <CourseCard/>
-    <CourseCard/>
-    <CourseCard/> 
-    </div>
-
-    </div>
+   
    */}
 
 
