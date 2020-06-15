@@ -30,31 +30,8 @@ const Home = props => {
               </div>
             </div>
 
-            {/* <div className="flex">
-                <div className="flex-col">
-                    <ShoppingListItem/>
-                    <ShoppingListItem/>
-                    <ShoppingListItem/>
-                    <ShoppingListItem/>
-                    <ShoppingListItem/>
-                    <ShoppingListItem/>
-                </div>
-                <PaymentCard/>
-            </div> 
-            <div className="cont">
-                <Filters/>
-                <div className="cardsContainer">
-                    <CourseCard/>
-                    <CourseCard/>
-                    <CourseCard/>
-                    <CourseCard/>
-                    <CourseCard/>
-                    <CourseCard/>
-                    <CourseCard/>
-                    <CourseCard/>
-                    <CourseCard/> 
-                </div>
-            </div> */}
+        
+      
         </React.Fragment>
     );
 }

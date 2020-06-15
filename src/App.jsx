@@ -13,6 +13,7 @@ import Follows from './components/follows'
 import CourseDetails from './components/courses/courseDetails';
 import Footer from './components/core/footer';
 import InstructorProfile from './components/profile/instructorProfile';
+import Payment from './components/features/payment';
 
 const App = props => {
  
@@ -97,10 +98,11 @@ const App = props => {
 
             <Route path="/notfound" component={PageNotFound} />
             <Route path="/follows" component={Follows} />
-
+            <Route path="/shoppingcart" component={Payment} />
+            <Route path="/courses/details" component={CourseDetails} />
             <Redirect exact from="/" to="/home" />
             <Redirect to="/notfound" />
-          </Switch>
+        </Switch>
         <Footer/>
       </React.Fragment>
     );
