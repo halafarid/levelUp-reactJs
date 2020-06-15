@@ -1,0 +1,14 @@
+.courseCardsContainer
+{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top:7%;
+    &__sub
+    {
+        display: flex;
+        flex-direction: row;
+        width: 80%;
+        flex-wrap: wrap;
+    }
+}

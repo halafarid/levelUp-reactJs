@@ -1,8 +1,12 @@
 import React from 'react';
 import BackGround from './backGround';
 import InstructorCard from '../cards/instructorCard';
+import CourseCard from "../cards/courseCard";
+import Filters from "../features/filters";
 
 const Home = props => {
+    const courses = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
     return ( 
         <React.Fragment>
             <BackGround/>
@@ -15,6 +19,15 @@ const Home = props => {
                     />
                 ))
                 }
+            </div>
+
+            <div className="courseCardsContainer">
+              <Filters />
+              <div className="courseCardsContainer__sub">
+                {courses.map((coursr) => (
+                  <CourseCard />
+                ))}
+              </div>
             </div>
 
             {/* <div className="flex">
@@ -45,5 +58,5 @@ const Home = props => {
         </React.Fragment>
     );
 }
- 
+
 export default Home;
