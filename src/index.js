@@ -11,7 +11,7 @@ import PaymentCard from './components/cards/paymentCard';
 
 ReactDOM.render(
   <BrowserRouter>
-
+{/* <App/>
 <div className="flex">
   
   <div className="flex-col">
@@ -25,7 +25,7 @@ ReactDOM.render(
 
   </div>
   <PaymentCard/>
-</div>
+</div> */}
 
     {/* <App /> */}
 {/* 
