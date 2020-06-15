@@ -1,7 +1,7 @@
 import React ,{ useState}from 'react';
 import {Card} from 'react-bootstrap';
 import {Container} from 'react-bootstrap';
-// import Img from './namrata-parmar.jpg'
+import { Link, NavLink } from "react-router-dom";
 import {AiFillStar,AiOutlineStar} from 'react-icons/ai'
 const InstructorCard = props => {
 
@@ -10,11 +10,11 @@ const InstructorCard = props => {
         
         <React.Fragment>
         <Container>
-         
              <Card >
                 <Card.Img  className="card__card-img" src={require("../../namrata-parmar.jpg")} alt="Instructor"/>
                 <Card.Body>
-                    <Card.Title className="card__card-title">{props.Instructor.name}</Card.Title>
+                    <Card.Title className="card__card-title">
+                    {props.Instructor.name}</Card.Title>
                     <Card.Text className="card__card-text">
                       {props.Instructor.job}
                      </Card.Text>
@@ -30,6 +30,7 @@ const InstructorCard = props => {
                 </Card.Body>
 
             </Card>
+        
             </Container>
         </React.Fragment>
     );
