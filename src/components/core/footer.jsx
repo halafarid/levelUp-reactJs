@@ -61,12 +61,12 @@ const Footer = props => {
                     </div>
                     <br/>
                     <div className="sections__paragraph-imgs">
-                    <div><img  src={require("../../images/photo-1517520287167-4bbf64a00d66-75x75.jpeg")}/></div>
+                    <div><img  src={require("../../images/footer/photo-1517520287167-4bbf64a00d66-75x75.jpeg")} alt="pic"/></div>
                     <div className="sections__paragraph-target"><p>Our main target is to "Developing Yourself as a leader"
                     </p></div>
                     </div>
                     <div className="sections__paragraph-imgs">
-                    <div><img  src={require("../../images/photo-1490376840453-5f616fbebe5b-75x75.jpeg")}/></div>
+                    <div><img  src={require("../../images/footer/photo-1490376840453-5f616fbebe5b-75x75.jpeg")} alt="pic"/></div>
                     <div className="sections__paragraph-target"><p>Those Other College Expenses You Aren't Thinking About
                     </p></div>
                     </div>

@@ -8,3 +8,9 @@ body {
 .container {
     padding-top: 140px;
 }
+
+.horizontal {
+    border-top: 1px solid $info;
+    margin: 35px auto;
+    width: 60%;
+}

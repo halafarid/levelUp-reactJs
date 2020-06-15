@@ -1,12 +1,19 @@
 import React from 'react';
-import { Row, Col, Button, Container } from 'react-bootstrap';
+import { Row, Col, Button, Container, Nav } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import { FaChartLine } from 'react-icons/fa';
 import { MdAccessAlarms } from 'react-icons/md';
 import { FiBookmark, FiUsers } from 'react-icons/fi';
 import { AiFillStar, AiOutlineStar, AiOutlineShoppingCart, AiOutlineVideoCamera } from 'react-icons/ai';
 
-const CourseDetails = () => {
+import CourseReviews from './courseReviews';
+import AddReview from './addReview';
+
+const CourseDetails = props => {
+    const id = 1;
+    const path = props.match.path;
+
     return ( 
         <React.Fragment>
             <Container>
@@ -19,10 +26,10 @@ const CourseDetails = () => {
                                 <div className="course__data">
 
                                     <div className="course__info">
-                                        <img className="course__info-img" src={require('../images/instructor/photo.jpg')} alt="Instructor"/>
+                                        <img className="course__info-img" src={require('../../images/instructor/photo.jpg')} alt="Instructor"/>
                                         <div className="course__data-info">
                                             <span className="course__data-title">Instructor</span>
-                                            <p className="course__data-name">Hala Farid</p>
+                                            <p className="course__data-name course__data-name--lg">Hala Farid</p>
                                         </div>
                                     </div>
                                     
@@ -52,29 +59,47 @@ const CourseDetails = () => {
                                 </div>
                             </div>
 
-                            tabs
-
-                            <div className="course__details">
-                                <div className="course__details-info">
-                                    <img className="course__details-img" src={require('../images/course/name.jpeg')} alt="Course"/>
-                                    <p className="course__details-desc">
-                                        The primary goal of this quick start guide is to introduce you to Unreal Engine 4`s (UE4) development environment. By the end of this guide, you`ll know how to set up and develop C++ Projects in UE4. This guide shows you how to create a new Unreal Engine project, add a new C++ class to it, compile the project, and add an instance of a new class to your level. By the time you reach the end of this guide, you`ll be able to see your programmed Actor floating above a table in the level.
-                                        This quick start guide shows you how to add assets to your Unreal Engine (UE4) games. By the end of this guide, you`ll know how to use the Project Browser to create new projects and navigate the Content Browser to find and add content. You`ll also know where to find information on the FBX Content Pipeline while learning how to use the Material Editor to modify Materials before applying them to a Static Mesh Actor.
-                                    </p>
+                            <Nav fill variant="tabs" className="course__tabs">
+                                <Nav.Item>
+                                    <Nav.Link href={`/courses/${id}/details`} as={Link} to={`/courses/${id}/details`} className={`course__tabs-link ${path === '/courses/:id/details'? 'active' : ''} `}>Description</Nav.Link>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <Nav.Link eventKey="/test" as={Link} to={`/courses/${id}/reviews`} className={`course__tabs-link ${path === '/courses/:id/reviews'? 'active' : ''} `}>Reviews</Nav.Link>
+                                </Nav.Item>
+                            </Nav>
+                            
+                            {
+                                path === '/courses/:id/details' ?
+                                <div className="course__details">
+                                    <div className="course__details-info">
+                                        <img className="course__details-img" src={require('../../images/course/name.jpeg')} alt="Course"/>
+                                        <p className="course__details-desc">
+                                            The primary goal of this quick start guide is to introduce you to Unreal Engine 4`s (UE4) development environment. By the end of this guide, you`ll know how to set up and develop C++ Projects in UE4. This guide shows you how to create a new Unreal Engine project, add a new C++ class to it, compile the project, and add an instance of a new class to your level. By the time you reach the end of this guide, you`ll be able to see your programmed Actor floating above a table in the level.
+                                            This quick start guide shows you how to add assets to your Unreal Engine (UE4) games. By the end of this guide, you`ll know how to use the Project Browser to create new projects and navigate the Content Browser to find and add content. You`ll also know where to find information on the FBX Content Pipeline while learning how to use the Material Editor to modify Materials before applying them to a Static Mesh Actor.
+                                        </p>
+                                    </div>
+    
+                                    <div className="course__details-inf">
+                                        <h2 className="course__details-title">Main Features</h2>
+                                        <ul className="course__details-list">
+                                            <li>Achieve Hollywood best quality visuals out of the box.</li>
+                                            <li>With complete C++ source code access, you can study.</li>
+                                            <li>Comes with designer-friendly Blueprint visual scripting.</li>
+                                            <li>With complete C++ source code access, you can study.</li>
+                                            <li>Comes with designer-friendly Blueprint visual scripting.</li>
+                                            <li>Achieve Hollywood best quality visuals out of the box.</li>
+                                        </ul>
+                                    </div>
                                 </div>
+                                :
+                                <div className="course__reviews">
+                                    <CourseReviews />
+                                    <CourseReviews />
+                                    <CourseReviews />
 
-                                <div className="course__details-inf">
-                                    <h2 className="course__details-title">Main Features</h2>
-                                    <ul className="course__details-list">
-                                        <li>Achieve Hollywood best quality visuals out of the box.</li>
-                                        <li>With complete C++ source code access, you can study.</li>
-                                        <li>Comes with designer-friendly Blueprint visual scripting.</li>
-                                        <li>With complete C++ source code access, you can study.</li>
-                                        <li>Comes with designer-friendly Blueprint visual scripting.</li>
-                                        <li>Achieve Hollywood best quality visuals out of the box.</li>
-                                    </ul>
+                                    <AddReview />
                                 </div>
-                            </div>
+                            }
                         </Col>
                         <Col sm={3}>
                             <div className="course__features">
