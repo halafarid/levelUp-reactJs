@@ -3,90 +3,60 @@ import BackGround from './backGround';
 import InstructorCard from '../cards/instructorCard';
 import CourseCard from "../cards/courseCard";
 import Filters from "../features/filters";
-import FixedSection from '../FixedSection';
-import {FaFlask} from 'react-icons/fa';
-import {FiUsers} from 'react-icons/fi';
-import {FaComments} from 'react-icons/fa';
-import {AiOutlineArrowRight} from 'react-icons/ai';
+import About from '../core/about';
+
+import {Container} from 'react-bootstrap';
+
+import { AiOutlineArrowRight } from 'react-icons/ai';
 
 const Home = props => {
     const courses = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-    return ( 
+    return (
         <React.Fragment>
-            <BackGround/>
-            
-            <div className="courseCardsContainer">
-              <Filters />
-              <div className="courseCardsContainer__sub">
-                {courses.map((coursr) => (
-                  <CourseCard />
-                ))}
-              </div>
+            <BackGround />
+            <div className="container">
+            <About />
+             
+            <div className="instructor">
+                <h2 className="instructor__Inst-title">Top Rating Instructors</h2>
+                <a href="" className="instructor__Inst-title instructor__Inst-title--secondary">View all <AiOutlineArrowRight /></a>
             </div>
-        
-            <div className="InstCard"> 
-                {props.Instructor.map(instructor=>(
+            <div className="InstCard">
+                {props.Instructor.map(instructor => (
                     <InstructorCard
-                    key={instructor.id}
-                    Instructor={instructor}
+                        key={instructor.id}
+                        Instructor={instructor}
                     />
                 ))
                 }
             </div>
-
-           
-      
-            <FixedSection/>
-            <div className="container">
-            <div className="about">
-            <div className="about__section">
-                <h2 className="about__title">Welcome to Edusite</h2>
-                <h3 className="about__title about__title--white">Libris vivendo eloquentiam ex ius, nec id splendide abhorreant.</h3>
-                <br/>
-                <div className="about__text">
-                    <div>
-                        <div className="about__paragraph">
-                        <div><div className="about__feature"><FaFlask className="about__feature-icon"/></div></div>
-                        <div>
-                        <h4 className="about__title about__title--secondary">Online Courses</h4>
-                        <p>Ceteros fuisset mei no, soleat epicurei adipiscing ne vis. Et his suas veniam nominati.</p>
-                        </div>
-                        </div>
-                        <div className="about__paragraph">
-                        <div><div className="about__feature"><FiUsers className="about__feature-icon"/></div></div>
-                        <div><h4 className="about__title about__title--secondary">Expert Teachers</h4>
-                        <p>Ceteros fuisset mei no, soleat epicurei adipiscing ne vis. Et his suas veniam nominati.</p>
-                        </div>
-                        </div>
-                        <div className="about__paragraph">
-                        <div><div className="about__feature"><FaComments className="about__feature-icon"/></div></div>
-                        <div><h4 className="about__title about__title--secondary">Community</h4>
-                        <p>Ceteros fuisset mei no, soleat epicurei adipiscing ne vis. Et his suas veniam nominati.</p>
-                        </div>
-                        </div>
-                        </div>
-                        </div>
+            </div>
+            <div className="FixedSection">
+                <div className="FixedSection__bg"></div>
+                <div className="row">
+                    <div className="col-md-6 FixedSection__info">
+                        <h2 className="FixedSection__text"> Ceteros fuisset mei no, soleat epicurei adipiscing ne vis.</h2>
+                        <p  className="FixedSection__text">Ceteros fuisset mei no, soleat epicurei adipiscing ne vis. Et his suas veniam nominati.</p>
+                        <a className="FixedSection__btn">Get Started!</a>
                     </div>
-                    <div className="about__img">
-                        <img  className="about__img-community" src={require("../../images/about.png")} alt="about"/>
-                        </div>
                 </div>
-        <div className="instructor">
-         <h2 className="instructor__Inst-title">Top Rating Instructors</h2>
-         <a href="" className="instructor__Inst-title instructor__Inst-title--secondary">View all <AiOutlineArrowRight/></a>
-         </div>
-         <div className="InstCard"> 
-        {props.Instructor.map(instructor=>(
-            <InstructorCard
-             key={instructor.id}
-             Instructor={instructor}
-            />
-        ))
-        }
-        </div>
-        </div>        
+            </div>
+      
+            <div className="courseCardsContainer">
+                <Filters />
+                <div className="courseCardsContainer__sub">
+                    {courses.map((coursr) => (
+                        <CourseCard />
+                    ))}
+                </div>
+            </div>
+
+
        
+
+            
+
         </React.Fragment>
     );
 }
