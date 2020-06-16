@@ -1,0 +1,16 @@
+#shadow {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.3), 0 15px 15px rgba(0, 0, 0, 0.3);
+}
+.float {
+  float: right !important;
+}
+.activeColor {
+  color: $info !important;
+  &.active {
+    background-color: $secondary !important;
+    color: $dark !important;
+  }
+  &:hover{
+      background-color: #111030 ;
+  }
+}

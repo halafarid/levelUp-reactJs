@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import { FiShoppingCart } from "react-icons/fi";
+import Badge from 'react-bootstrap/Badge'
 const Navbar = () => {
     return (
         <React.Fragment>
@@ -17,8 +18,14 @@ const Navbar = () => {
                         </ul>
                         <form className="form-inline my-2 my-lg-0">
                             <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button className="btn btn-warning my-2 my-sm-0" type="submit">Search</button>
+                            {/* <button className="btn btn-warning my-2 my-sm-0" type="submit">Search</button> */}
                         </form>
+                        <div>
+                            <Badge className="badge" pill variant="danger">
+                                0
+                                </Badge>{' '}
+                            <FiShoppingCart className="shopping"></FiShoppingCart>
+                        </div>
                     </div>
                 </div>
             </nav>

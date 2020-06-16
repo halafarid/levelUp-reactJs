@@ -11,6 +11,7 @@ import PageNotFound from './components/core/pageNotFound'
 import UserProfile from './components/profile/userProfile'
 import Follows from './components/follows'
 import CourseDetails from './components/courses/courseDetails';
+import CourseLessons from './components/courses/courseLessons';
 import Footer from './components/core/footer';
 import InstructorProfile from './components/profile/instructorProfile';
 import Payment from './components/features/payment';
@@ -57,7 +58,7 @@ const App = props => {
 
   return (
       <React.Fragment>
-        <Navbar />        
+        <Navbar />    
           <Switch>
 
             <Route path="/home" render={props => (
@@ -100,6 +101,7 @@ const App = props => {
             <Route path="/follows" component={Follows} />
             <Route path="/shoppingcart" component={Payment} />
             <Route path="/courses/details" component={CourseDetails} />
+            <Route path="/courses/lessons" component={CourseLessons} />
             <Redirect exact from="/" to="/home" />
             <Redirect to="/notfound" />
         </Switch>
