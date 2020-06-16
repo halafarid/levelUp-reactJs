@@ -17,12 +17,12 @@ const CourseDetails = props => {
     return ( 
         <React.Fragment>
             <Container>
-
                 <div className="course">
                     <Row>
                         <Col sm={9}>
                             <div className="course__intro">
                                 <h1 className="course__heading">Object-Oriented JavaScript</h1>
+                                
                                 <div className="course__data">
 
                                     <div className="course__info">
@@ -135,6 +135,7 @@ const CourseDetails = props => {
                         </Col>
                     </Row>
                 </div>
+            
             </Container>
         </React.Fragment>
     );

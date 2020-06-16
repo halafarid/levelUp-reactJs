@@ -10,6 +10,7 @@ import About from './components/core/about'
 import PageNotFound from './components/core/pageNotFound'
 import UserProfile from './components/profile/userProfile'
 import Follows from './components/follows'
+import CourseData from './components/courses/courseData';
 import CourseDetails from './components/courses/courseDetails';
 import Footer from './components/core/footer';
 import InstructorProfile from './components/profile/instructorProfile';
@@ -96,10 +97,17 @@ const App = props => {
               <CourseDetails {...props} />
             )} />
 
+            <Route path="/courses/:id/edit" render={ props => (
+              <CourseDetails {...props} />
+            )} />
+
+            <Route path="/courses/add" render={ props => (
+              <CourseData {...props} />
+            )} />
+
             <Route path="/notfound" component={PageNotFound} />
             <Route path="/follows" component={Follows} />
             <Route path="/shoppingcart" component={Payment} />
-            <Route path="/courses/details" component={CourseDetails} />
             <Redirect exact from="/" to="/home" />
             <Redirect to="/notfound" />
         </Switch>
