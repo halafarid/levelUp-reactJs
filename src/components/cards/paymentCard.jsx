@@ -1,5 +1,6 @@
 import React from 'react';
 import {AiFillInfoCircle} from  'react-icons/ai';
+import { Link } from 'react-router-dom';
 
 const PaymentCard = (props) => {
     return ( 
@@ -23,7 +24,10 @@ const PaymentCard = (props) => {
                     <AiFillInfoCircle className="PaymentCard__icon"/>
                     <p>Add 240.00 EGP of "Fulfilled by Level-Up" items to your order to qualify for FREE Learning.</p>
                 </div>
-                <button className="PaymentCard__btn">PROCEED TO CHECKOUT</button>
+                <div className="PaymentCard__btn">
+
+                <Link className="PaymentCard__btn--link" to="/paymentform">PROCEED TO CHECKOUT</Link>
+                </div>
 
             </div>
                          

@@ -15,6 +15,7 @@ import CourseLessons from './components/courses/courseLessons';
 import Footer from './components/core/footer';
 import InstructorProfile from './components/profile/instructorProfile';
 import Payment from './components/features/payment';
+import PaymentForm from './components/forms/paymentForm';
 
 const App = props => {
  
@@ -102,6 +103,8 @@ const App = props => {
             <Route path="/shoppingcart" component={Payment} />
             <Route path="/courses/details" component={CourseDetails} />
             <Route path="/courses/lessons" component={CourseLessons} />
+            <Route path="/paymentform" component={PaymentForm}/>
+             <Route path="/courses/details" component={CourseDetails} />
             <Redirect exact from="/" to="/home" />
             <Redirect to="/notfound" />
         </Switch>

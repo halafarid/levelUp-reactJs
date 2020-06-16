@@ -37,11 +37,11 @@
 
     &__img {
         width: 100%;
-        background-image: url('../../../src/images/course/courseimg.jpg');
         height: 250px;
         background-size: cover;
         background-repeat: no-repeat;
         margin-bottom: 15px;
+        background-image: url('../../../src/images/course/courseimg.jpg');
     }
 
     &__items-container {
@@ -338,10 +338,19 @@
         margin-top: 0px;
         border: 0;
         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-        width:93%;
+        width:95%;
+        text-align: center;
+        text-decoration: none;
+        
+        &--link:hover
+        {
+
+            color: $info;
+        }
         &:hover{
             background-color: $secondary-dark;
             color: $info;
+
         }
 
 
@@ -358,4 +367,95 @@
 
 .InstructorContainer{
     padding-top:25px; 
+}
+
+.paymentFormCard-Container
+{
+    width: 60%;
+    margin-top: 10%;
+}
+.paymentFormCard
+{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    color: $info;
+    width: 95%;
+    margin: 20px;
+    padding:15px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    margin-top: 5%;
+    font-family: $family-primary;
+    &__icon-container
+    {
+        display: flex;
+        flex-direction: row;
+    }
+    &__header
+    {
+        padding: 10px;
+        // margin-left: 5px;
+    }
+    &__img
+    {
+        background-image: url('../../../src/images/payment/paymentForm.jpg');
+        margin-right: 1%;
+        margin-top: 11%;
+        width: 45%;
+        height: 700px;
+        background-size: contain;
+        background-repeat: no-repeat;
+    
+    }
+    &__form
+    {
+        padding: 1% 10%;
+        &--input
+        {
+            width: 90%;
+            &--sm
+            {
+                width:50%
+            }
+        }
+
+        &--select
+        {
+          
+            width: 50%;
+            margin-right: 5px;
+        }
+        }
+    
+    
+    &__icon
+    {
+        width: 50px;
+        height: 45px;
+        padding: 10px;
+        margin-right: 10px;
+        margin-bottom: 0;
+        border-radius: 50%;
+        border: 1px solid $info;
+        color: $primary;
+        &--verify
+        {
+            padding: 3px;
+            width: 35px;
+            height: 35px;
+            margin-right: 10px;
+            margin-left: 5px;
+        }
+    }
+    &__selectContainer
+    {
+        width:50%;
+    }
+    &__btn
+    {
+        background-color: $secondary;
+        &:hover{
+            background-color: $secondary-dark;
+        }
+    }
 }
