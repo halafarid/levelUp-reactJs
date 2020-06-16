@@ -10,6 +10,7 @@ import About from './components/core/about'
 import PageNotFound from './components/core/pageNotFound'
 import UserProfile from './components/profile/userProfile'
 import Follows from './components/follows'
+import CourseData from './components/courses/courseData';
 import CourseDetails from './components/courses/courseDetails';
 import CourseLessons from './components/courses/courseLessons';
 import Footer from './components/core/footer';
@@ -17,7 +18,7 @@ import InstructorProfile from './components/profile/instructorProfile';
 import Payment from './components/features/payment';
 import PaymentForm from './components/forms/paymentForm';
 
-const App = props => {
+const App = () => {
  
   const [Instructor,setInstructor]=useState([
     {
@@ -98,13 +99,19 @@ const App = props => {
               <CourseDetails {...props} />
             )} />
 
+            <Route path="/courses/:id/edit" render={ props => (
+              <CourseDetails {...props} />
+            )} />
+
+            <Route path="/courses/add" render={ props => (
+              <CourseData {...props} />
+            )} />
+
             <Route path="/notfound" component={PageNotFound} />
             <Route path="/follows" component={Follows} />
             <Route path="/shoppingcart" component={Payment} />
-            <Route path="/courses/details" component={CourseDetails} />
             <Route path="/courses/lessons" component={CourseLessons} />
             <Route path="/paymentform" component={PaymentForm}/>
-             <Route path="/courses/details" component={CourseDetails} />
             <Redirect exact from="/" to="/home" />
             <Redirect to="/notfound" />
         </Switch>

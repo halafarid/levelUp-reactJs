@@ -28,12 +28,17 @@
     }
 
     &__info {
+
         &:hover {
             cursor: pointer;
 
             .course__data-name {
                 color: $primary-dark;
             }
+        }
+
+        &-add {
+            margin-right: 25%;
         }
 
         &-img {
