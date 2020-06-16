@@ -32,7 +32,7 @@ const App =props=> {
           id:"2",
           imgUrl:"../../namrata-parmar.jpg",
           name:"Namrata Parmar",
-          job: "Marketing Consultants from India",
+          job: "Photographer, Travel Bloger",
           rating:"4",
           reviews:"20"
       },
@@ -49,7 +49,7 @@ const App =props=> {
         id:"4",
         imgUrl:"",
         name:"Betty Milner",
-        job:"Professor of Business Administration",
+        job:"Teacher",
         rating:"3",
         reviews:"14"
 

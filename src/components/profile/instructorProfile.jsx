@@ -16,7 +16,7 @@ const InstructorProfile = props => {
                                 Namrata Parmar
                          </Card.Title>
                             <Card.Text className="card__card-text">
-                                Marketing Consultants from India
+                            Photographer, Travel Bloger
                      </Card.Text>
                         </Card.Body>
                     </Card>

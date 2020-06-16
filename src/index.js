@@ -9,7 +9,7 @@ import CourseCard from './components/cards/courseCard';
 
 ReactDOM.render(
   <BrowserRouter>
-    {/* <App /> */}
+    <App />
 {/* 
     <div className="cont">
     <Filters/>
