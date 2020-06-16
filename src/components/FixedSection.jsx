@@ -18,7 +18,7 @@ const FixedSection = () => {
             </div>
             <div className="InfoSection">
                 <div className="InfoSection__header">
-                    <h2 className="InfoSection__text">Why Edusite</h2>
+                    <h2 className="InfoSection__text">Why Level-Up</h2>
                     <p className="InfoSection__text InfoSection__text--p">Libris vivendo eloquentiam ex ius, nec id splendide abhorreant.</p>
 
                 </div>
