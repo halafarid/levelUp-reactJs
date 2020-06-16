@@ -97,12 +97,13 @@
     
     .card {
         width: 18rem;
+        background-color: $white;
         cursor: pointer;
         margin-bottom: 20px;
         background-color: $dark;
         
         &:hover {
-            box-shadow: 1px 2px 1px 3px #e0a800
+            box-shadow: 1px 2px 1px 3px $primary-dark
         }
         &--borderless{
             cursor:default;
@@ -119,29 +120,30 @@
         }
 
         &__card-title {
-            color: $primary;
+            color: $primary-dark;
             font-family: $family-primary;
+            font-weight: 600;
         }
 
         &__card-text {
-            color: $secondary;
+            color: $secondary-dark;
             font-size: 18px;
             font-family: $family-primary;
+            font-weight: 600;
 
             &--color {
-                color: $info;
+                color: $secondary-dark;
                 font-weight: 600;
-                font-family: $family-secondary
             }
 
         }
 
         .rating {
-            color: $primary;
+            color: $warning;
 
             &__num {
                 padding-left: 7px;
-                color: $white;
+                color: $secondary-dark;
                 font-weight: 600;
             }
 
@@ -282,11 +284,7 @@
     font-family: $family-primary;
     max-height: 600px;
     margin-right: 25px;
-    &--c
-    {
-
-      
-    }
+   
     &__info
     {
         flex-direction: row;
@@ -359,3 +357,6 @@
     }
 }
 
+.InstructorContainer{
+    padding-top:25px; 
+}
