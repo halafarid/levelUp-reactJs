@@ -4,17 +4,15 @@
     justify-content: center;
     flex-direction: column;
     position: relative;
-    min-width: 30%;
-    max-width: 30%;
+    // min-width: 30%;
+    // max-width: 30%;
+    width: 40%;
     margin: 10px;
     overflow: hidden;
-<<<<<<< HEAD
     cursor: pointer;
-=======
     &--width{
         max-width: 47%;
     }
->>>>>>> profile
 
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 

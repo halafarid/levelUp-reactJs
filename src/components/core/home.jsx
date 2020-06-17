@@ -1,7 +1,6 @@
 import React from "react";
 import BackGround from "./backGround";
 import InstructorCard from "../cards/instructorCard";
-import React from 'react';
 
 import CourseCard from "../cards/courseCard";
 import Filters from "../features/filters";
@@ -15,7 +14,7 @@ import { BsFillPlusCircleFill } from 'react-icons/bs';
 
 const Home = props => {
     const id=1;
-    const courses = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const courses = [1, 2, 3, 4, 5, 6];
     const path = props.match.path;
 
     return (

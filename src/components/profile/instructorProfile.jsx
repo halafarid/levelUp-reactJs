@@ -75,7 +75,7 @@ const InstructorProfile = props => {
                             <hr className="line" /><br />
                             <div>
                                 <h2 className="profile__header">Bio</h2>
-                                <p>John studied Software Development at UC Berkeley and has more than 15 years
+                                <p className="about__prg">John studied Software Development at UC Berkeley and has more than 15 years
                                      of experience in software quality assurance. He's been building software and tooling,
                                      managing software engineer team many years. When he's not reading about the latest
                                      trends in computing he spends his time with his wife, snowboarding, or running..</p>

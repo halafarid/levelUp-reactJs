@@ -19,19 +19,19 @@ const About = () => {
                                 <div><div className="about__feature"><FaFlask className="about__feature-icon" /></div></div>
                                 <div>
                                     <h4 className="about__title about__title--secondary">Online Courses</h4>
-                                    <p>Ceteros fuisset mei no, soleat epicurei adipiscing ne vis. Et his suas veniam nominati.</p>
+                                    <p className="about__prg">Ceteros fuisset mei no, soleat epicurei adipiscing ne vis. Et his suas veniam nominati.</p>
                                 </div>
                             </div>
                             <div className="about__paragraph">
                                 <div><div className="about__feature"><FiUsers className="about__feature-icon" /></div></div>
                                 <div><h4 className="about__title about__title--secondary">Expert Teachers</h4>
-                                    <p>Ceteros fuisset mei no, soleat epicurei adipiscing ne vis. Et his suas veniam nominati.</p>
+                                    <p className="about__prg">Ceteros fuisset mei no, soleat epicurei adipiscing ne vis. Et his suas veniam nominati.</p>
                                 </div>
                             </div>
                             <div className="about__paragraph">
                                 <div><div className="about__feature"><FaComments className="about__feature-icon" /></div></div>
                                 <div><h4 className="about__title about__title--secondary">Community</h4>
-                                    <p>Ceteros fuisset mei no, soleat epicurei adipiscing ne vis. Et his suas veniam nominati.</p>
+                                    <p className="about__prg">Ceteros fuisset mei no, soleat epicurei adipiscing ne vis. Et his suas veniam nominati.</p>
                                 </div>
                             </div>
                         </div>
@@ -86,7 +86,7 @@ const About = () => {
                     <div className="row InfoSection__infoContainer">
                         <div className="col-md-6">
                             <h3 className="InfoSection__text">Persius imperdiet incorrupte et qui, munere nusquam et nec.</h3>
-                            <p className="InfoSection__text--info" >Libris vivendo eloquentiam ex ius, nec id splendide abhorreant.</p>
+                            <p className="InfoSection__text--info" >Libris vivendo eloquentiam ex ius, nec id splendide abhorreant.</p><br/>
                             <p className="InfoSection__text--color">No vel facete sententiae, quodsi dolores no quo, pri ex tamquam interesset necessitatibus. Te denique cotidieque delicatissimi sed. Eu doming epicurei duo. Sit ea perfecto deseruisse theophrastus. At sed malis hendrerit, elitr deseruisse in sit, sit ei facilisi mediocrem.</p>
                             <a className="FixedSection__btn InfoSection__infoContainer--space">Contact Us</a>
                         </div>
