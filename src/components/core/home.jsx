@@ -1,14 +1,27 @@
+<<<<<<< HEAD
 import React from "react";
 import BackGround from "./backGround";
 import InstructorCard from "../cards/instructorCard";
+=======
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+import BackGround from './backGround';
+import InstructorCard from '../cards/instructorCard';
+>>>>>>> aef87259824f1cd2c604111565f87ce1a4956d01
 import CourseCard from "../cards/courseCard";
 import Filters from "../features/filters";
 import About from "../core/about";
 import { Link } from "react-router-dom";
 
+<<<<<<< HEAD
 import { Container } from "react-bootstrap";
 
 import { AiOutlineArrowRight } from "react-icons/ai";
+=======
+import { AiOutlineArrowRight } from 'react-icons/ai';
+import { BsFillPlusCircleFill } from 'react-icons/bs';
+>>>>>>> aef87259824f1cd2c604111565f87ce1a4956d01
 
 const Home = props => {
   const courses = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -19,6 +32,7 @@ const Home = props => {
       <div className="container">
         <About />
 
+<<<<<<< HEAD
         <div className="instructor">
           <h2 className="instructor__Inst-title">Top Rating Instructors</h2>
           <a
@@ -66,3 +80,13 @@ const Home = props => {
 };
 
 export default Home;
+=======
+            <Link to="/courses/add" className="addCourse">
+                <BsFillPlusCircleFill />
+            </Link>
+        </React.Fragment>
+    );
+}
+
+export default Home;
+>>>>>>> aef87259824f1cd2c604111565f87ce1a4956d01

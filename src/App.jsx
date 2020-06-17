@@ -4,6 +4,7 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.scss";
 
+<<<<<<< HEAD
 import Navbar from "./components/core/navbar";
 import Home from "./components/core/home";
 import About from "./components/core/about";
@@ -18,6 +19,21 @@ import InstructorProfile from "./components/profile/instructorProfile";
 import Payment from "./components/features/payment";
 import PaymentForm from "./components/forms/paymentForm";
 import Login from "./components/authentication/login";
+=======
+import Navbar from './components/core/navbar'
+import Home from './components/core/home'
+import About from './components/core/about'
+import PageNotFound from './components/core/pageNotFound'
+import UserProfile from './components/profile/userProfile'
+import Follows from './components/follows'
+import CourseData from './components/forms/courseData';
+import CourseDetails from './components/courses/courseDetails';
+import CourseLessons from './components/courses/courseLessons';
+import Footer from './components/core/footer';
+import InstructorProfile from './components/profile/instructorProfile';
+import Payment from './components/features/payment';
+import PaymentForm from './components/forms/paymentForm';
+>>>>>>> aef87259824f1cd2c604111565f87ce1a4956d01
 
 const App = () => {
   const [Instructor, setInstructor] = useState([
@@ -78,16 +94,23 @@ const App = () => {
           render={props => <CourseDetails {...props} />}
         />
 
+<<<<<<< HEAD
         <Route
           path="/courses/:id/reviews"
           render={props => <CourseDetails {...props} />}
         />
+=======
+            <Route path="/courses/:id/edit" render={ props => (
+              <CourseData {...props} />
+            )} />
+>>>>>>> aef87259824f1cd2c604111565f87ce1a4956d01
 
         <Route
           path="/courses/:id/edit"
           render={props => <CourseDetails {...props} />}
         />
 
+<<<<<<< HEAD
         <Route
           path="/courses/add"
           render={props => <CourseData {...props} />}
@@ -104,5 +127,25 @@ const App = () => {
     </React.Fragment>
   );
 };
+=======
+            <Route path="/follows" render={ props => (
+              <Follows 
+                {...props} 
+                Instructor={Instructor} 
+              />
+            )} />
+
+            <Route path="/notfound" component={PageNotFound} />
+            <Route path="/shoppingcart" component={Payment} />
+            <Route path="/courses/lessons" component={CourseLessons} />
+            <Route path="/paymentform" component={PaymentForm}/>
+            <Redirect exact from="/" to="/home" />
+            <Redirect to="/notfound" />
+        </Switch>
+        <Footer/>
+      </React.Fragment>
+    );
+  }
+>>>>>>> aef87259824f1cd2c604111565f87ce1a4956d01
 
 export default App;
