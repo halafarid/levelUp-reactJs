@@ -9,21 +9,11 @@ import CourseCard from './components/cards/courseCard';
 import ShoppingListItem from './components/cards/shoppingListItem';
 import PaymentCard from './components/cards/paymentCard';
 import Payment from './components/features/payment';
-<<<<<<< HEAD
-import FixedSection from './components/FixedSection';
 import PaymentForm from './components/forms/paymentForm';
-=======
->>>>>>> profile
 
 ReactDOM.render(
   <BrowserRouter>
   <App />
-<<<<<<< HEAD
- 
-  
-
-=======
->>>>>>> profile
   </BrowserRouter>,
   document.getElementById('root')
 );

@@ -1,7 +1,6 @@
 import React from "react";
 import BackGround from "./backGround";
 import InstructorCard from "../cards/instructorCard";
-import React from 'react';
 
 import CourseCard from "../cards/courseCard";
 import Filters from "../features/filters";
