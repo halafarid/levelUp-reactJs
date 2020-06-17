@@ -5,6 +5,7 @@
     &--primary {
         background-color: $primary;
     }
+<<<<<<< HEAD
 
     &--primary-dark {
         background-color: $primary-dark;
@@ -15,6 +16,9 @@
         }
     }
 
+=======
+   
+>>>>>>> profile
     &--secondary {
         background-color: $secondary-dark;
         border: 1px solid $secondary-dark;
@@ -23,9 +27,23 @@
             background-color: $secondary;
         }
     }
-
+   &--pd{
+       margin-top:5px; 
+       padding: 8px 18px;
+   }
+   &--mg-left{
+       margin-left:43%;
+       margin-top: 20px;
+       border-radius: 20px;
+   }
     &--full {
         width: 100%;
+    }
+    &--danger{
+        background-color: $danger;
+    }
+    &--border{
+        border-radius: 13px;
     }
 
     &--upper {

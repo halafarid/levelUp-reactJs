@@ -3,18 +3,29 @@
     padding-left:50px; 
     padding-top: 26px;
     &__icons{
-        color: $secondary-dark;
         font-size: 35px;
         padding: 2px;
         margin-top: 10px;
         cursor: pointer;
-        &--danger{
-            color: $danger;
+        &--facebook{
+            color: $facebook
         }
-        &--warning{
-            color: $warning;
+        &--instagram{
+            color: $instagram;
+        }
+        &--twitter{
+            color: $twitter;
         }
       
+    }
+    &__edit{
+        cursor: pointer;
+        font-size: 23px;
+        margin-top:15px; 
+        color: $secondary-dark;
+        &:hover{
+            color: $secondary;
+        }
     }
     &__header{
         display: flex;
@@ -28,4 +39,7 @@
 }
 .line{
    background-color: $secondary-dark;
+}
+.stars{
+    color: $warning;
 }

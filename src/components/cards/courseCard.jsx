@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import {AiOutlineTeam , AiFillStar ,AiOutlineStar} from  'react-icons/ai';
+import {AiOutlineTeam , AiFillStar ,AiOutlineStar,AiFillDelete,AiFillEdit} from  'react-icons/ai';
 
+<<<<<<< HEAD
 const CourseCard = (props) => {
     const stars=[1,2,3,4];
     return ( 
@@ -12,6 +13,16 @@ const CourseCard = (props) => {
 
                 <div className="CourseCard__img"></div>
                 <div className="CourseCard--box">
+=======
+
+
+const CourseCard = props => {
+    const stars=[1,2,3,4];
+    return ( 
+        <React.Fragment>
+               <div className="CourseCard__img"></div>
+               <div className="CourseCard--box">
+>>>>>>> profile
 
                 <p className="CourseCard__text CourseCard__text--font ">Learning How To Learn: Powerful mental tools to help you master ... </p>
                 <div className="CourseCard__items-container">
@@ -29,6 +40,7 @@ const CourseCard = (props) => {
                     <div className="CourseCard__stars-container">
                     <div className="CourseCard__text CourseCard__text--space">
 
+<<<<<<< HEAD
                         {stars.map(star=> <AiFillStar className="CourseCard__star" ></AiFillStar>)}
                     <AiOutlineStar className="CourseCard__star "></AiOutlineStar>
                     <Link className=" CourseCard__btn CourseCard__text--font"  to="/shoppingcart">Add to cart</Link>
@@ -38,6 +50,22 @@ const CourseCard = (props) => {
                 </div>
               </Link>
           </div>
+=======
+                    {stars.map(star=> <AiFillStar className="CourseCard__star" ></AiFillStar>)}
+                   <AiOutlineStar className="CourseCard__star "></AiOutlineStar>
+                   {props.path==="/home"||props.path==="/freeCourses/:id" ||props.path==="/paidCourses/:id" ||props.path==="/enrolledCourses/:id"?
+                   <Link className=" CourseCard__btn CourseCard__text--font"  to="/shoppingcart">Add to cart</Link>
+                   :
+                    <div className="crud">
+                    <AiFillEdit className="crud__edit"/>
+                    <AiFillDelete className="crud__delete"/>
+                     </div>
+                    }
+                   </div>
+                   </div>
+               </div>
+               </div>
+>>>>>>> profile
         </React.Fragment>
      );
 }

@@ -39,6 +39,9 @@
         color: #FFF;
         transition: 0.2s all;
         cursor: pointer;
+        &:hover{
+            background-color: $secondary;
+        }
     }
     
 }
