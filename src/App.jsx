@@ -61,8 +61,6 @@ const App = () => {
     <React.Fragment>
       <Navbar />
       <Switch>
-        <Route path="/login" component={Login} />
-
         <Route
           path="/home"
           render={props => <Home {...props} Instructor={Instructor} />}
@@ -154,6 +152,7 @@ const App = () => {
           path="/courses/add"
           render={props => <CourseData {...props} />}
         />
+        <Route path="/login" component={Login} />
         <Route path="/notfound" component={PageNotFound} />
         <Route path="/follows" component={Follows} />
         <Route path="/shoppingcart" component={Payment} />
