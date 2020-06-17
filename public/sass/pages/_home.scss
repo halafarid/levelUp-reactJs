@@ -27,6 +27,7 @@
         color: $primary;
 
         &--white {
+            padding-top:5px; 
             color: $white;
         }
 
@@ -37,7 +38,8 @@
 
     &__text {
         display: flex;
-        width: 100%;
+        width: 89%;
+        padding: 15px;
     }
 
     &__feature {
@@ -55,8 +57,12 @@
     &__paragraph {
         display: flex;
         padding-right: 10px;
+        padding-top: 15px;
+        
     }
-
+   &__prg{
+       color: $info;
+   }
     &__section {
         width: 100%;
     }

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
 import Badge from "react-bootstrap/Badge";
 const Navbar = () => {
+    const id=1;
   return (
     <React.Fragment>
       <nav className="nav fixed-top navbar navbar-expand-lg  py-3 border-bottom">
@@ -28,7 +29,7 @@ const Navbar = () => {
               </li>
               <li className="nav-item">
                 <Link
-                  to="/myProfile"
+                  to={`/Profile/${id}`}
                   className="nav-link text-uppercase font-weight-bold text-white"
                 >
                   Profile

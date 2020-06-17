@@ -7,7 +7,6 @@ const CourseCard = (props) => {
     const stars=[1,2,3,4];
     return ( 
         <React.Fragment>
-          <div className="CourseCard">
               <Link to={`/courses/1/details`} className="CourseCard__link">
 
                 <div className="CourseCard__img"></div>
@@ -44,7 +43,7 @@ const CourseCard = (props) => {
                 </div>
                 </div>
               </Link>
-          </div>
+      
                     
         </React.Fragment>
      );
