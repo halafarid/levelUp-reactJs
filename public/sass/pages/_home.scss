@@ -78,3 +78,11 @@
 }
 }
 
+.addCourse {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: $secondary !important;
+    font-size: 35px;
+    cursor: pointer;
+}
