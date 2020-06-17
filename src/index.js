@@ -9,30 +9,10 @@ import CourseCard from './components/cards/courseCard';
 import ShoppingListItem from './components/cards/shoppingListItem';
 import PaymentCard from './components/cards/paymentCard';
 import Payment from './components/features/payment';
-import FixedSection from './components/FixedSection';
 
 ReactDOM.render(
   <BrowserRouter>
   <App />
-{/* 
-    <div className="cont">
-    <Filters/>
-    <div className="cardsContainer">
-    <CourseCard/>
-    <CourseCard/>
-    <CourseCard/>
-    <CourseCard/>
-    <CourseCard/>
-    <CourseCard/>
-    <CourseCard/>
-    <CourseCard/>
-    <CourseCard/> 
-    </div>
-
-    </div>
-   */}
-
-
   </BrowserRouter>,
   document.getElementById('root')
 );

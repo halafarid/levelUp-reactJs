@@ -1,15 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import {AiOutlineTeam , AiFillStar ,AiOutlineStar} from  'react-icons/ai';
+import {AiOutlineTeam , AiFillStar ,AiOutlineStar,AiFillDelete,AiFillEdit} from  'react-icons/ai';
 
 
 
-const CourseCard = (props) => {
+const CourseCard = props => {
     const stars=[1,2,3,4];
     return ( 
         <React.Fragment>
-          <div className="CourseCard">
                <div className="CourseCard__img"></div>
                <div className="CourseCard--box">
 
@@ -31,12 +30,18 @@ const CourseCard = (props) => {
 
                     {stars.map(star=> <AiFillStar className="CourseCard__star" ></AiFillStar>)}
                    <AiOutlineStar className="CourseCard__star "></AiOutlineStar>
+                   {props.path==="/home"||props.path==="/freeCourses/:id" ||props.path==="/paidCourses/:id" ||props.path==="/enrolledCourses/:id"?
                    <Link className=" CourseCard__btn CourseCard__text--font"  to="/shoppingcart">Add to cart</Link>
+                   :
+                    <div className="crud">
+                    <AiFillEdit className="crud__edit"/>
+                    <AiFillDelete className="crud__delete"/>
+                     </div>
+                    }
                    </div>
                    </div>
                </div>
                </div>
-          </div>
         </React.Fragment>
      );
 }

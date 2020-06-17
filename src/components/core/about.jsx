@@ -2,10 +2,12 @@ import React from 'react';
 import { FiUsers } from 'react-icons/fi';
 import { FaFlask, FaComments, FaMedapps } from 'react-icons/fa';
 import { AiFillPlayCircle } from 'react-icons/ai'
+import {Container} from 'react-bootstrap';
 
 const About = () => {
     return (
         <React.Fragment>
+            <Container>
             <div className="about">
                 <div className="about__section">
                     <h2 className="about__title">Welcome to Edusite</h2>
@@ -49,7 +51,7 @@ const About = () => {
                 <div className="InfoSection__infoContainer">
                     <div className="col-md-4">
                         <div className="InfoSection__sub">
-                            <FaFlask className="InfoSection__icon"></FaFlask>
+                        <div><div className="about__feature"><FaFlask className="about__feature-icon" /></div></div>
                             <div className="InfoSection__sub--content">
                                 <h4 className="InfoSection__text InfoSection__text--secondary">Online Courses</h4>
                                 <p className="InfoSection__text--info">Ceteros fuisset mei no, soleat epicurei adipiscing ne vis. Et his suas veniam nominati.</p>
@@ -58,7 +60,7 @@ const About = () => {
                     </div>
                     <div className="col-md-4">
                         <div className="InfoSection__sub">
-                            <FaMedapps className="InfoSection__icon"></FaMedapps>
+                            <div><div className="about__feature"><FaMedapps className="about__feature-icon"></FaMedapps></div></div>
                             <div className="InfoSection__sub--content">
                                 <h4 className="InfoSection__text InfoSection__text--secondary">Expert Teachers</h4>
                                 <p className="InfoSection__text--info">Ceteros fuisset mei no, soleat epicurei adipiscing ne vis. Et his suas veniam nominati.</p>
@@ -67,7 +69,8 @@ const About = () => {
                     </div>
                     <div className="col-md-4">
                         <div className="InfoSection__sub">
-                            <FaComments className="InfoSection__icon"></FaComments>
+                        <div><div className="about__feature"><FaComments className="about__feature-icon" /></div></div>
+
                             <div className="InfoSection__sub--content">
                                 <h4 className="InfoSection__text InfoSection__text--secondary">Comunity</h4>
                                 <p className="InfoSection__text--info">Ceteros fuisset mei no, soleat epicurei adipiscing ne vis. Et his suas veniam nominati.</p>
@@ -96,7 +99,7 @@ const About = () => {
                     </div>
                 </div>
             </div>
-
+ </Container>
         </React.Fragment>
     );
 }

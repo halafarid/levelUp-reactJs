@@ -8,6 +8,9 @@
     max-width: 30%;
     margin: 10px;
     overflow: hidden;
+    &--width{
+        max-width: 47%;
+    }
 
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 
@@ -54,7 +57,7 @@
     }
 
     &__star {
-        color: $primary;
+        color: $warning;
         margin-top: 5px;
 
     }
@@ -80,13 +83,42 @@
         width: 27%;
         font-size: 12px;
         color: $info;
-        background-color: $secondary;
+        background-color: $secondary-dark;
+        &--danger{
+            background-color: $danger-dark;
+        }
     }
 
     &__btn:hover {
-        background-color: $secondary-dark;
+        background-color: $secondary;
         color: $info;
+        text-decoration: none;
+       
     }
+    &__btn--danger:hover{
+      background-color: $danger;
+    }
+}
+.crud{
+    cursor: pointer;
+    position: absolute;
+    left: 70%;
+    bottom: 30px;
+    font-size: 20px;
+    &__delete{
+    color: $danger-dark;
+    margin-left: 10px;
+    &:hover{
+        color: $danger;
+    }
+    }
+    &__edit{
+        color: $primary-dark;
+        &:hover{
+            color: $primary;
+        }
+    }
+
 }
 
 .InstCard {
@@ -96,16 +128,18 @@
     
     
     .card {
+        height: 32.5rem;
         width: 18rem;
         background-color: $white;
         cursor: pointer;
         margin-bottom: 20px;
         transition: box-shadow 1s ease-in-out;
         &:hover {
-            box-shadow: 1px 2px 1px 3px $primary-dark
+            box-shadow: 1px 2px 1px 3px $primary-dark;
         }
         &--borderless{
             cursor:default;
+            background-color: $dark;
             &:hover{
             box-shadow: none;
             }
@@ -357,5 +391,9 @@
 }
 
 .InstructorContainer{
+    
     padding-top:25px; 
+    &__link:hover{
+      text-decoration: none;
+    }
 }

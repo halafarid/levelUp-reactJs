@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
+    const id=1;
     return (
         <React.Fragment>
             <nav className="nav fixed-top navbar navbar-expand-lg  py-3 border-bottom">
@@ -12,7 +13,7 @@ const Navbar = () => {
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item"><Link to="/home" className="nav-link text-uppercase font-weight-bold text-white">Home <span className="sr-only">(current)</span></Link></li>
                             <li className="nav-item"><Link to="/about" className="nav-link text-uppercase font-weight-bold text-white">About</Link></li>
-                            <li className="nav-item"><Link to="/myProfile" className="nav-link text-uppercase font-weight-bold text-white">Profile</Link></li>
+                            <li className="nav-item"><Link to={`/Profile/${id}`}className="nav-link text-uppercase font-weight-bold text-white">Profile</Link></li>
                             <li className="nav-item"><Link to="/follows" className="nav-link text-uppercase font-weight-bold text-white">Following</Link></li>
                         </ul>
                         <form className="form-inline my-2 my-lg-0">

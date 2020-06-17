@@ -14,6 +14,7 @@ import CourseDetails from './components/courses/courseDetails';
 import Footer from './components/core/footer';
 import InstructorProfile from './components/profile/instructorProfile';
 import Payment from './components/features/payment';
+import CourseCard from './components/cards/courseCard';
 
 const App = props => {
  
@@ -60,7 +61,28 @@ const App = props => {
         <Navbar />        
           <Switch>
 
-            <Route path="/home" render={props => (
+            <Route path="/freeCourses/:id" render={props => (
+              <Home
+              {...props}
+              Instructor={Instructor}
+              />
+            )}
+            />
+               <Route path="/paidCourses/:id" render={props => (
+              <Home
+              {...props}
+              Instructor={Instructor}
+              />
+            )}
+            />
+               <Route path="/enrolledCourses/:id"render={props => (
+              <Home
+              {...props}
+              Instructor={Instructor}
+              />
+            )}
+            />
+               <Route path="/home" render={props => (
               <Home
               {...props}
               Instructor={Instructor}
@@ -75,18 +97,39 @@ const App = props => {
               )}
             />
 
-            <Route
-              path="/myProfile"
-              render={() => (
-                <UserProfile />
-              )}
-            />
+       
 
-            <Route path="/instructorProfile"
-            render={()=>(
-              <InstructorProfile/>
+            <Route path="/Profile"
+            render={props=>(
+              <InstructorProfile
+              {...props}
+              
+              />
             )}
             />
+              <Route path="/Profile/:id"
+            render={props=>(
+              <InstructorProfile
+              {...props}
+              />
+            )}
+            />
+
+            <Route path="/freeCourses/:id" render={props=>
+            (<InstructorProfile
+               {...props}
+               />)}
+               />
+              <Route path="/paidCourses/:id" render={props=>
+            (<InstructorProfile
+               {...props}
+               />)}
+               />
+               <Route path="/enrolledCourses/:id" render={props=>
+            (<InstructorProfile
+               {...props}
+               />)}
+               />
 
             <Route path="/courses/:id/details" render={ props => (
               <CourseDetails {...props} />

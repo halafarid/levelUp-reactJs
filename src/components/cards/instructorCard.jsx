@@ -1,15 +1,16 @@
-import React ,{ useState}from 'react';
+import React    from 'react';
+import { Link } from 'react-router-dom';
 import {Card} from 'react-bootstrap';
 import {Container} from 'react-bootstrap';
-import { Link, NavLink } from "react-router-dom";
 import {AiFillStar,AiOutlineStar} from 'react-icons/ai'
 const InstructorCard = props => {
-
+  
   
     return ( 
         
         <React.Fragment>
         <Container className="InstructorContainer">
+        <Link  className="InstructorContainer__link" to="/Profile/:id">
              <Card >
                 <Card.Img  className="card__card-img" src={require("../../namrata-parmar.jpg")} alt="Instructor"/>
                 <Card.Body>
@@ -30,7 +31,7 @@ const InstructorCard = props => {
                 </Card.Body>
 
             </Card>
-        
+        </Link>
             </Container>
         </React.Fragment>
     );

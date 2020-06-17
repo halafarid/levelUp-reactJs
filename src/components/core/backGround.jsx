@@ -1,4 +1,5 @@
 import React from 'react';
+import {Button} from 'react-bootstrap';
 
 const BackGround = () => {
     return (  
@@ -10,7 +11,7 @@ const BackGround = () => {
                         <br />
                         <p className="h4 text-white">Libris vivendo eloquentiam ex ius, nec id splendide abhorreant, eu pro alii error homero.</p>
                         <br />
-                        <button className="btn btn-info btn-lg " type="submit">Get Started!</button>
+                        <Button className="btn btn--secondary btn--pd">Get Started!</Button>
                     </div>
                 </div>
             </div>
