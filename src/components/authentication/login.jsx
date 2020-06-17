@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 const Login = () => {
-    return ( 
-        <React.Fragment>
+  return (
+    <React.Fragment>
+      <h1>From Login component</h1>
+    </React.Fragment>
+  );
+};
 
-        </React.Fragment>
-    );
-}
- 
 export default Login;
