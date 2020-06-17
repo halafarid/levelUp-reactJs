@@ -1,13 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import BackGround from './backGround';
 import InstructorCard from '../cards/instructorCard';
 import CourseCard from "../cards/courseCard";
 import Filters from "../features/filters";
 import About from '../core/about';
 
-import {Container} from 'react-bootstrap';
-
 import { AiOutlineArrowRight } from 'react-icons/ai';
+import { BsFillPlusCircleFill } from 'react-icons/bs';
 
 const Home = props => {
     const courses = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -52,11 +53,9 @@ const Home = props => {
                 </div>
             </div>
 
-
-       
-
-            
-
+            <Link to="/courses/add" className="addCourse">
+                <BsFillPlusCircleFill />
+            </Link>
         </React.Fragment>
     );
 }
