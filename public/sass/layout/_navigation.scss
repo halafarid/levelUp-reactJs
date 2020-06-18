@@ -40,5 +40,20 @@
   }
   &-icon {
     font-size: 30px;
+    cursor: pointer;
   }
+}
+.logout {
+  cursor: pointer;
+  &_icon {
+    margin-left: 286%;
+    font-size: 25px;
+  }
+}
+.nav-link{
+color:$white;
+  &:hover,&:focus{
+    color: $secondary;
+  }
+ 
 }
