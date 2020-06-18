@@ -10,18 +10,26 @@
         background-color: $primary-dark;
         border: none;
 
-        &:hover {
-            background-color: $warning;
+        &:hover, &:focus {
+            background-color: $warning !important;
         }
     }
-
    
     &--secondary {
         background-color: $secondary-dark;
-        border: 1px solid $secondary-dark;
+        border: none;
 
         &:hover, &:focus {
-            background-color: $secondary;
+            background-color: $secondary !important;
+        }
+    }
+
+    &--success {
+        background-color: $success-dark;
+        border: none;
+
+        &:hover, &:focus {
+            background-color: $success !important;
         }
     }
    &--pd{
@@ -33,11 +41,18 @@
        margin-top: 20px;
        border-radius: 20px;
    }
+
+
     &--full {
         width: 100%;
     }
     &--danger{
-        background-color: $danger;
+        background-color: $danger-dark;
+        border: none;
+
+        &:hover, &:focus {
+            background-color: $danger !important;
+        }
     }
     &--border{
         border-radius: 13px;
@@ -49,5 +64,9 @@
 
     &--mt0 {
         margin-top: 20px;
+    }
+
+    &--mr0 {
+        margin-right: 20px;
     }
 }

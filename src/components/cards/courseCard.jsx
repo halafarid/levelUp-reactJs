@@ -25,9 +25,29 @@ const CourseCard = (props) => {
                             <span className="CourseCard__text CourseCard__text--space CourseCard__text--font">100</span>
                         </div>
                     </div>
-                    <div className="CourseCard__items-container">
-                        <span className="CourseCard__text CourseCard__text--space CourseCard__text--font">Duration : 2H </span>
-                        <span className="CourseCard__text CourseCard__text--space CourseCard__text--font"> $149.99 </span>
+                </div>
+                <div className="CourseCard__items-container">
+                    <span className="CourseCard__text CourseCard__text--space CourseCard__text--font">Duration : 2H </span>
+                    <span className="CourseCard__text CourseCard__text--space CourseCard__text--font"> $149.99 </span>
+                </div>
+                <div className="CourseCard__items-container">
+                    <div className="CourseCard__stars-container">
+                    <div className="CourseCard__text CourseCard__text--space">
+
+                        {stars.map(star=> <AiFillStar className="CourseCard__star" ></AiFillStar>)}
+                    <AiOutlineStar className="CourseCard__star "></AiOutlineStar>
+                    {props.path==="/home"||props.path==="/freeCourses/:id" ||props.path==="/paidCourses/:id" ||props.path==="/enrolledCourses/:id"?
+                   <Link className=" CourseCard__btn CourseCard__text--font"  to="/shoppingcart">Add to cart</Link>
+                   :
+                    <div className="crud">
+                        { props.type === 'instructor' && props.path === '/profile' && props.tab !== 3 &&
+                            <React.Fragment>
+                                <AiFillEdit className="crud__edit"/>
+                                <AiFillDelete className="crud__delete"/>
+                            </React.Fragment>
+                        }
+                     </div>
+                    }
                     </div>
                     <div className="CourseCard__items-container">
                         <div className="CourseCard__stars-container">
@@ -48,6 +68,7 @@ const CourseCard = (props) => {
                     </div>
                 </div>
                 </div>
+            </div>
             </Link>
 
 
