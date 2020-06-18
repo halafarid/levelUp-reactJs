@@ -36,7 +36,8 @@ const Navbar = () => {
               </li>
               <li className="nav-item">
                 <Link
-                  to="/follows"
+                  // to="/follows"
+                  to="/login"
                   className="nav-link text-uppercase font-weight-bold text-white"
                 >
                   Following

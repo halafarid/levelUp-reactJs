@@ -8,7 +8,7 @@ const Login = () => {
           <div className="wrap-login100">
             <div
               className="login100-form-title"
-              // style={{ "background-image": url("../images/auth/bg-01.jpg") }}
+              // style={{ backgroundImage: "url(/images/auth/bg-01.jpg)" }}
             >
               <span className="login100-form-title-1">Sign In</span>
             </div>
