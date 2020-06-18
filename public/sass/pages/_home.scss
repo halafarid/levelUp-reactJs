@@ -2,12 +2,12 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-  margin-top: 7%;
+  margin-top: 15px;
   &__sub {
     display: flex;
     flex-direction: row;
     width: 100%;
-    flex-wrap: wrap;
+    flex-wrap: wrap;  
   }
 }
 
@@ -54,7 +54,7 @@
   &__paragraph {
     display: flex;
     padding-right: 10px;
-    padding-top: 15px;
+    padding-top: 8px;
   }
   &__prg {
     color: $info;
@@ -66,6 +66,7 @@
 .instructor {
   display: flex;
   justify-content: space-between;
+  margin-top: 5%;
   &__Inst-title {
     color: $primary;
     &--secondary {
@@ -78,6 +79,7 @@
       }
     }
   }
+
 }
 
 .addCourse {
@@ -97,4 +99,14 @@
     position: absolute;
     left: 10rem
 }
+}
+.courses{
+  display: flex;
+  flex-direction: row;
+  &__container{
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+  }
+
 }

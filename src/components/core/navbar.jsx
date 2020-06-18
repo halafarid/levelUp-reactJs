@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
 import Badge from "react-bootstrap/Badge";
 const Navbar = () => {
-    const id=1;
   return (
     <React.Fragment>
       <nav className="nav fixed-top navbar navbar-expand-lg  py-3 border-bottom">
@@ -29,7 +28,7 @@ const Navbar = () => {
               </li>
               <li className="nav-item">
                 <Link
-                  to={`/Profile/${id}`}
+                  to={`/profile`}
                   className="nav-link text-uppercase font-weight-bold text-white"
                 >
                   Profile
@@ -53,11 +52,11 @@ const Navbar = () => {
               />
               {/* <button className="btn btn-warning my-2 my-sm-0" type="submit">Search</button> */}
             </form>
-            <div>
-              <Badge className="badge" pill variant="danger">
+            <div className="shopping-cart">
+              <Badge className="shopping-cart-badge" pill variant="danger">
                 0
               </Badge>{" "}
-              <FiShoppingCart className="shopping"></FiShoppingCart>
+              <FiShoppingCart className="shopping-cart-icon"></FiShoppingCart>
             </div>
           </div>
         </div>

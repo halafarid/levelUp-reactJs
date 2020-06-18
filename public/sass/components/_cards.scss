@@ -1,8 +1,8 @@
 
 .CourseCard {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+    // display: flex;
+    // justify-content: center;
+    // flex-direction: column;
     position: relative;
     // min-width: 30%;
     // max-width: 30%;
@@ -10,9 +10,16 @@
     margin: 10px;
     overflow: hidden;
     cursor: pointer;
+    transition: box-shadow 2s ease-in-out;
+    &:hover{
+    box-shadow: 0 5px 10px  rgba(241, 230, 230, 0.979), 0 3px 8px rgba(224, 214, 214, 0.959);
+    }
+     
     &--width{
         max-width: 47%;
     }
+   
+  
 
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 
@@ -120,9 +127,9 @@
     }
     }
     &__edit{
-        color: $primary-dark;
+        color: green;
         &:hover{
-            color: $primary;
+            color: $success;
         }
     }
 
