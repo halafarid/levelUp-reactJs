@@ -45,6 +45,21 @@
     &__text {
         color: $info;
         font-size: 18px;
+        &--colored
+        {
+            padding: 10px;
+            color: $secondary;
+            margin-left: 10px;
+            color: $white;
+            text-shadow: 
+            0 0 2px $white,
+            0 0 10px $white,
+            0 0 20px $glow,
+            0 0 30px $glow,
+            0 0 40px $glow,
+            0 0 50px $glow;
+            animation: blink 1.5s infinite alternate;
+        }
 
     }
 
@@ -95,7 +110,7 @@
 
     &__stars-container {
         margin-top: 8px;
-        margin-bottom: 20px;
+        // margin-bottom: 20px;
         width: 100%;
     }
 
@@ -146,6 +161,7 @@
             color: $success;
         }
     }
+    
 
 }
 
@@ -564,4 +580,24 @@
 .courseCardsContainer__sub ol{
     left: -15%;
     bottom: -9%;
+   
+    
 }
+.progress
+{
+    width: 70%;
+    margin: 15px 0px 30px 0px;
+}
+
+@keyframes blink {
+    0%   {}
+    100% { 
+      text-shadow: 
+        0 0 2px $info,
+        0 0 10px $info,
+        0 0 20px $info,
+        0 0 40px $glow,
+        0 0 70px $glow,
+        0 0 80px $glow;
+    }
+  }
