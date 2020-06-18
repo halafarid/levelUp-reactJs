@@ -34,8 +34,12 @@ const CourseCard = (props) => {
                    <Link className=" CourseCard__btn CourseCard__text--font"  to="/shoppingcart">Add to cart</Link>
                    :
                     <div className="crud">
-                    <AiFillEdit className="crud__edit"/>
-                    <AiFillDelete className="crud__delete"/>
+                        { props.type === 'instructor' && props.path === '/profile' && props.tab !== 3 &&
+                            <React.Fragment>
+                                <AiFillEdit className="crud__edit"/>
+                                <AiFillDelete className="crud__delete"/>
+                            </React.Fragment>
+                        }
                      </div>
                     }
                     </div>

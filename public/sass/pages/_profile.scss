@@ -19,17 +19,20 @@
       
     }
     &__edit{
-        cursor: pointer;
-        font-size: 23px;
+        background: transparent;
+        cursor: pointer !important;
+        font-size: 30px;
         margin-top:15px; 
         color: green;
-        &:hover{
-            color: $success
-        }
-        &--upload-img{
+
+        &--upload{
             position:absolute;
             left: 73%;
             bottom: 35%;
+        }
+        
+        .form-control-file {
+            display: none !important;
         }
         
     }
@@ -45,6 +48,7 @@
 }
 .line{
    background-color: $secondary-dark;
+   margin: 30px auto;
 }
 .stars{
     color: $warning;
