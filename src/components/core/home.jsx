@@ -6,7 +6,7 @@ import CourseCard from "../cards/courseCard";
 import Filters from "../features/filters";
 import About from "../core/about";
 import { Link } from "react-router-dom";
-import { Container,Nav } from 'react-bootstrap';
+import { Container,Nav,Carousel } from 'react-bootstrap';
 
 
 import { AiOutlineArrowRight } from 'react-icons/ai';
@@ -28,13 +28,49 @@ const Home = props => {
                     <a href="" className="instructor__Inst-title instructor__Inst-title--secondary">View all <AiOutlineArrowRight /></a>
                 </div>
                 <div className="InstCard">
-                    {props.Instructor.map(instructor => (
+                    {/* {props.Instructor.map(instructor => (
                         <InstructorCard
                             key={instructor.id}
                             Instructor={instructor}
                         />
                     ))
-                    }
+                    } */}
+                       <Carousel>
+                        <Carousel.Item>
+                            <div className="InstCard">
+                                <InstructorCard
+                                    key={props.Instructor[0].id}
+                                    Instructor={props.Instructor[0]}
+                                />
+                                <InstructorCard
+                                    key={props.Instructor[0].id}
+                                    Instructor={props.Instructor[0]}
+                                />
+                                <InstructorCard
+                                    key={props.Instructor[0].id}
+                                    Instructor={props.Instructor[0]}
+                                />
+                            </div>
+
+                        </Carousel.Item>
+                         <Carousel.Item>
+                            <div className="InstCard">
+                                <InstructorCard
+                                    key={props.Instructor[0].id}
+                                    Instructor={props.Instructor[0]}
+                                />
+                                <InstructorCard
+                                    key={props.Instructor[0].id}
+                                    Instructor={props.Instructor[0]}
+                                />
+                                <InstructorCard
+                                    key={props.Instructor[0].id}
+                                    Instructor={props.Instructor[0]}
+                                />
+                            </div>
+
+                        </Carousel.Item>
+                    </Carousel>
                 </div>
             </Container>
             <div className="FixedSection">
