@@ -103,9 +103,10 @@ const App = () => {
           path="/courses/:id/details"
           render={props => <CourseDetails {...props} />}
         />
-       
+          
+         
 
-            <Route path="/Profile"
+            <Route exact path="/profile/:id"
             render={props=>(
               <InstructorProfile
               {...props}
@@ -113,29 +114,31 @@ const App = () => {
               />
             )}
             />
-              <Route path="/Profile/:id"
+               <Route exact path="/edit"  render={props=>
+            (<InstructorProfile
+               {...props}
+               />)}
+               />
+
+
+           
+              <Route path="profile/paidCourses" render={props=>
+            (<InstructorProfile
+               {...props}
+               />)}
+               />
+               <Route path="profile/enrolledCourses" render={props=>
+            (<InstructorProfile
+               {...props}
+               />)}
+               />
+               <Route path="/profile"
             render={props=>(
               <InstructorProfile
               {...props}
               />
             )}
             />
-
-            <Route path="/freeCourses/:id" render={props=>
-            (<InstructorProfile
-               {...props}
-               />)}
-               />
-              <Route path="/paidCourses/:id" render={props=>
-            (<InstructorProfile
-               {...props}
-               />)}
-               />
-               <Route path="/enrolledCourses/:id" render={props=>
-            (<InstructorProfile
-               {...props}
-               />)}
-               />
 
         <Route
           path="/courses/:id/reviews"
