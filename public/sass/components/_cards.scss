@@ -78,6 +78,8 @@
         justify-content: flex-start;
         width: 100%;
         margin: 2px;
+        padding-left: 7%;
+        margin-bottom: 10px;
 
     }
 
@@ -99,7 +101,7 @@
 
     &__btn {
         position: absolute;
-        right: 28px;
+        right: 9%;
         text-decoration: none;
         text-align: center;
         border: 1px solid transparent;
@@ -555,7 +557,7 @@
 {
     right: 20%;
 }
-.courseCardsContainer__sub a
+.courseCardsContainer__sub a.carousel-control-next
 {
     right: 15%;
 }
