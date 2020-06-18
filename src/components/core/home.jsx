@@ -34,7 +34,7 @@ const Home = props => {
                         />
                     ))
                     } */}
-                       <Carousel interval={null}>
+                    <Carousel interval={null}>
                         <Carousel.Item>
                             <div className="InstCard">
                                 <InstructorCard
@@ -102,35 +102,35 @@ const Home = props => {
                                 </div>
 
                             ))} */}
-                             <Carousel interval={null}>
-                        <Carousel.Item>
-                        <div className="CourseCard">
-                                    <CourseCard
-                                        path={path}
-                                    />
-                                </div>
-                                <div className="CourseCard">
-                                    <CourseCard
-                                        path={path}
-                                    />
-                                </div>
+                            <Carousel interval={null}>
+                                <Carousel.Item>
+                                    <div className="CourseCard">
+                                        <CourseCard
+                                            path={path}
+                                        />
+                                    </div>
+                                    <div className="CourseCard">
+                                        <CourseCard
+                                            path={path}
+                                        />
+                                    </div>
 
-                        </Carousel.Item>
-                        <Carousel.Item>
-                        <div className="CourseCard">
-                                    <CourseCard
-                                        path={path}
-                                    />
-                                </div>
-                                <div className="CourseCard">
-                                    <CourseCard
-                                        path={path}
-                                    />
-                                </div>
+                                </Carousel.Item>
+                                <Carousel.Item>
+                                    <div className="CourseCard">
+                                        <CourseCard
+                                            path={path}
+                                        />
+                                    </div>
+                                    <div className="CourseCard">
+                                        <CourseCard
+                                            path={path}
+                                        />
+                                    </div>
 
-                        </Carousel.Item>
-                    </Carousel>
-              
+                                </Carousel.Item>
+                            </Carousel>
+
                         </div>
                     </div>
 
@@ -148,35 +148,35 @@ const Home = props => {
                                 </div>
 
                             ))} */}
-                              <Carousel interval={null}>
-                        <Carousel.Item>
-                        <div className="CourseCard">
-                                    <CourseCard
-                                        path={path}
-                                    />
-                                </div>
-                                <div className="CourseCard">
-                                    <CourseCard
-                                        path={path}
-                                    />
-                                </div>
+                            <Carousel interval={null}>
+                                <Carousel.Item>
+                                    <div className="CourseCard">
+                                        <CourseCard
+                                            path={path}
+                                        />
+                                    </div>
+                                    <div className="CourseCard">
+                                        <CourseCard
+                                            path={path}
+                                        />
+                                    </div>
 
-                        </Carousel.Item>
-                        <Carousel.Item>
-                        <div className="CourseCard">
-                                    <CourseCard
-                                        path={path}
-                                    />
-                                </div>
-                                <div className="CourseCard">
-                                    <CourseCard
-                                        path={path}
-                                    />
-                                </div>
+                                </Carousel.Item>
+                                <Carousel.Item>
+                                    <div className="CourseCard">
+                                        <CourseCard
+                                            path={path}
+                                        />
+                                    </div>
+                                    <div className="CourseCard">
+                                        <CourseCard
+                                            path={path}
+                                        />
+                                    </div>
 
-                        </Carousel.Item>
-                    </Carousel>
-              
+                                </Carousel.Item>
+                            </Carousel>
+
                         </div>
                     </div>
 
@@ -193,35 +193,35 @@ const Home = props => {
                                 </div>
 
                             ))} */}
-                              <Carousel interval={null}>
-                        <Carousel.Item>
-                        <div className="CourseCard">
-                                    <CourseCard
-                                        path={path}
-                                    />
-                                </div>
-                                <div className="CourseCard">
-                                    <CourseCard
-                                        path={path}
-                                    />
-                                </div>
+                            <Carousel interval={null}>
+                                <Carousel.Item>
+                                    <div className="CourseCard">
+                                        <CourseCard
+                                            path={path}
+                                        />
+                                    </div>
+                                    <div className="CourseCard">
+                                        <CourseCard
+                                            path={path}
+                                        />
+                                    </div>
 
-                        </Carousel.Item>
-                        <Carousel.Item>
-                        <div className="CourseCard">
-                                    <CourseCard
-                                        path={path}
-                                    />
-                                </div>
-                                <div className="CourseCard">
-                                    <CourseCard
-                                        path={path}
-                                    />
-                                </div>
+                                </Carousel.Item>
+                                <Carousel.Item>
+                                    <div className="CourseCard">
+                                        <CourseCard
+                                            path={path}
+                                        />
+                                    </div>
+                                    <div className="CourseCard">
+                                        <CourseCard
+                                            path={path}
+                                        />
+                                    </div>
 
-                        </Carousel.Item>
-                    </Carousel>
-              
+                                </Carousel.Item>
+                            </Carousel>
+
                         </div>
                     </div>
 

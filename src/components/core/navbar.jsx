@@ -53,10 +53,15 @@ const Navbar = () => {
               {/* <button className="btn btn-warning my-2 my-sm-0" type="submit">Search</button> */}
             </form>
             <div className="shopping-cart">
+              <FiShoppingCart className="shopping-cart-icon"/>
+   
+
               <Badge className="shopping-cart-badge" pill variant="danger">
                 0
-              </Badge>{" "}
-              <FiShoppingCart className="shopping-cart-icon"></FiShoppingCart>
+              </Badge>
+ 
+
+              
             </div>
           </div>
         </div>

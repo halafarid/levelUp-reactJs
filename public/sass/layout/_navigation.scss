@@ -1,46 +1,44 @@
 .nav {
-    background-color: $dark;
+  background-color: $dark;
 }
 .navContainer {
-    padding-top: 0 !important;
+  padding-top: 0 !important;
 }
 
 .bg {
-    background-image: url("../../../src/images/home-background.jpg");
-    height:620px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
+  background-image: url("../../../src/images/home-background.jpg");
+  height: 620px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 .bg-layer {
-    background-color: rgba(57, 54, 73, 0.4);
-    height: 100%;
+  background-color: rgba(57, 54, 73, 0.4);
+  height: 100%;
 }
-.bg-text{
-    position:absolute;
-    left: 14%;
-    top: 35%;
+.bg-text {
+  position: absolute;
+  left: 14%;
+  top: 35%;
 }
-.logo{
-    width: 146px;
-    height: 54px;
-// background-color: indianred;
-background-image: url("../../../src/logo.png");
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
-
+.logo {
+  width: 146px;
+  height: 54px;
+  // background-color: indianred;
+  background-image: url("../../../src/logo.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-.shopping-cart{
-    &-badge{
-        font-size: 10px;
-        position: absolute;
-        right: 8%;
-        top: 22%;
-    }
-    &-icon{
-        position: relative;
-font-size: 30px;
-    }
+.shopping-cart {
+  position: relative;
+  &-badge {
+    font-size: 10px;
+    position: absolute;
+    bottom: 87%;
+    left: 52%;
+  }
+  &-icon {
+    font-size: 30px;
+  }
 }
-
