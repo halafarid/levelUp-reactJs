@@ -12,9 +12,14 @@ class Login extends Component {
     },
     errors: {}
   };
+
   schema = {
-    username: Joi.string().required(),
-    password: Joi.string().required(),
+    username: Joi.string()
+      .required()
+      .min(5),
+    password: Joi.string()
+      .required()
+      .min(8),
     isSaved: Joi.required()
   };
   handleChange = ({ target }) => {
@@ -34,8 +39,8 @@ class Login extends Component {
     const error = this.validate();
     if (error === null) {
       // call backend
-      this.props.history.replace("/");
-      this.setState({ error: {} });
+      this.setState({ errors: {} });
+      this.props.history.replace("/home");
       return;
     }
     //clone
@@ -45,6 +50,7 @@ class Login extends Component {
     errors["password"] = error.password;
     //set state
     this.setState({ errors });
+    console.log(this.state.errors);
   };
   validate = () => {
     const res = Joi.validate(this.state.account, this.schema, {
@@ -68,7 +74,7 @@ class Login extends Component {
             <div className="wrap-login100">
               <div
                 className="login100-form-title"
-                // style={{ backgroundImage: "url(/images/auth/bg-01.jpg)" }}
+                style={{ backgroundImage: "url(/assets/auth/bg-01.jpg)" }}
               >
                 <span className="login100-form-title-1">Sign In</span>
               </div>
@@ -84,7 +90,11 @@ class Login extends Component {
                       ? "wrap-input100 validate-input m-b-26 alert-validate"
                       : "wrap-input100 validate-input m-b-26"
                   }
-                  data-validate="Username is required"
+                  data-validate={
+                    this.state.errors.username == null
+                      ? "Username is required"
+                      : this.state.errors.username
+                  }
                 >
                   <span className="label-input100">Username</span>
                   <input
@@ -103,7 +113,11 @@ class Login extends Component {
                       ? "wrap-input100 validate-input m-b-18 alert-validate"
                       : "wrap-input100 validate-input m-b-18"
                   }
-                  data-validate="Password is required"
+                  data-validate={
+                    this.state.errors.password == null
+                      ? "Password is required"
+                      : this.state.errors.password
+                  }
                   onChange={this.handleChange}
                 >
                   <span className="label-input100">Password</span>
