@@ -103,10 +103,11 @@
 .courses{
   display: flex;
   flex-direction: row;
+  position: relative;
+
   &__container{
     display: flex;
     flex-direction: column;
     margin-left: 5%;
   }
-
 }
