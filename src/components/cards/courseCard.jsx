@@ -1,10 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {ProgressBar} from 'react-bootstrap';
 
 import { AiOutlineTeam, AiFillStar, AiOutlineStar, AiFillDelete, AiFillEdit } from 'react-icons/ai';
+import { useState } from 'react';
 
 const CourseCard = (props) => {
     const stars = [1, 2, 3, 4];
+    const [isRegistered,setIsRegistered]=useState(true);
+    const [progressPercent,setProgressPercent]=useState(75);
     return (
         <React.Fragment>
             <Link to={`/courses/1/details`} className="CourseCard__link">
@@ -38,7 +42,9 @@ const CourseCard = (props) => {
                         {stars.map(star=> <AiFillStar className="CourseCard__star" ></AiFillStar>)}
                     <AiOutlineStar className="CourseCard__star "></AiOutlineStar>
                     {props.path==="/home"||props.path==="/freeCourses/:id" ||props.path==="/paidCourses/:id" ||props.path==="/enrolledCourses/:id"?
+                   !isRegistered?
                    <Link className=" CourseCard__btn CourseCard__text--font"  to="/shoppingcart">Add to cart</Link>
+                   :null
                    :
                     <div className="crud">
                         { props.type === 'instructor' && props.path === '/profile' && props.tab !== 3 &&
@@ -52,7 +58,15 @@ const CourseCard = (props) => {
                     </div>
                    
                 </div>
+                </div> 
+            {!isRegistered ? null
+             : <div  className="CourseCard__items-container">
+            <ProgressBar  variant="info" animated now={progressPercent} />
+            <div className="CourseCard__text--colored">
+                {progressPercent} %
                 </div>
+            </div>}
+            
             </div>
             </Link>
 
