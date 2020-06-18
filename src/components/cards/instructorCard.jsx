@@ -5,12 +5,12 @@ import {Container} from 'react-bootstrap';
 import {AiFillStar,AiOutlineStar} from 'react-icons/ai'
 const InstructorCard = props => {
   
+    const id=1;
   
     return ( 
-        
         <React.Fragment>
         <Container className="InstructorContainer">
-        <Link  className="InstructorContainer__link" to="/Profile/:id">
+        <Link  className="InstructorContainer__link" to={`/profile/${id}`}>
              <Card >
                 <Card.Img  className="card__card-img" src={require("../../namrata-parmar.jpg")} alt="Instructor"/>
                 <Card.Body>

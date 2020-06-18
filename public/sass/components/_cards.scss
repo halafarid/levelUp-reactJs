@@ -10,9 +10,15 @@
     margin: 10px;
     overflow: hidden;
     cursor: pointer;
+    transition: transform 2s ease-in-out ;
+     
     &--width{
         max-width: 47%;
     }
+    &:hover{
+        transform: scale(1.1);
+    }
+  
 
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 
@@ -120,9 +126,9 @@
     }
     }
     &__edit{
-        color: $primary-dark;
+        color: green;
         &:hover{
-            color: $primary;
+            color: $success;
         }
     }
 

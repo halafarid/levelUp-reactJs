@@ -1,9 +1,10 @@
 import React ,{useEffect} from 'react';
 import { Link } from 'react-router-dom';
-import { Card, Container, Nav,Button } from 'react-bootstrap';
+
+import { Card, Container,Nav,Button,Form } from 'react-bootstrap';
 import { FaFacebook } from 'react-icons/fa';
 import { AiFillTwitterCircle, AiFillInstagram,AiFillStar,AiOutlineStar,AiFillEdit } from 'react-icons/ai';
-
+import{RiUploadLine } from 'react-icons/ri';
 
 import CourseCard from '../cards/courseCard';
 
@@ -12,9 +13,9 @@ const InstructorProfile = props => {
     const path = props.match.path;
     const courses = [1, 2];
 
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    });
+    // useEffect(() => {
+    //     window.scrollTo(0, 0)
+    // });
 
     return (
         <React.Fragment>
@@ -23,10 +24,23 @@ const InstructorProfile = props => {
                 <Container className="profileContainer">
                     <Card className="card--borderless">
                         <Card.Img className="card__card-img" src={require("../../namrata-parmar.jpg")} alt="Instructor" />
+                        {path==="/edit"&&
+                        <div>
+                           
+                        <AiFillEdit  className="profile__edit profile__edit--upload-img"/>
+                                               
+                       {/* <Form.File id="exampleFormControlFile1" label="Upload course image" /> */}
+                                            
+                                        
+                         </div>
+                          }
                         <Card.Body>
+                            
                             <Card.Title className="card__card-title">
                                 Namrata Parmar
+
                          </Card.Title>
+
                             <Card.Text className="card__card-text">
                                 Photographer, Travel Bloger
                      </Card.Text>
@@ -36,9 +50,14 @@ const InstructorProfile = props => {
                         <div className="profile__header">
                             <div>
                                 
+                                {path==="/edit"?
+                                <Form.Control className="course__control course__control--text" type="text" placeholder="Name" />
+                                :
                                 <h1>Namrata Parmar</h1>
-                                {console.log(path)}
-                                {path ==="/Profile"?
+
+
+                                }
+                                {path ==="/profile"?
                                 <div className="stars">
                                 <AiFillStar/>
                                 <AiFillStar />
@@ -46,7 +65,7 @@ const InstructorProfile = props => {
                                 <AiFillStar />
                                 <AiOutlineStar/>
                                 </div>
-                                : 
+                               :
                                 <div className="stars">
                                 <AiOutlineStar/>
                                 <AiOutlineStar/>
@@ -54,6 +73,7 @@ const InstructorProfile = props => {
                                 <AiOutlineStar/>
                                 <AiOutlineStar/>
                                 </div>
+                             
                                 }
                               
                                 
@@ -62,7 +82,7 @@ const InstructorProfile = props => {
                             <Button className="btn btn--secondary btn--full btn--pd">Follow</Button>
                             </div>
                             <div >
-                                <AiFillEdit className="profile__edit"/>
+                               <Link to="/edit"> <AiFillEdit  className="profile__edit"/></Link>
                                 </div>
                             <div>
                                 <FaFacebook className="profile__icons profile__icons--facebook" />
@@ -72,30 +92,41 @@ const InstructorProfile = props => {
                            
                         </div>
                         <div><br />
+
                             <hr className="line" /><br />
-                            <div>
-                                <h2 className="profile__header">Bio</h2>
-                                <p className="about__prg">John studied Software Development at UC Berkeley and has more than 15 years
-                                     of experience in software quality assurance. He's been building software and tooling,
-                                     managing software engineer team many years. When he's not reading about the latest
-                                     trends in computing he spends his time with his wife, snowboarding, or running..</p>
-                            </div><br />
+                        {path==="/edit"?         
+                                     <Form.Control className="course__control course__control--text" as="textarea" rows="8" placeholder="Job Description"/>
+                                     :
+                                     <div>  
+                                     <h2 className="profile__header">Bio</h2>
+                                     <p className="about__prg">John studied Software Development at UC Berkeley and has more than 15 years
+                                          of experience in software quality assurance. He's been building software and tooling,
+                                          managing software engineer team many years. When he's not reading about the latest
+                                          trends in computing he spends his time with his wife, snowboarding, or running..</p>
+                                          </div>
+                        }
+                            <br/>
+                            
+                              
+                                
+
+                            
                             <hr className="line" /><br />
                             <div>
                                 <h2 className="profile__header">Teacher Courses</h2>
                             </div>
                             <Nav fill variant="tabs" className="course__tabs">
                                 <Nav.Item>
-                                    <Nav.Link href={`/freeCourses/${id}`} as={Link} to={`/freeCourses/${id}`} className={`course__tabs-link ${path === `/freeCourses/${id}` ? 'active' : ''} `}>Free Courses</Nav.Link>
+                                    <Nav.Link href={`/profile`} as={Link} to={`/profile`} className={`course__tabs-link ${path === `/profile` ? 'active' : ''} `}>Free Courses</Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item>
-                                    <Nav.Link  href={`/paidCourses/${id}`} as={Link} to={`/paidCourses/${id}`}  className={`course__tabs-link ${path === `/paidCourses/${id}`? 'active' : ''} `}>Paid Courses</Nav.Link>
+                                    <Nav.Link  href={`/profile/paidCourses`} as={Link} to={`/profile/paidCourses`}  className={`course__tabs-link ${path === `/profile/paidCourses`? 'active' : ''} `}>Paid Courses</Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item>
-                                    <Nav.Link  href={`/enrolledCourses/${id}`} as={Link} to={`/enrolledCourses/${id}`}  className={`course__tabs-link ${path === `/enrolledCourses/${id}` ? 'active' : ''} `}>Enrolled Courses</Nav.Link>
+                                    <Nav.Link  href={`/profile/enrolledCourses`} as={Link} to={`/profile/enrolledCourses`}  className={`course__tabs-link ${path === `/profile/enrolledCourses` ? 'active' : ''} `}>Enrolled Courses</Nav.Link>
                                 </Nav.Item>
                             </Nav>
-         
+                             
                             {path === `/freeCourses/:id`?
                               <div className="courseCardsContainer">
                                 <div className="courseCardsContainer__sub">
@@ -122,6 +153,7 @@ const InstructorProfile = props => {
 
                         </div>
                     </div>
+                    
                 </Container>
 
             </div>

@@ -22,10 +22,16 @@
         cursor: pointer;
         font-size: 23px;
         margin-top:15px; 
-        color: $secondary-dark;
+        color: green;
         &:hover{
-            color: $secondary;
+            color: $success
         }
+        &--upload-img{
+            position:absolute;
+            left: 73%;
+            bottom: 35%;
+        }
+        
     }
     &__header{
         display: flex;
@@ -42,4 +48,5 @@
 }
 .stars{
     color: $warning;
+    padding-top: 10px
 }
