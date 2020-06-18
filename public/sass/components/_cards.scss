@@ -6,7 +6,7 @@
     position: relative;
     // min-width: 30%;
     // max-width: 30%;
-    width: 40%;
+    width: 35%;
     margin: 10px;
     overflow: hidden;
     cursor: pointer;
@@ -510,4 +510,15 @@
             background-color: $secondary-dark;
         }
     }
+}
+
+.carousel-new-item
+{
+    display: flex !important;
+    flex-wrap: wrap !important;
+    flex-direction: row !important;
+}
+.carousel-new-next
+{
+    right: 20%;
 }

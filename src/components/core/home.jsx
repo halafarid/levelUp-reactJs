@@ -94,16 +94,9 @@ const Home = props => {
                     <div className="courseCardsContainer">
 
                         <div className="courseCardsContainer__sub">
-                            {/* {courses.map((course) => (
-                                <div className="CourseCard">
-                                    <CourseCard
-                                        path={path}
-                                    />
-                                </div>
-
-                            ))} */}
+                          
                             <Carousel interval={null}>
-                                <Carousel.Item>
+                                <Carousel.Item className="carousel-new-item">
                                     <div className="CourseCard">
                                         <CourseCard
                                             path={path}
@@ -116,7 +109,7 @@ const Home = props => {
                                     </div>
 
                                 </Carousel.Item>
-                                <Carousel.Item>
+                                <Carousel.Item  className="carousel-new-item">
                                     <div className="CourseCard">
                                         <CourseCard
                                             path={path}
@@ -129,6 +122,7 @@ const Home = props => {
                                     </div>
 
                                 </Carousel.Item>
+                           
                             </Carousel>
 
                         </div>
@@ -149,7 +143,7 @@ const Home = props => {
 
                             ))} */}
                             <Carousel interval={null}>
-                                <Carousel.Item>
+                                <Carousel.Item className="carousel-new-item">
                                     <div className="CourseCard">
                                         <CourseCard
                                             path={path}
@@ -162,7 +156,7 @@ const Home = props => {
                                     </div>
 
                                 </Carousel.Item>
-                                <Carousel.Item>
+                                <Carousel.Item className="carousel-new-item">
                                     <div className="CourseCard">
                                         <CourseCard
                                             path={path}
@@ -194,7 +188,7 @@ const Home = props => {
 
                             ))} */}
                             <Carousel interval={null}>
-                                <Carousel.Item>
+                                <Carousel.Item className="carousel-new-item">
                                     <div className="CourseCard">
                                         <CourseCard
                                             path={path}
@@ -207,7 +201,7 @@ const Home = props => {
                                     </div>
 
                                 </Carousel.Item>
-                                <Carousel.Item>
+                                <Carousel.Item className="carousel-new-item">
                                     <div className="CourseCard">
                                         <CourseCard
                                             path={path}
