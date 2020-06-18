@@ -157,7 +157,10 @@ const App = () => {
         />
         <Route path="/login" component={Login} />
         <Route path="/notfound" component={PageNotFound} />
-        <Route path="/follows" component={Follows} />
+        <Route 
+        path="/follows" 
+        render={() => <Follows  Instructor={Instructor}  />}
+        />
         <Route path="/shoppingcart" component={Payment} />
         <Route path="/courses/lessons" component={CourseLessons} />
         <Route path="/paymentform" component={PaymentForm} />

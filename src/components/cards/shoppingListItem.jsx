@@ -21,8 +21,6 @@ const ShoppingListItem = (props) => {
                 </div>
                 <hr className="shoppingList__hr"></hr>
                 <div className="shoppingList__btnContainer">
-                    <p className="shoppingList__Text--sm shoppingList__btn  ">save for Later</p>
-                    <span  className="shoppingList__Text--sm  shoppingList__vr">|</span>
                     <p className="shoppingList__Text--sm shoppingList__btn ">Delete</p>
                 </div>
             </div>
