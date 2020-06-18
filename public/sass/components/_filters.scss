@@ -1,19 +1,12 @@
 .filter
 {
-    // display: flex;
-    // justify-content: flex-start;
-    // flex-direction: column;
-    // position: relative;
-    margin:10px;
-    margin-top: 30px ;
+    margin: 10px 30px ;
     padding:15px;
-    min-width: 28%;
-    max-width: 28%;
-    max-height: 50%;
+    height: 100%;
    
     position: -webkit-sticky;
     position:sticky;
-    top: 0;
+    top: 25px;
     
     font-family:  $family-primary;
     font-size:14px;
@@ -22,6 +15,10 @@
                 top 0.4s ease,
                 width  0.4s ease,
                 height  0.4s ease;
+                
+   &__container{
+        margin-top:25%;
+    }
    &__checkbox-container
    {
        display: flex;
@@ -29,13 +26,9 @@
        font-size: 16px;
        font-weight: 200;
        margin-bottom: 2px;
-       padding: 20px;
+       padding: 15px;
+   }
 
-       
-   }
-   &__container{
-       margin-top:25%;
-   }
    &__FormCheck {
     background-color: $primary;
 
