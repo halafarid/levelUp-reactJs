@@ -35,7 +35,7 @@ const Home = props => {
                         />
                     ))
                     } */}
-                       <Carousel>
+                       <Carousel interval={null}>
                         <Carousel.Item>
                             <div className="InstCard">
                                 <InstructorCard
