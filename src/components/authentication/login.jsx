@@ -2,11 +2,11 @@ import React, { Component } from "react";
 
 import Joi from "joi-browser";
 import { Link } from "react-router-dom";
-
+import { MdError } from "react-icons/md";
 class Login extends Component {
   state = {
     account: {
-      username: "",
+      email: "",
       password: "",
       isSaved: false
     },
@@ -14,9 +14,10 @@ class Login extends Component {
   };
 
   schema = {
-    username: Joi.string()
-      .required()
-      .min(5),
+    email: Joi.string()
+      .email()
+      .lowercase()
+      .required(),
     password: Joi.string()
       .required()
       .min(8),
@@ -36,6 +37,7 @@ class Login extends Component {
   handleSubmit = e => {
     e.preventDefault();
     //validate
+
     const error = this.validate();
     if (error === null) {
       // call backend
@@ -46,7 +48,7 @@ class Login extends Component {
     //clone
     const errors = { ...this.state.errors };
     //edit
-    errors["username"] = error.username;
+    errors["email"] = error.email;
     errors["password"] = error.password;
     //set state
     this.setState({ errors });
@@ -86,25 +88,27 @@ class Login extends Component {
                 <div
                   className="wrap-input100 validate-input m-b-26"
                   className={
-                    this.state.errors.username
+                    this.state.errors.email
                       ? "wrap-input100 validate-input m-b-26 alert-validate"
-                      : "wrap-input100 validate-input m-b-26"
+                      : "wrap-input100 validate-input m-b-26 "
                   }
                   data-validate={
-                    this.state.errors.username == null
-                      ? "Username is required"
-                      : this.state.errors.username
+                    this.state.errors.email == null
+                      ? "Email is required"
+                      : this.state.errors.email
                   }
                 >
-                  <span className="label-input100">Username</span>
+                  <span className="label-input100">Email</span>
                   <input
                     className="input100"
                     type="text"
-                    name="username"
-                    placeholder="Enter username"
+                    name="email"
+                    placeholder="Enter email"
                     onChange={this.handleChange}
                   />
+
                   <span className="focus-input100"></span>
+                  {/* <MdError style={{ color: "red" }} /> */}
                 </div>
 
                 <div
@@ -130,6 +134,24 @@ class Login extends Component {
                   <span className="focus-input100"></span>
                 </div>
 
+                <div className="m-b-18">
+                  <input
+                    className="radioInput"
+                    type="radio"
+                    name="loginType"
+                    value="student"
+                  />{" "}
+                  <span style={{ color: "#808080", marginRight: "10px" }}>
+                    Student
+                  </span>
+                  <input
+                    className="radioInput"
+                    type="radio"
+                    name="loginType"
+                    value="teacher"
+                  />{" "}
+                  <span style={{ color: "#808080" }}>Teacher</span>
+                </div>
                 <div className="flex-sb-m w-full p-b-30">
                   <div className="contact100-form-checkbox">
                     <input
