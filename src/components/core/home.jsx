@@ -6,15 +6,15 @@ import CourseCard from "../cards/courseCard";
 import Filters from "../features/filters";
 import About from "../core/about";
 import { Link } from "react-router-dom";
-import { Container,Nav,Carousel } from 'react-bootstrap';
+import { Container, Nav, Carousel } from 'react-bootstrap';
 
 
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { BsFillPlusCircleFill } from 'react-icons/bs';
 
 const Home = props => {
-    const id=1;
-    const courses = [1, 2, 3, 4, 5, 6];
+    const id = 1;
+    const courses = [1, 2];
     const path = props.match.path;
 
     return (
@@ -25,7 +25,6 @@ const Home = props => {
             <Container className="InstructorContainer">
                 <div className="instructor">
                     <h2 className="instructor__Inst-title">Top Rating Instructors</h2>
-                    <a href="" className="instructor__Inst-title instructor__Inst-title--secondary">View all <AiOutlineArrowRight /></a>
                 </div>
                 <div className="InstCard">
                     {/* {props.Instructor.map(instructor => (
@@ -35,7 +34,7 @@ const Home = props => {
                         />
                     ))
                     } */}
-                       <Carousel>
+                    <Carousel>
                         <Carousel.Item>
                             <div className="InstCard">
                                 <InstructorCard
@@ -53,7 +52,7 @@ const Home = props => {
                             </div>
 
                         </Carousel.Item>
-                         <Carousel.Item>
+                        <Carousel.Item>
                             <div className="InstCard">
                                 <InstructorCard
                                     key={props.Instructor[0].id}
@@ -83,41 +82,74 @@ const Home = props => {
                     </div>
                 </div>
             </div>
-            <Container>
-            <Nav fill variant="tabs" className="course__tabs">
-                <Nav.Item>
-                    <Nav.Link href={`/freeCourses/${id}`} as={Link} to={`/freeCourses/${id}`} className={`course__tabs-link ${path === `/freeCourses/${id}` ? 'active' : ''} `}>Free Courses</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link href={`/paidCourses/${id}`} as={Link} to={`/paidCourses/${id}`} className={`course__tabs-link ${path === `/paidCourses/${id}` ? 'active' : ''} `}>Paid Courses</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link href={`/enrolledCourses/${id}`} as={Link} to={`/enrolledCourses/${id}`} className={`course__tabs-link ${path === `/enrolledCourses/${id}` ? 'active' : ''} `}>Enrolled Courses</Nav.Link>
-                </Nav.Item>
-            </Nav>
-            <div className="courseCardsContainer">
-                <Filters />
-                <div className="courseCardsContainer__sub">
-                    {courses.map((course) => (
-                        <div className="CourseCard">
-                            <CourseCard
-                                path={path}
-                            />
-                        </div>
+            <div className="courses">
 
-                    ))}
+                <Filters />
+
+                <div className="courses__container">
+
+                    <div className=" instructor ">
+                        <h2 className="instructor__Inst-title">Free Courses</h2>
+                    </div>
+                    <div className="courseCardsContainer">
+
+                        <div className="courseCardsContainer__sub">
+                            {courses.map((course) => (
+                                <div className="CourseCard">
+                                    <CourseCard
+                                        path={path}
+                                    />
+                                </div>
+
+                            ))}
+                        </div>
+                    </div>
+
+
+                    <div className=" instructor">
+                        <h2 className="instructor__Inst-title"> Paid Courses</h2>
+                    </div>
+                    <div className="courseCardsContainer">
+                        <div className="courseCardsContainer__sub courseCardsContainer__sub">
+                            {courses.map((course) => (
+                                <div className="CourseCard">
+                                    <CourseCard
+                                        path={path}
+                                    />
+                                </div>
+
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className=" instructor ">
+                        <h2 className="instructor__Inst-title">Courses Related To Following</h2>
+                    </div>
+                    <div className="courseCardsContainer">
+                        <div className="courseCardsContainer__sub">
+                            {courses.map((course) => (
+                                <div className="CourseCard">
+                                    <CourseCard
+                                        path={path}
+                                    />
+                                </div>
+
+                            ))}
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
             <Link to="/courses/add" className="addCourse">
                 <BsFillPlusCircleFill />
             </Link>
-            </Container>
-    </React.Fragment>
-  );
+        </React.Fragment>
+    );
 };
 
-           
-    
+
+
 
 
 export default Home;

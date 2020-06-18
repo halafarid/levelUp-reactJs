@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { Card, Container,Nav,Button,Form } from 'react-bootstrap';
 import { FaFacebook } from 'react-icons/fa';
-import { AiFillTwitterCircle, AiFillInstagram,AiFillStar,AiOutlineStar,AiFillEdit } from 'react-icons/ai';
+import { AiFillTwitterCircle, AiFillInstagram,AiFillStar,AiOutlineStar,AiFillEdit,AiFillCamera } from 'react-icons/ai';
 import{RiUploadLine } from 'react-icons/ri';
 
 import CourseCard from '../cards/courseCard';
@@ -27,7 +27,7 @@ const InstructorProfile = props => {
                         {path==="/edit"&&
                         <div>
                            
-                        <AiFillEdit  className="profile__edit profile__edit--upload-img"/>
+                        <AiFillCamera  className="profile__edit profile__edit--upload-img"/>
                                                
                        {/* <Form.File id="exampleFormControlFile1" label="Upload course image" /> */}
                                             
