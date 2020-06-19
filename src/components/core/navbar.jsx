@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
 import Badge from "react-bootstrap/Badge";
 import { FiLogOut } from "react-icons/fi";
+import Search from '../features/search'
 const Navbar = () => {
+
+  const handleSearch=()=>{
+    setSearchComp(true)
+  }
+  const handleClosingSearch=()=>{
+    setSearchComp(false)
+  }
+  const [searchComp,setSearchComp]=useState(false)
   return (
     <React.Fragment>
+      {searchComp&&<Search
+      onClosingSearch={handleClosingSearch}
+      />}
       <nav className="nav fixed-top navbar navbar-expand-lg  py-3 border-bottom">
         <div className="container navContainer">
           <div className="logo"></div>
@@ -50,7 +62,9 @@ const Navbar = () => {
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
+                onFocus={handleSearch}
               />
+              
               {/* <button className="btn btn-warning my-2 my-sm-0" type="submit">Search</button> */}
             </form>
             <div className="shopping-cart">

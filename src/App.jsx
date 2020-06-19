@@ -97,7 +97,7 @@ const App = () => {
             />
 
 
-
+                
 
         <Route
           path="/courses/:id/details"
