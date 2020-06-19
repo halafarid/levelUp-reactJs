@@ -46,6 +46,7 @@
 .logout {
   cursor: pointer;
   &_icon {
+      color: $white;
     margin-left: 286%;
     font-size: 25px;
   }
