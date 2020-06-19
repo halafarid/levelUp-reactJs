@@ -1,0 +1,15 @@
+.follows {
+    &__notfound {
+        margin-left: 25%;
+        
+        &-heading {
+            color: $secondary;
+            margin: auto auto 30px 40px;
+        }
+
+        &-img {
+            width: 70%;
+            color: $white;
+        }
+    }
+}

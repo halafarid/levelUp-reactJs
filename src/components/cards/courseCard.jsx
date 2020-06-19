@@ -11,13 +11,15 @@ import {
 } from "react-icons/ai";
 import { useState } from "react";
 
-const CourseCard = (props) => {
+const CourseCard = props => {
+  const { type, tab, path, history } = props;
+
   const stars = [1, 2, 3, 4];
   const [progressPercent, setProgressPercent] = useState(30);
 
   return (
     <React.Fragment>
-        <div className="CourseCard__container" onClick={() => props.history.push('/courses/1/details')}>
+        <div className="CourseCard__container" onClick={() => history.push('/courses/1/details')}>
           <div className="CourseCard__img">
             <img
               className="CourseCard__img-sm"
@@ -59,7 +61,7 @@ const CourseCard = (props) => {
                     </div>
                 </div>
             </div>
-            { ( (props.tab === 3 && props.path === '/profile') || (props.type === 'user' && props.path === '/profile') ) && 
+            { ( (tab === 3 && path === '/profile') || (type === 'user' && path === '/profile') ) && 
                 <div className="CourseCard__items-container">
                     <ProgressBar variant="info" animated now={progressPercent} />
                     <div className="CourseCard__text--colored">
@@ -69,12 +71,12 @@ const CourseCard = (props) => {
             }
             <div className="CourseCard__btnCont">
                 { 
-                    props.type === 'instructor' && props.path === '/profile' && props.tab !== 3 ?
+                    type === 'instructor' && path === '/profile' && tab !== 3 ?
                         <div className="crud">
                             <AiFillEdit className="crud__edit"/>
                             <AiFillDelete className="crud__delete"/>
                         </div>
-                    : props.path !== '/profile' ?
+                    : path !== '/profile' ?
                         <span className=" CourseCard__btn CourseCard__text--font" onClick={e => e.stopPropagation()}>Add to cart</span>
                     :
                         <Link

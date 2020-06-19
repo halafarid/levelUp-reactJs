@@ -6,6 +6,7 @@ import { FaFacebook } from 'react-icons/fa';
 import { AiFillTwitterCircle, AiFillInstagram,AiFillStar,AiOutlineStar,AiFillEdit } from 'react-icons/ai';
 
 import CourseCard from './cards/courseCard';
+import PageNoResult from './core/pageNoResult';
 
 const Profile = props => {
     const { type, match } = props;
@@ -125,38 +126,71 @@ const Profile = props => {
                                 }
                             </Nav>
                                 
-                            {path === `/freeCourses/:id`?
-                                <div className="courseCardsContainer courseCardsContainer--ml">
-                                    <div className="courseCardsContainer__sub">
-                                        {courses.map( course => (
-                                            <div className="CourseCard CourseCard--width" key={course}>
-                                                <CourseCard 
-                                                    {...props}
-                                                    type = {type}
-                                                    path = {props.match.path}
-                                                    tab = {tab}
-                                                />
+                            {
+                                tab === 1 ?
+                                    courses.length > 0 ?
+                                        <React.Fragment>
+                                            <div className="courseCardsContainer courseCardsContainer--ml">
+                                                <div className="courseCardsContainer__sub">
+                                                    {courses.map( course => (
+                                                        <div className="CourseCard CourseCard--width" key={course}>
+                                                            <CourseCard 
+                                                                {...props}
+                                                                type = {type}
+                                                                path = {props.match.path}
+                                                                tab = {tab}
+                                                            />
+                                                        </div>
+                                                    ))}
+                                                </div>
                                             </div>
-                                        ))}
-                                    </div>
-                                </div>
+                                            <Button className="btn btn--secondary btn--mg-left btn--pd">Load more..</Button>
+                                        </React.Fragment>
+                                    :
+                                    <PageNoResult />
+                                : tab === 2 ?
+                                    // courses.length > 0 ?
+                                    //     <React.Fragment>
+                                    //         <div className="courseCardsContainer courseCardsContainer--ml">
+                                    //             <div className="courseCardsContainer__sub">
+                                    //                 {courses.map( course => (
+                                    //                     <div className="CourseCard CourseCard--width" key={course}>
+                                    //                         <CourseCard 
+                                    //                             {...props}
+                                    //                             type = {type}
+                                    //                             path = {props.match.path}
+                                    //                             tab = {tab}
+                                    //                         />
+                                    //                     </div>
+                                    //                 ))}
+                                    //             </div>
+                                    //         </div>
+                                    //         <Button className="btn btn--secondary btn--mg-left btn--pd">Load more..</Button>
+                                    //     </React.Fragment>
+                                    // :
+                                    <PageNoResult />
                                 :
-                                <div className="courseCardsContainer courseCardsContainer--ml">
-                                    <div className="courseCardsContainer__sub">
-                                        {courses.map( course => (
-                                            <div className="CourseCard CourseCard--width" key={course}>
-                                                <CourseCard 
-                                                    {...props}
-                                                    type = {type}
-                                                    path = {props.match.path}
-                                                    tab = {tab}
-                                                />
+                                    courses.length > 0 ?
+                                        <React.Fragment>
+                                            <div className="courseCardsContainer courseCardsContainer--ml">
+                                                <div className="courseCardsContainer__sub">
+                                                    {courses.map( course => (
+                                                        <div className="CourseCard CourseCard--width" key={course}>
+                                                            <CourseCard 
+                                                                {...props}
+                                                                type = {type}
+                                                                path = {props.match.path}
+                                                                tab = {tab}
+                                                            />
+                                                        </div>
+                                                    ))}
+                                                </div>
                                             </div>
-                                        ))}
-                                    </div>
-                                </div>
+                                            <Button className="btn btn--secondary btn--mg-left btn--pd">Load more..</Button>
+                                        </React.Fragment>
+                                    :
+                                    <PageNoResult />
                             }
-                            <Button className="btn btn--secondary btn--mg-left btn--pd">Load more..</Button>
                         </div>
                     </div>
                 </Container>
