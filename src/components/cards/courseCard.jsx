@@ -79,7 +79,8 @@ const CourseCard = (props) => {
                     :
                         <Link
                             className=" CourseCard__btn CourseCard__text--font"
-                            to="/home"
+                            to="/courses/lessons"
+                            onClick={e => e.stopPropagation()}
                         >
                             {progressPercent === 0 ? 'Start Course' : 'Continue'}
                         </Link>
