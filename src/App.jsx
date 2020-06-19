@@ -18,6 +18,7 @@ import InstructorProfile from "./components/profile/instructorProfile";
 import Payment from "./components/features/payment";
 import PaymentForm from "./components/forms/paymentForm";
 import Login from "./components/authentication/login";
+import Registration from "./components/authentication/registration";
 
 const App = () => {
   const [Instructor, setInstructor] = useState([
@@ -91,6 +92,7 @@ const App = () => {
           render={props => <CourseData {...props} />}
         />
         <Route path="/login" component={Login} />
+        <Route path="/register" component={Registration} />
         <Route path="/notfound" component={PageNotFound} />
         <Route path="/follows" component={Follows} />
         <Route path="/shoppingcart" component={Payment} />
