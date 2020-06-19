@@ -4,12 +4,6 @@ import "./index.css";
 import App from "./App.jsx";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
-import Filters from "./components/features/filters";
-import CourseCard from "./components/cards/courseCard";
-import ShoppingListItem from "./components/cards/shoppingListItem";
-import PaymentCard from "./components/cards/paymentCard";
-import Payment from "./components/features/payment";
-import PaymentForm from "./components/forms/paymentForm";
 
 ReactDOM.render(
   <BrowserRouter>

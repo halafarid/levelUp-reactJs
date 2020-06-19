@@ -1,13 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const PageNotFound = () => {
     return ( 
         <React.Fragment>
 <div className="errorPageRap">
   <div className="holoContainer">
-    <img src="http://danielwolf.cc/codepen/errorpage/userNotFoundBanner.png" />
-    <img src="http://danielwolf.cc/codepen/errorpage/userNotFoundBanner_green.png" />
-    <img src="http://danielwolf.cc/codepen/errorpage/userNotFoundBanner_red.png" />
+    <img src={require('../../images/notFound/userNotFoundBanner.png')} alt="pic1" />
+    <img src={require('../../images/notFound/userNotFoundBanner_green.png')} alt="pic2" />
+    <img src={require('../../images/notFound/userNotFoundBanner_red.png')} alt="pic3" />
     <svg className="holoPad" width="25.6rem" height="27.8rem" viewBox="0 0 226 242" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
       <defs>
         <linearGradient x1="50%" y1="100%" x2="50%" y2="0%" id="linearGradient-1">
@@ -220,9 +221,9 @@ const PageNotFound = () => {
     </svg>
   </div>
   <h1>
-    It seems this player doesn't exist... <span><img src="http://danielwolf.cc/codepen/errorpage/sadFace.png" /></span>
+    It seems this player doesn't exist... <span><img src={require('../../images/notFound/sadFace.png')} alt="sad face" /></span>
     <br />
-    You might try and search for them on <a routerlink="/home">Home Page</a>
+    You might try and search for them on <Link to="/home">Home Page</Link>
   </h1>
 </div>
 

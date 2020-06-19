@@ -4,9 +4,9 @@
     // justify-content: center;
     // flex-direction: column;
     position: relative;
-    min-width: 40%;
-    max-width: 40%;
-    width: 40%;
+    // min-width: 40%;
+    // max-width: 40%;
+    width: 26%;
     margin: 10px;
     overflow: hidden;
     cursor: pointer;
@@ -16,7 +16,8 @@
     }
      
     &--width{
-        max-width: 47%;
+        width: 31%;
+        margin: 0 1%;
     }
    
   
@@ -45,7 +46,6 @@
     &__text {
         color: $info;
         font-size: 18px;
-
     }
 
     &__text--font {
@@ -106,8 +106,7 @@
         text-align: center;
         border: 1px solid transparent;
         border-radius: 13px;
-        padding: 5px;
-        width: 27%;
+        padding: 6px;
         font-size: 12px;
         color: $info;
         background-color: $secondary-dark;

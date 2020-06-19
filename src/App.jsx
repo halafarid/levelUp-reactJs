@@ -13,10 +13,9 @@ import CourseData from './components/forms/courseData';
 import CourseDetails from './components/courses/courseDetails';
 import CourseLessons from './components/courses/courseLessons';
 import Footer from './components/core/footer';
-import InstructorProfile from './components/profile/instructorProfile';
+import Profile from './components/profile';
 import Payment from './components/features/payment';
 import PaymentForm from './components/forms/paymentForm';
-import CourseCard from './components/cards/courseCard';
 import Login from "./components/authentication/login";
 
 
@@ -32,7 +31,7 @@ const App = () => {
     },
     {
       id: "2",
-      imgUrl: "../../namrata-parmar.jpg",
+      imgUrl: "",
       name: "Namrata Parmar",
       job: "Photographer, Travel Bloger",
       rating: "4",
@@ -98,20 +97,20 @@ const App = () => {
         />
         
         <Route path="/profile/:id" render={props=>(
-            <InstructorProfile
+            <Profile
               {...props}
             />
           )}
         />
         <Route path="/profile/edit"  render={props=>
-          (<InstructorProfile
+          (<Profile
               {...props}
           />)}
         />
 
         <Route path="/profile"
           render={props=>(
-            <InstructorProfile
+            <Profile
               {...props}
             />
           )}
@@ -137,7 +136,11 @@ const App = () => {
           path="/courses/add"
           render={props => <CourseData {...props} />}
         />
-        <Route path="/login" component={Login} />
+        
+        <Route path="/login" render={ props => (
+          <Login {...props} />
+        )} />
+
         <Route path="/notfound" component={PageNotFound} />
         <Route 
         path="/follows" 

@@ -88,13 +88,13 @@ const About = () => {
                             <h3 className="InfoSection__text">Persius imperdiet incorrupte et qui, munere nusquam et nec.</h3>
                             <p className="InfoSection__text--info" >Libris vivendo eloquentiam ex ius, nec id splendide abhorreant.</p><br/>
                             <p className="InfoSection__text--color">No vel facete sententiae, quodsi dolores no quo, pri ex tamquam interesset necessitatibus. Te denique cotidieque delicatissimi sed. Eu doming epicurei duo. Sit ea perfecto deseruisse theophrastus. At sed malis hendrerit, elitr deseruisse in sit, sit ei facilisi mediocrem.</p>
-                            <a className="FixedSection__btn InfoSection__infoContainer--space">Contact Us</a>
+                            <span className="FixedSection__btn InfoSection__infoContainer--space">Contact Us</span>
                         </div>
                         <div className="col-md-5 col-md-offset-1 InfoSection__trans">
-                            <a className="InfoSection__vedio">
+                            <span className="InfoSection__vedio">
                                 <div className="InfoSection__vedio--img" ></div>
                                 <AiFillPlayCircle className="InfoSection__vedio--icon" />
-                            </a>
+                            </span>
                         </div>
                     </div>
                 </div>

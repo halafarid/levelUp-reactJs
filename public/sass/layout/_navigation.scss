@@ -42,6 +42,10 @@
     font-size: 30px;
     cursor: pointer;
   }
+
+  &-link {
+    color: $white !important;
+  }
 }
 .logout {
   cursor: pointer;

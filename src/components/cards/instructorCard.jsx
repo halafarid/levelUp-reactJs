@@ -12,7 +12,7 @@ const InstructorCard = props => {
         <Container className="InstructorContainer">
         <Link  className="InstructorContainer__link" to={`/profile/${id}`}>
              <Card >
-                <Card.Img  className="card__card-img" src={require("../../namrata-parmar.jpg")} alt="Instructor"/>
+                <Card.Img  className="card__card-img" src={require("../../images/instructor/photo.jpg")} alt="Instructor"/>
                 <Card.Body>
                     <Card.Title className="card__card-title">
                     {props.Instructor.name}</Card.Title>
