@@ -4,21 +4,20 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.scss";
 
-import Navbar from './components/core/navbar'
-import Home from './components/core/home'
-import About from './components/core/about'
-import PageNotFound from './components/core/pageNotFound'
-import Follows from './components/follows'
-import CourseData from './components/forms/courseData';
-import CourseDetails from './components/courses/courseDetails';
-import CourseLessons from './components/courses/courseLessons';
-import Footer from './components/core/footer';
-import Profile from './components/profile';
-import Payment from './components/features/payment';
-import PaymentForm from './components/forms/paymentForm';
+import Navbar from "./components/core/navbar";
+import Home from "./components/core/home";
+import About from "./components/core/about";
+import PageNotFound from "./components/core/pageNotFound";
+import Follows from "./components/follows";
+import CourseData from "./components/forms/courseData";
+import CourseDetails from "./components/courses/courseDetails";
+import CourseLessons from "./components/courses/courseLessons";
+import Footer from "./components/core/footer";
+import Profile from "./components/profile";
+import Payment from "./components/features/payment";
+import PaymentForm from "./components/forms/paymentForm";
 import Login from "./components/authentication/login";
 import Registration from "./components/authentication/registration";
-
 
 const App = () => {
   const [Instructor, setInstructor] = useState([
@@ -71,55 +70,28 @@ const App = () => {
 
         <Route path="/about" render={() => <About />} />
 
-        <Route path="/freeCourses/:id" render={props => (
-          <Home
-          {...props}
-          Instructor={Instructor}
-          />
-        )}
+        <Route
+          path="/freeCourses/:id"
+          render={props => <Home {...props} Instructor={Instructor} />}
         />
-        <Route path="/paidCourses/:id" render={props => (
-          <Home
-          {...props}
-          Instructor={Instructor}
-          />
-        )}
+        <Route
+          path="/paidCourses/:id"
+          render={props => <Home {...props} Instructor={Instructor} />}
         />
-        <Route path="/enrolledCourses/:id"render={props => (
-            <Home
-            {...props}
-            Instructor={Instructor}
-            />
-          )}
-          />
-        <Route path="/home" render={props => (
-          <Home
-          {...props}
-          Instructor={Instructor}
-          />
-        )}
+        <Route
+          path="/enrolledCourses/:id"
+          render={props => <Home {...props} Instructor={Instructor} />}
         />
-        
-        <Route path="/profile/:id" render={props=>(
-            <Profile
-              {...props}
-            />
-          )}
-        />
-        <Route path="/profile/edit"  render={props=>
-          (<Profile
-              {...props}
-          />)}
+        <Route
+          path="/home"
+          render={props => <Home {...props} Instructor={Instructor} />}
         />
 
-        <Route path="/profile"
-          render={props=>(
-            <Profile
-              {...props}
-            />
-          )}
-        />
-        
+        <Route path="/profile/:id" render={props => <Profile {...props} />} />
+        <Route path="/profile/edit" render={props => <Profile {...props} />} />
+
+        <Route path="/profile" render={props => <Profile {...props} />} />
+
         <Route
           path="/courses/:id/details"
           render={props => <CourseDetails {...props} />}
@@ -130,7 +102,6 @@ const App = () => {
           render={props => <CourseDetails {...props} />}
         />
 
-
         <Route
           path="/courses/:id/edit"
           render={props => <CourseData {...props} />}
@@ -140,20 +111,13 @@ const App = () => {
           path="/courses/add"
           render={props => <CourseData {...props} />}
         />
-<<<<<<< HEAD
-        
-        <Route path="/login" render={ props => (
-          <Login {...props} />
-        )} />
-
-=======
         <Route path="/login" component={Login} />
         <Route path="/register" component={Registration} />
->>>>>>> login
+
         <Route path="/notfound" component={PageNotFound} />
-        <Route 
-        path="/follows" 
-        render={() => <Follows  Instructor={Instructor}  />}
+        <Route
+          path="/follows"
+          render={() => <Follows Instructor={Instructor} />}
         />
         <Route path="/shoppingcart" component={Payment} />
         <Route path="/courses/lessons" component={CourseLessons} />
@@ -161,10 +125,8 @@ const App = () => {
         <Redirect exact from="/" to="/home" />
         <Redirect to="/notfound" />
       </Switch>
-      
-      {window.location.href !=="http://localhost:3000/login" &&
-      <Footer />
-        }
+
+      {window.location.href !== "http://localhost:3000/login" && <Footer />}
     </React.Fragment>
   );
 };

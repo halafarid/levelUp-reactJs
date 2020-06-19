@@ -1,10 +1,6 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
-import Joi from "joi-browser";
-<<<<<<< HEAD
-=======
 import { Link } from "react-router-dom";
->>>>>>> login
+import Joi from "joi-browser";
 
 class Login extends Component {
   state = {
@@ -173,14 +169,12 @@ class Login extends Component {
                   </div>
 
                   <div>
-
                     <Link to="/register" className="txt1">
                       New user? Register Here!
                     </Link>
-
                   </div>
                 </div>
-               <Link to="/home" className=" container-login100-form-btn">
+                <Link to="/home" className=" container-login100-form-btn">
                   <button className="login100-form-btn" type="submit">
                     Login
                   </button>
