@@ -13,10 +13,9 @@ import CourseData from './components/forms/courseData';
 import CourseDetails from './components/courses/courseDetails';
 import CourseLessons from './components/courses/courseLessons';
 import Footer from './components/core/footer';
-import InstructorProfile from './components/profile/instructorProfile';
+import Profile from './components/profile';
 import Payment from './components/features/payment';
 import PaymentForm from './components/forms/paymentForm';
-import CourseCard from './components/cards/courseCard';
 import Login from "./components/authentication/login";
 
 
@@ -32,7 +31,7 @@ const App = () => {
     },
     {
       id: "2",
-      imgUrl: "../../namrata-parmar.jpg",
+      imgUrl: "",
       name: "Namrata Parmar",
       job: "Photographer, Travel Bloger",
       rating: "4",
@@ -59,7 +58,10 @@ const App = () => {
 
   return (
     <React.Fragment>
+      {console.log(window.location.href)}
+      {/* { window.location.href !=="http://localhost:3000/login"  && */}
       <Navbar />
+      {/* //  } */}
       <Switch>
         <Route
           path="/home"
@@ -67,78 +69,60 @@ const App = () => {
         />
 
         <Route path="/about" render={() => <About />} />
-            <Route path="/freeCourses/:id" render={props => (
-              <Home
-              {...props}
-              Instructor={Instructor}
-              />
-            )}
-            />
-               <Route path="/paidCourses/:id" render={props => (
-              <Home
-              {...props}
-              Instructor={Instructor}
-              />
-            )}
-            />
-               <Route path="/enrolledCourses/:id"render={props => (
-              <Home
-              {...props}
-              Instructor={Instructor}
-              />
-            )}
-            />
-               <Route path="/home" render={props => (
-              <Home
-              {...props}
-              Instructor={Instructor}
-              />
-            )}
-            />
 
+        <Route path="/freeCourses/:id" render={props => (
+          <Home
+          {...props}
+          Instructor={Instructor}
+          />
+        )}
+        />
+        <Route path="/paidCourses/:id" render={props => (
+          <Home
+          {...props}
+          Instructor={Instructor}
+          />
+        )}
+        />
+        <Route path="/enrolledCourses/:id"render={props => (
+            <Home
+            {...props}
+            Instructor={Instructor}
+            />
+          )}
+          />
+        <Route path="/home" render={props => (
+          <Home
+          {...props}
+          Instructor={Instructor}
+          />
+        )}
+        />
+        
+        <Route path="/profile/:id" render={props=>(
+            <Profile
+              {...props}
+            />
+          )}
+        />
+        <Route path="/profile/edit"  render={props=>
+          (<Profile
+              {...props}
+          />)}
+        />
 
-                
-
+        <Route path="/profile"
+          render={props=>(
+            <Profile
+              {...props}
+            />
+          )}
+        />
+        
         <Route
           path="/courses/:id/details"
           render={props => <CourseDetails {...props} />}
         />
-          
-         
-
-            <Route exact path="/profile/:id"
-            render={props=>(
-              <InstructorProfile
-              {...props}
-              
-              />
-            )}
-            />
-               <Route exact path="/edit"  render={props=>
-            (<InstructorProfile
-               {...props}
-               />)}
-               />
-
-
-           
-              <Route path="profile/paidCourses" render={props=>
-            (<InstructorProfile
-               {...props}
-               />)}
-               />
-               <Route path="profile/enrolledCourses" render={props=>
-            (<InstructorProfile
-               {...props}
-               />)}
-               />
-               <Route path="/profile"
-            render={props=>(
-              <InstructorProfile
-              {...props}
-              />
-            )}
-            />
 
         <Route
           path="/courses/:id/reviews"
@@ -148,14 +132,18 @@ const App = () => {
 
         <Route
           path="/courses/:id/edit"
-          render={props => <CourseDetails {...props} />}
+          render={props => <CourseData {...props} />}
         />
 
         <Route
           path="/courses/add"
           render={props => <CourseData {...props} />}
         />
-        <Route path="/login" component={Login} />
+        
+        <Route path="/login" render={ props => (
+          <Login {...props} />
+        )} />
+
         <Route path="/notfound" component={PageNotFound} />
         <Route 
         path="/follows" 
@@ -167,7 +155,10 @@ const App = () => {
         <Redirect exact from="/" to="/home" />
         <Redirect to="/notfound" />
       </Switch>
+      
+      {window.location.href !=="http://localhost:3000/login" &&
       <Footer />
+        }
     </React.Fragment>
   );
 };

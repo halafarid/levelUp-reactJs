@@ -1,6 +1,9 @@
 import React from 'react';
-import {AiFillInfoCircle} from  'react-icons/ai';
 import { Link } from 'react-router-dom';
+
+import {Button} from 'react-bootstrap';
+
+import {AiFillInfoCircle} from  'react-icons/ai';
 
 const PaymentCard = (props) => {
     return ( 
@@ -8,7 +11,7 @@ const PaymentCard = (props) => {
             <div className="PaymentCard">
    
             <div className="PaymentCard--c">
-                <h4>Total</h4>
+                <h3 className="PaymentCard__head">Total</h3>
                 <div className=" PaymentCard__text PaymentCard__text--l">199.99$</div>
                 <hr className="PaymentCard__hr"></hr>
                 <div className=" PaymentCard--c PaymentCard__info">
@@ -24,13 +27,14 @@ const PaymentCard = (props) => {
                     <AiFillInfoCircle className="PaymentCard__icon"/>
                     <p>Add 240.00 EGP of "Fulfilled by Level-Up" items to your order to qualify for FREE Learning.</p>
                 </div>
-                <div className="PaymentCard__btn">
+                {/* <div className="PaymentCard__btn"> */}
 
-                <Link className="PaymentCard__btn--link" to="/paymentform">PROCEED TO CHECKOUT</Link>
-                </div>
-
-            </div>
+                <Link  to="/paymentform">
+                <Button className="PaymentCard__btn">PROCEED TO CHECKOUT </Button>
+                </Link>
+                {/* </div> */}
                          
+            </div>
             </div>
         </React.Fragment>
      );

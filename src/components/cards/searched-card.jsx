@@ -6,7 +6,7 @@ const SearchedCard = () => {
       <div className="search-card">
         <div className="row">
           <div >
-            <img className="search-img" src={require("../../namrata-parmar.jpg")} alt="" />
+            <img className="search-img" src={require("../../images/instructor/photo.jpg")} alt="" />
           </div>
           <div className="col">
             <h6 className="search-name">bella</h6>

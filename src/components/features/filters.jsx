@@ -14,8 +14,8 @@ const Filters = () => {
                 <div className="filter__items-container">
             
                     <p  className="filter__pg">All Categories</p>
-                    {Categories.map(Category=>(
-                        <div className="filter__checkbox-container">
+                    {Categories.map( (Category, i) =>(
+                        <div className="filter__checkbox-container" key={i}>
                         <FormCheck  type="checkbox" />
                         <span >{Category}</span>
                         </div>
@@ -26,8 +26,8 @@ const Filters = () => {
                 <div className="filter__items-container">
                  
                     <p className="filter__pg" > The difficulty level of the course</p>
-                    {levels.map(level=>(
-                        <div className="filter__checkbox-container">
+                    {levels.map( (level, i) =>(
+                        <div className="filter__checkbox-container" key={i}>
                         <FormCheck type="checkbox" />
                         <span >{level}</span>
                         </div>

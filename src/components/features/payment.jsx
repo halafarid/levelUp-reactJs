@@ -9,7 +9,7 @@ const Payment = (props) => {
         <React.Fragment>
             <div className="paymentCardsContainer">
             <div className="paymentCardsContainer__sub">
-            {items.map(item=> <ShoppingListItem />)}
+            {items.map(item=> <ShoppingListItem key={item}/>)}
             </div>
                 <PaymentCard/>
             </div>

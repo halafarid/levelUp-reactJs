@@ -4,9 +4,9 @@
     // justify-content: center;
     // flex-direction: column;
     position: relative;
-    // min-width: 30%;
-    // max-width: 30%;
-    width: 40%;
+    // min-width: 40%;
+    // max-width: 40%;
+    width: 26%;
     margin: 10px;
     overflow: hidden;
     cursor: pointer;
@@ -16,7 +16,8 @@
     }
      
     &--width{
-        max-width: 47%;
+        width: 31%;
+        margin: 0 1%;
     }
    
   
@@ -31,6 +32,12 @@
     &--box {
         padding: 11px;
     }
+    &__container
+    {
+        display: flex;
+        flex-direction: column;
+        
+    }
 
     &__link {
         text-decoration: none !important;
@@ -39,7 +46,21 @@
     &__text {
         color: $info;
         font-size: 18px;
-
+        &--colored
+        {
+            padding: 10px;
+            color: $secondary;
+            margin-left: 10px;
+            color: $white;
+            text-shadow: 
+            0 0 2px $white,
+            0 0 10px $white,
+            0 0 20px $glow,
+            0 0 30px $glow,
+            0 0 40px $glow,
+            0 0 50px $glow;
+            animation: blink 1.5s infinite alternate;
+        }
     }
 
     &__text--font {
@@ -51,14 +72,19 @@
         font-size: 14px;
 
     }
+ 
+    &__img-sm
+    {
+       width: 100%;
+    }
 
     &__img {
         width: 100%;
-        height: 250px;
-        background-size: cover;
-        background-repeat: no-repeat;
+        // height: 250px;
+        // background-size: cover;
+        // background-repeat: no-repeat;
         margin-bottom: 15px;
-        background-image: url('../../../src/images/course/courseimg.jpg');
+        // background-image: url('../../../src/images/course/courseimg.jpg');
     }
 
     &__items-container {
@@ -67,6 +93,8 @@
         justify-content: flex-start;
         width: 100%;
         margin: 2px;
+        padding-left: 7%;
+        margin-bottom: 5px;
 
     }
 
@@ -81,20 +109,17 @@
     }
 
     &__stars-container {
-        margin-top: 8px;
-        margin-bottom: 20px;
         width: 100%;
     }
 
     &__btn {
         position: absolute;
-        right: 28px;
+        right: 9%;
         text-decoration: none;
         text-align: center;
         border: 1px solid transparent;
         border-radius: 13px;
-        padding: 5px;
-        width: 27%;
+        padding: 6px;
         font-size: 12px;
         color: $info;
         background-color: $secondary-dark;
@@ -112,6 +137,12 @@
     &__btn--danger:hover{
       background-color: $danger;
     }
+    &__btnCont
+    {
+        width: 100%;
+        height: 50px;
+    }
+
 }
 .crud{
     cursor: pointer;
@@ -132,6 +163,7 @@
             color: $success;
         }
     }
+    
 
 }
 
@@ -208,7 +240,10 @@
     padding:15px;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     margin-top: 5%;
-
+  transition: box-shadow 2s ease-in-out;
+    &:hover{
+    box-shadow: 0 5px 10px  rgba(241, 230, 230, 0.979), 0 3px 8px rgba(224, 214, 214, 0.959);
+    }
     &__main-container
     {
         display: flex;
@@ -238,19 +273,21 @@
         }
         &--lg
         {
-            font-size: 18px;
+            font-size: 20px;
+            color: $primary;
 
         }
         &--colored
         {
-            color: $primary;
-            font-size: 14px;
+            color: $secondary;
+            font-size: 15px;
 
         }
         &--span
         {
             display: inline-block;
             margin-left: 2px;
+            font-size: 14px;
         }
        
     
@@ -292,10 +329,11 @@
     }
     &__btn
     {
-     font-size: 15px;
+    color: $danger-dark;
+     font-size: 20px;
     &:hover{
-        opacity: 0.4;
-        color: $secondary;
+        // opacity: 0.4;
+        color: $danger;
     }
 }
 
@@ -316,21 +354,27 @@
 
 
 }
-
-.PaymentCard
-{
+ 
+.PaymentCard{
+    position: sticky;
+    top: 90px;
     width: 35%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    background-color: white;
+    background-color: $white;
     color: $dark;
     padding:15px;
     margin-top: 3%;
+    border: 2px solid $primary-dark;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     font-family: $family-primary;
     max-height: 600px;
     margin-right: 25px;
+ 
+    &__head{
+        color: $primary-dark ;
+    }
    
     &__info
     {
@@ -344,9 +388,12 @@
     {
       margin-left: 5px;
       padding: 15px;
+      color: $secondary-dark;
+      font-weight: 600;
       &--l
       {
           font-size: 18px;
+
 
         }
 
@@ -367,6 +414,7 @@
         }
       
     }
+  
    
     &__hr
     {
@@ -379,8 +427,8 @@
     }
     &__btn
     {
-        color: $dark;
-        background-color: $primary;
+        color: $info;
+        background-color: $secondary-dark;
         padding: 10px;
         margin:10px;
         margin-top: 0px;
@@ -389,15 +437,19 @@
         width:95%;
         text-align: center;
         text-decoration: none;
+        cursor: pointer;
         
-        &--link:hover
-        {
-
+        &--link{
             color: $info;
+            &:hover{
+                text-decoration: none;
+                color: $info;
+            }
         }
+        
+    
         &:hover{
-            background-color: $secondary-dark;
-            color: $info;
+            background-color: $secondary;
 
         }
 
@@ -413,6 +465,7 @@
     }
 }
 
+
 .InstructorContainer{
     
     padding-top:25px; 
@@ -424,7 +477,7 @@
 .paymentFormCard-Container
 {
     width: 60%;
-    margin-top: 10%;
+    margin-top: 7%;
 }
 .paymentFormCard
 {
@@ -438,6 +491,7 @@
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     margin-top: 5%;
     font-family: $family-primary;
+  
     &__icon-container
     {
         display: flex;
@@ -446,7 +500,8 @@
     &__header
     {
         padding: 10px;
-        // margin-left: 5px;
+        color: $secondary;
+        font-size: 18px;
     }
     &__img
     {
@@ -454,7 +509,6 @@
         margin-right: 1%;
         margin-top: 11%;
         width: 45%;
-        height: 700px;
         background-size: contain;
         background-repeat: no-repeat;
     
@@ -489,7 +543,7 @@
         margin-bottom: 0;
         border-radius: 50%;
         border: 1px solid $info;
-        color: $primary;
+        color: $primary-dark;
         &--verify
         {
             padding: 3px;
@@ -505,9 +559,48 @@
     }
     &__btn
     {
-        background-color: $secondary;
+        background-color: $secondary-dark;
         &:hover{
-            background-color: $secondary-dark;
+            background-color: $secondary;
         }
     }
 }
+
+.carousel-new-item
+{
+    display: flex !important;
+    flex-wrap: wrap !important;
+    flex-direction: row !important;
+}
+.carousel-new-next
+{
+    right: 20%;
+}
+.courseCardsContainer__sub a.carousel-control-next
+{
+    right: 15%;
+}
+.courseCardsContainer__sub ol{
+    left: -15%;
+    bottom: -9%;
+   
+    
+}
+.progress
+{
+    width: 60%;
+    margin-top: 15px;
+}
+
+@keyframes blink {
+    0%   {}
+    100% { 
+      text-shadow: 
+        0 0 2px $info,
+        0 0 10px $info,
+        0 0 20px $info,
+        0 0 40px $glow,
+        0 0 70px $glow,
+        0 0 80px $glow;
+    }
+  }

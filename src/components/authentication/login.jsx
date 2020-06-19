@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-
+import { Link } from 'react-router-dom';
 import Joi from "joi-browser";
-import { Link } from "react-router-dom";
 
 class Login extends Component {
   state = {
     account: {
-      username: "",
+      email: "",
       password: "",
       isSaved: false
     },
@@ -14,9 +13,10 @@ class Login extends Component {
   };
 
   schema = {
-    username: Joi.string()
-      .required()
-      .min(5),
+    email: Joi.string()
+      .email()
+      .lowercase()
+      .required(),
     password: Joi.string()
       .required()
       .min(8),
@@ -36,6 +36,7 @@ class Login extends Component {
   handleSubmit = e => {
     e.preventDefault();
     //validate
+
     const error = this.validate();
     if (error === null) {
       // call backend
@@ -46,7 +47,7 @@ class Login extends Component {
     //clone
     const errors = { ...this.state.errors };
     //edit
-    errors["username"] = error.username;
+    errors["email"] = error.email;
     errors["password"] = error.password;
     //set state
     this.setState({ errors });
@@ -84,27 +85,28 @@ class Login extends Component {
                 onSubmit={this.handleSubmit}
               >
                 <div
-                  className="wrap-input100 validate-input m-b-26"
                   className={
-                    this.state.errors.username
+                    this.state.errors.email
                       ? "wrap-input100 validate-input m-b-26 alert-validate"
-                      : "wrap-input100 validate-input m-b-26"
+                      : "wrap-input100 validate-input m-b-26 "
                   }
                   data-validate={
-                    this.state.errors.username == null
-                      ? "Username is required"
-                      : this.state.errors.username
+                    this.state.errors.email == null
+                      ? "Email is required"
+                      : this.state.errors.email
                   }
                 >
-                  <span className="label-input100">Username</span>
+                  <span className="label-input100">Email</span>
                   <input
                     className="input100"
                     type="text"
-                    name="username"
-                    placeholder="Enter username"
+                    name="email"
+                    placeholder="Enter email"
                     onChange={this.handleChange}
                   />
+
                   <span className="focus-input100"></span>
+                  {/* <MdError style={{ color: "red" }} /> */}
                 </div>
 
                 <div
@@ -130,6 +132,24 @@ class Login extends Component {
                   <span className="focus-input100"></span>
                 </div>
 
+                <div className="m-b-18">
+                  <input
+                    className="radioInput"
+                    type="radio"
+                    name="loginType"
+                    value="student"
+                  />{" "}
+                  <span style={{ color: "#808080", marginRight: "10px" }}>
+                    User
+                  </span>
+                  <input
+                    className="radioInput"
+                    type="radio"
+                    name="loginType"
+                    value="teacher"
+                  />{" "}
+                  <span style={{ color: "#808080" }}>Instructor</span>
+                </div>
                 <div className="flex-sb-m w-full p-b-30">
                   <div className="contact100-form-checkbox">
                     <input
@@ -139,23 +159,22 @@ class Login extends Component {
                       name="remember-me"
                       onClick={this.handleCheckBox}
                     />
-                    <label className="label-checkbox100" for="ckb1">
+                    <label className="label-checkbox100" htmlFor="ckb1">
                       Remember me
                     </label>
                   </div>
 
                   <div>
-                    <a href="#" className="txt1">
+                    <a href="#/" className="txt1">
                       Forgot Password?
                     </a>
                   </div>
                 </div>
-
-                <div className="container-login100-form-btn">
+               <Link to="/home" className=" container-login100-form-btn">
                   <button className="login100-form-btn" type="submit">
                     Login
                   </button>
-                </div>
+                </Link>
               </form>
             </div>
           </div>

@@ -30,9 +30,13 @@ iframe {
 
 .txt1 {
   font-family: Poppins-Regular;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.4;
-  color: #999999;
+  color:$secondary-dark;
+
+}
+.txt1:hover{
+  text-decoration: none;
 }
 
 /*//////////////////////////////////////////////////////////////////
@@ -55,12 +59,14 @@ iframe {
   justify-content: center;
   align-items: center;
   padding: 15px;
-  background: #ebeeef;
+  background: $dark;
 }
+
+
 
 .wrap-login100 {
   width: 670px;
-  background: #fff;
+  background: $info;
   border-radius: 10px;
   overflow: hidden;
   position: relative;
@@ -90,8 +96,9 @@ iframe {
 
 .login100-form-title-1 {
   font-family: Poppins-Bold;
-  font-size: 30px;
-  color: #fff;
+  font-size: 35px;
+  font-weight: 600;
+  color:$info;
   text-transform: uppercase;
   line-height: 1.2;
   text-align: center;
@@ -135,8 +142,9 @@ iframe {
 
 .label-input100 {
   font-family: Poppins-Regular;
-  font-size: 15px;
-  color: #808080;
+  font-size: 18px;
+  font-weight: 600;
+  color: $secondary-dark;
   line-height: 1.2;
   text-align: right;
 
@@ -210,8 +218,8 @@ input.input100 {
 
 .label-checkbox100 {
   font-family: Poppins-Regular;
-  font-size: 13px;
-  color: #999999;
+  font-size: 15px;
+  color: $secondary-dark;
   line-height: 1.4;
 
   display: block;
@@ -263,6 +271,10 @@ input.input100 {
   display: flex;
   flex-wrap: wrap;
 }
+.container-login100-form-btn:hover{
+  text-decoration: none;
+
+}
 
 .login100-form-btn {
   outline: none !important;
@@ -276,24 +288,28 @@ input.input100 {
   justify-content: center;
   align-items: center;
   padding: 0 20px;
+  margin-left: 20%; 
   min-width: 160px;
   height: 50px;
-  background-color: #57b846;
+  background-color: $secondary-dark;
   border-radius: 25px;
 
   font-family: Poppins-Regular;
   font-size: 16px;
   color: #fff;
   line-height: 1.2;
-
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  transition: all 0.4s;
+  transition: all 0.1 ease-in-out ;
+  // -webkit-transition: all 0.4s;
+  // -o-transition: all 0.4s;
+  // -moz-transition: all 0.4s;
+  // transition: all 0.4s;
+  box-shadow: 0 14px 28px rgba(190, 172, 172, 0.651), 0 10px 10px rgba(190, 172, 172, 0.651);
+  
 }
 
 .login100-form-btn:hover {
-  background-color: #333333;
+  background-color:$secondary;
+ transform: translate(2px,2px)
 }
 
 /*------------------------------------------------------------------

@@ -12,15 +12,15 @@ const Search = (props) => {
                 <div  className="search-panel" onClick={preventProp}>
                     <Container className="searchContainer">
 
-                        <div className="search-by ">
+                        <div className="search-by">
                             <Button variant="warning">Course</Button>{' '}
                             <Button variant="info">Instructor</Button>{' '}                          
                         </div>
                         <div className="search-list">
-                        {/* <SearchedCard/>
                         <SearchedCard/>
                         <SearchedCard/>
-                        <SearchedCard/> */}
+                        <SearchedCard/>
+                        <SearchedCard/>
                         </div>
                     </Container>
                 </div>

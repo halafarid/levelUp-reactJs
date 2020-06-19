@@ -42,10 +42,15 @@
     font-size: 30px;
     cursor: pointer;
   }
+
+  &-link {
+    color: $white !important;
+  }
 }
 .logout {
   cursor: pointer;
   &_icon {
+      color: $white;
     margin-left: 286%;
     font-size: 25px;
   }
@@ -53,7 +58,7 @@
 .nav-link{
 color:$white;
   &:hover,&:focus{
-    color: $secondary;
+    color: $primary-dark;
   }
  
 }
