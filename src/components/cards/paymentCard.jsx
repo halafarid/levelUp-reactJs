@@ -23,11 +23,6 @@ const PaymentCard = (props) => {
                     <p className="PaymentCard__text-m">Pay 391.00 EGP ( Save 69.00 EGP ) By using Commercial International Bank - CIB</p>
                 </div>
                 <hr className="PaymentCard__hr"></hr>
-                <div className=" PaymentCard__info">
-                    <AiFillInfoCircle className="PaymentCard__icon"/>
-                    <p>Add 240.00 EGP of "Fulfilled by Level-Up" items to your order to qualify for FREE Learning.</p>
-                </div>
-                {/* <div className="PaymentCard__btn"> */}
 
                 <Link  to="/paymentform">
                 <Button className="PaymentCard__btn">PROCEED TO CHECKOUT </Button>
