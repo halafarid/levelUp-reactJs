@@ -11,8 +11,9 @@ import { Container, Carousel } from 'react-bootstrap';
 import { BsFillPlusCircleFill } from 'react-icons/bs';
 
 const Home = props => {
+    const { type, match } = props;
     const courses = [1, 2, 3];
-    const path = props.match.path;
+    const path = match.path;
 
     return (
         <React.Fragment>
@@ -134,7 +135,6 @@ const Home = props => {
                             </Carousel>
                         </div>
                     </div>
-
                     <div className=" instructor ">
                         <h2 className="instructor__Inst-title">Courses Related To Following</h2>
                     </div>
@@ -166,9 +166,11 @@ const Home = props => {
                     </div>
                 </div>
             </div>
-            <Link to="/courses/add" className="addCourse">
-                <BsFillPlusCircleFill />
-            </Link>
+            {type === 'instructor' && 
+                <Link to="/courses/add" className="addCourse">
+                    <BsFillPlusCircleFill />
+                </Link>
+            }
         </React.Fragment>
     );
 };

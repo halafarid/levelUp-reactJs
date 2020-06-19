@@ -59,7 +59,7 @@ const CourseCard = (props) => {
                     </div>
                 </div>
             </div>
-            { ( (props.tab === 3 && props.path === '/profile') || props.type === 'user') && 
+            { ( (props.tab === 3 && props.path === '/profile') || (props.type === 'user' && props.path === '/profile') ) && 
                 <div className="CourseCard__items-container">
                     <ProgressBar variant="info" animated now={progressPercent} />
                     <div className="CourseCard__text--colored">

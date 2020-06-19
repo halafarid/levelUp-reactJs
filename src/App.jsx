@@ -20,6 +20,9 @@ import Login from "./components/authentication/login";
 import Registration from "./components/authentication/registration";
 
 const App = () => {
+  // const type = 'user';
+  const type = 'instructor';
+
   const [Instructor, setInstructor] = useState([
     {
       id: "1",
@@ -60,37 +63,23 @@ const App = () => {
     <React.Fragment>
       {console.log(window.location.href)}
       {/* { window.location.href !=="http://localhost:3000/login"  && */}
-      <Navbar />
+      <Navbar 
+        type = {type}
+      />
       {/* //  } */}
       <Switch>
         <Route
           path="/home"
-          render={props => <Home {...props} Instructor={Instructor} />}
+          render={props => <Home {...props} Instructor={Instructor} type = {type} />}
         />
 
         <Route path="/about" render={() => <About />} />
 
-        <Route
-          path="/freeCourses/:id"
-          render={props => <Home {...props} Instructor={Instructor} />}
-        />
-        <Route
-          path="/paidCourses/:id"
-          render={props => <Home {...props} Instructor={Instructor} />}
-        />
-        <Route
-          path="/enrolledCourses/:id"
-          render={props => <Home {...props} Instructor={Instructor} />}
-        />
-        <Route
-          path="/home"
-          render={props => <Home {...props} Instructor={Instructor} />}
-        />
 
-        <Route path="/profile/:id" render={props => <Profile {...props} />} />
-        <Route path="/profile/edit" render={props => <Profile {...props} />} />
+        <Route path="/profile/:id" render={props => <Profile {...props} type = {type} />} />
+        <Route path="/profile/edit" render={props => <Profile {...props} type = {type} />} />
 
-        <Route path="/profile" render={props => <Profile {...props} />} />
+        <Route path="/profile" render={props => <Profile {...props} type = {type} />} />
 
         <Route
           path="/courses/:id/details"
@@ -116,7 +105,11 @@ const App = () => {
 
         <Route path="/notfound" component={PageNotFound} />
         <Route
-          path="/follows"
+          path="/following"
+          render={() => <Follows Instructor={Instructor} />}
+        />
+        <Route
+          path="/followers"
           render={() => <Follows Instructor={Instructor} />}
         />
         <Route path="/shoppingcart" component={Payment} />
