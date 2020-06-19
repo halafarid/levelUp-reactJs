@@ -175,7 +175,7 @@ class Registration extends Component {
                     onClick={this.handleChange}
                   />{" "}
                   <span style={{ color: "#808080", marginRight: "10px" }}>
-                    Student
+                    User
                   </span>
                   <input
                     className="radioInput"
@@ -184,22 +184,10 @@ class Registration extends Component {
                     value="teacher"
                     onClick={this.handleChange}
                   />{" "}
-                  <span style={{ color: "#808080" }}>Teacher</span>
+                  <span style={{ color: "#808080" }}>Instructor</span>
                 </div>
                 <div className="flex-sb-m w-full p-b-30">
                   {/* CHECKNOX */}
-                  <div className="contact100-form-checkbox">
-                    <input
-                      className="input-checkbox100"
-                      id="ckb1"
-                      type="checkbox"
-                      name="remember-me"
-                      onClick={this.handleCheckBox}
-                    />
-                    <label className="label-checkbox100" htmlFor="ckb1">
-                      Keep me signed in.
-                    </label>
-                  </div>
 
                   <div>
                     <Link to="/login" className="txt1">
