@@ -5,7 +5,8 @@ import Badge from "react-bootstrap/Badge";
 import { FiLogOut } from "react-icons/fi";
 import Search from '../features/search'
 
-const Navbar = () => {
+const Navbar = props => {
+  const { type } = props;
 
   const handleSearch=()=>{
     setSearchComp(true)
@@ -52,11 +53,21 @@ const Navbar = () => {
               </li>
               <li className="nav-item">
                 <Link
-                  to="/follows"
+                  to="/following"
                   className="nav-link text-uppercase font-weight-bold"
                 >
                   Following
                 </Link>
+              </li>
+              <li className="nav-item">
+                { type === 'instructor' &&
+                  <Link
+                    to="/followers"
+                    className="nav-link text-uppercase font-weight-bold"
+                  >
+                    Followers
+                  </Link>
+                }
               </li>
             </ul>
             <form className="form-inline my-2 my-lg-0">

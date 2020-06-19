@@ -8,13 +8,12 @@ import { AiFillTwitterCircle, AiFillInstagram,AiFillStar,AiOutlineStar,AiFillEdi
 import CourseCard from './cards/courseCard';
 
 const Profile = props => {
-    const path = props.match.path;
+    const { type, match } = props;
+    const path = match.path;
     const courses = [1, 2, 3];
 
     const [isEdit, setIsEdit] = useState(path === '/profile/edit');
     const [isFollowing, setIsFollowing] = useState(false);
-    // const [type, setType] = useState('user');
-    const [type, setType] = useState('instructor');
     const [tab, setTap] = useState(1);
 
     const handleBtn = () => {
