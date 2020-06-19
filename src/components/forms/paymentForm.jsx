@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Button, Collapse, Form } from "react-bootstrap";
 import { BsCreditCard } from "react-icons/bs";
-import { GiCash } from "react-icons/gi";
 import { FaIdCard } from "react-icons/fa";
+
 const PaymentForm = (props) => {
   const [opencredit, setOpenCredit] = useState(true);
   const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
@@ -62,7 +62,7 @@ const PaymentForm = (props) => {
             </Form.Group>
             <div className="paymentFormCard__icon-container">
 
-            <Form.Group className="paymentFormCard__selectContainer" controlId="exampleForm.ControlSelect1">
+            <Form.Group className="paymentFormCard__selectContainer">
               <Form.Label>Expiry date *</Form.Label>
               <div className="paymentFormCard__icon-container paymentFormCard__form--input">
                 <Form.Control
@@ -70,7 +70,7 @@ const PaymentForm = (props) => {
                   as="select"
                 >
                   {months.map((month) => (
-                    <option>{month}</option>
+                    <option key={month}>{month}</option>
                   ))}
                 </Form.Control>
                 <Form.Control
@@ -78,12 +78,12 @@ const PaymentForm = (props) => {
                   as="select"
                 >
                   {years.map((year) => (
-                    <option>{year}</option>
+                    <option key={year}>{year}</option>
                   ))}
                 </Form.Control>
               </div>
             </Form.Group>
-            <Form.Group controlId="formBasicPassword">
+            <Form.Group>
               <Form.Label>Card verification code *</Form.Label>
              <div className="paymentFormCard__icon-container">
                  <FaIdCard className="paymentFormCard__icon--verify"></FaIdCard>             
@@ -101,9 +101,7 @@ const PaymentForm = (props) => {
             <Form.Group controlId="formBasicCheckbox">
               <Form.Check type="checkbox" label="Save for future use" />
             </Form.Group>
-            <Button 
-            className="paymentFormCard__btn"
-            variant="primary" type="submit">
+            <Button className="paymentFormCard__btn btn--secondary" type="submit">
               Place Order
             </Button>
           </Form>

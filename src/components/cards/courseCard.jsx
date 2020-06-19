@@ -18,21 +18,21 @@ const CourseCard = (props) => {
   const [courseProgressState,setCourseProgressState]=useState('Continue');
   return (
     <React.Fragment>
-      <Link to={`/courses/1/details`} className="CourseCard__link">
-        <div className="CourseCard__container">
+        <div className="CourseCard__container" onClick={() => props.history.push('/courses/1/details')}>
           <div className="CourseCard__img">
             <img
               className="CourseCard__img-sm"
               src="https://www.incimages.com/uploaded_files/image/1920x1080/getty_933383882_2000133420009280345_410292.jpg"
-            ></img>
+              alt="course"
+            />
           </div>
-
           <div className="CourseCard--box">
             <p className="CourseCard__text CourseCard__text--font ">
               Learning How To Learn: Powerful mental tools to help you master
               ...{" "}
             </p>
           </div>
+         
           <div className="CourseCard__items-container">
             <span className="CourseCard__text CourseCard__text--space CourseCard__text--font">
               Expert
@@ -44,75 +44,54 @@ const CourseCard = (props) => {
               </span>
             </div>
           </div>
+
           <div className="CourseCard__items-container">
             <span className="CourseCard__text CourseCard__text--space CourseCard__text--font">
               Duration : 2H{" "}
             </span>
             {isRegistered ? null :
-            <span className="CourseCard__text CourseCard__text--space CourseCard__text--font">
-              {" "}
-              $149.99{" "}
-            </span>
-}
+                <span className="CourseCard__text CourseCard__text--space CourseCard__text--font">
+                {" "}
+                $149.99{" "}
+                </span>
+            }
           </div>
-          <div className="CourseCard__items-container">
-            <div className="CourseCard__stars-container">
-              <div className="CourseCard__text CourseCard__text--space">
-                {stars.map((star) => (
-                  <AiFillStar className="CourseCard__star"></AiFillStar>
-                ))}
-                <AiOutlineStar className="CourseCard__star "></AiOutlineStar>
-                {props.path === "/home" ||
-                props.path === "/freeCourses/:id" ||
-                props.path === "/paidCourses/:id" ||
-                props.path === "/enrolledCourses/:id" ? (
-                  !isRegistered ? (
-                    <Link
-                      className=" CourseCard__btn CourseCard__text--font"
-                      to="/shoppingcart"
-                    >
-                      Add to cart
-                    </Link>
-                  ) : null
-                ) : (
-                  <div className="crud">
-                    {props.type === "instructor" &&
-                      props.path === "/profile" &&
-                      props.tab !== 3 && (
-                        <React.Fragment>
-                          <AiFillEdit className="crud__edit" />
-                          <AiFillDelete className="crud__delete" />
-                        </React.Fragment>
-                      )}
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-          {!isRegistered ? null : (
-           
-              <div className="CourseCard__container">
-                <div className="CourseCard__items-container">
-                  <ProgressBar variant="info" animated now={progressPercent} />
-                  <div className="CourseCard__text--colored">
-                    {progressPercent} %
-                  </div>
-                </div>
-                <div className="CourseCard__btnCont">
-                <Link
-                      className=" CourseCard__btn CourseCard__text--font"
-                      to="/home"
-                    >
-                      {courseProgressState}
-                    </Link>
-                    </div>
-            
-            </div>
-          )}
-        </div>
-      </Link>
-    </React.Fragment>
-  );
-};
+            <div className="CourseCard__items-container">
+                <div className="CourseCard__stars-container">
+                    <div className="CourseCard__text CourseCard__text--space">
+                    {stars.map(star=> <AiFillStar className="CourseCard__star" key={star} ></AiFillStar>)}
+                    <AiOutlineStar className="CourseCard__star "></AiOutlineStar>
 
+                    {!isRegistered &&
+                        <span className=" CourseCard__btn CourseCard__text--font" onClick={e => e.stopPropagation()}>Add to cart</span>
+                    }
+                    <div className="crud">
+                        { props.type === 'instructor' && props.path === '/profile' && props.tab !== 3 &&
+                            <React.Fragment>
+                                <AiFillEdit className="crud__edit"/>
+                                <AiFillDelete className="crud__delete"/>
+                            </React.Fragment>
+                        }
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div className="CourseCard__items-container">
+                <ProgressBar variant="info" animated now={progressPercent} />
+                <div className="CourseCard__text--colored">
+                    {progressPercent} %
+                </div>
+            </div>
+          <div className="CourseCard__btnCont">
+                <Link
+                    className=" CourseCard__btn CourseCard__text--font"
+                    to="/home"
+                >
+                    {courseProgressState}
+                </Link>
+            </div>
+        </div>
+    </React.Fragment>
+  )
+};
 export default CourseCard;

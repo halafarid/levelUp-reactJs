@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-
+import { Link } from 'react-router-dom';
 import Joi from "joi-browser";
-import { Link } from "react-router-dom";
-import { MdError } from "react-icons/md";
+
 class Login extends Component {
   state = {
     account: {
@@ -86,7 +85,6 @@ class Login extends Component {
                 onSubmit={this.handleSubmit}
               >
                 <div
-                  className="wrap-input100 validate-input m-b-26"
                   className={
                     this.state.errors.email
                       ? "wrap-input100 validate-input m-b-26 alert-validate"
@@ -161,13 +159,13 @@ class Login extends Component {
                       name="remember-me"
                       onClick={this.handleCheckBox}
                     />
-                    <label className="label-checkbox100" for="ckb1">
+                    <label className="label-checkbox100" htmlFor="ckb1">
                       Remember me
                     </label>
                   </div>
 
                   <div>
-                    <a href="#" className="txt1">
+                    <a href="#/" className="txt1">
                       Forgot Password?
                     </a>
                   </div>

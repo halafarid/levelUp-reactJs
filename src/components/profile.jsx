@@ -1,23 +1,20 @@
-import React ,{useState, useEffect} from 'react';
+import React , {useState} from 'react';
 import { Link } from 'react-router-dom';
 
 import { Card, Container,Nav,Button,Form } from 'react-bootstrap';
 import { FaFacebook } from 'react-icons/fa';
-import { AiFillTwitterCircle, AiFillInstagram,AiFillStar,AiOutlineStar,AiFillEdit,AiFillCamera } from 'react-icons/ai';
-import{RiUploadLine } from 'react-icons/ri';
+import { AiFillTwitterCircle, AiFillInstagram,AiFillStar,AiOutlineStar,AiFillEdit } from 'react-icons/ai';
 
-import CourseCard from '../cards/courseCard';
+import CourseCard from './cards/courseCard';
 
-const InstructorProfile = props => {
-    const id = 1;
+const Profile = props => {
     const path = props.match.path;
-    const courses = [1, 2];
+    const courses = [1, 2, 3];
 
     const [isEdit, setIsEdit] = useState(path === '/profile/edit');
     const [isFollowing, setIsFollowing] = useState(false);
     // const [type, setType] = useState('user');
     const [type, setType] = useState('instructor');
-
     const [tab, setTap] = useState(1);
 
     const handleBtn = () => {
@@ -34,7 +31,7 @@ const InstructorProfile = props => {
             <div className="InstCard ">
                 <Container className="profileContainer">
                     <Card className="card--borderless">
-                        <Card.Img className="card__card-img" src={require("../../namrata-parmar.jpg")} alt="Instructor" />
+                        <Card.Img className="card__card-img" src={require("../images/instructor/photo.jpg")} alt="Instructor" />
                         {isEdit &&
                             <div>
                                 <div className="profile__edit profile__edit--upload">
@@ -130,31 +127,32 @@ const InstructorProfile = props => {
                             </Nav>
                                 
                             {path === `/freeCourses/:id`?
-                                <div className="courseCardsContainer">
+                                <div className="courseCardsContainer courseCardsContainer--ml">
                                     <div className="courseCardsContainer__sub">
-                                        {courses.map((coursr) => (
-                                    <div className="CourseCard CourseCard--width">
-                                            <CourseCard 
-                                                type = {type}
-                                                path = {props.match.path}
-                                                tab = {tab}
-                                            />
-                                    </div>
-                                        
+                                        {courses.map( course => (
+                                            <div className="CourseCard CourseCard--width" key={course}>
+                                                <CourseCard 
+                                                    {...props}
+                                                    type = {type}
+                                                    path = {props.match.path}
+                                                    tab = {tab}
+                                                />
+                                            </div>
                                         ))}
                                     </div>
                                 </div>
                                 :
-                                <div className="courseCardsContainer">
+                                <div className="courseCardsContainer courseCardsContainer--ml">
                                     <div className="courseCardsContainer__sub">
-                                        {courses.map((coursr) => (
-                                    <div className="CourseCard CourseCard--width">
-                                            <CourseCard 
-                                                type = {type}
-                                                path = {props.match.path}
-                                                tab = {tab}
-                                            />
-                                    </div>
+                                        {courses.map( course => (
+                                            <div className="CourseCard CourseCard--width" key={course}>
+                                                <CourseCard 
+                                                    {...props}
+                                                    type = {type}
+                                                    path = {props.match.path}
+                                                    tab = {tab}
+                                                />
+                                            </div>
                                         ))}
                                     </div>
                                 </div>
@@ -168,4 +166,4 @@ const InstructorProfile = props => {
     );
 }
 
-export default InstructorProfile;
+export default Profile;

@@ -33,23 +33,23 @@ const CourseLessons = () => {
       <Tab.Content>
         <Tab.Pane eventKey="key_1">
           <div className="video">
-          <iframe width="100%" height="500" src="https://www.youtube.com/embed/XMZTwgW5oaQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="100%" height="500" src="https://www.youtube.com/embed/XMZTwgW5oaQ" title="video1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </Tab.Pane>
         <Tab.Pane eventKey="key_2">
         <div className="video">
-          <iframe width="100%" height="500" src="https://www.youtube.com/embed/XMZTwgW5oaQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="100%" height="500" src="https://www.youtube.com/embed/XMZTwgW5oaQ" title="video2" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         </Tab.Pane>
 
         <Tab.Pane eventKey="key_3">
           <div className="video">
-          <iframe width="100%" height="500" src="https://www.youtube.com/embed/XMZTwgW5oaQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="100%" height="500" src="https://www.youtube.com/embed/XMZTwgW5oaQ" title="video3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </Tab.Pane>
         <Tab.Pane eventKey="key_4">
         <div className="video">
-          <iframe width="100%" height="500" src="https://www.youtube.com/embed/XMZTwgW5oaQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="100%" height="500" src="https://www.youtube.com/embed/XMZTwgW5oaQ" title="video4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
         </div>
         </Tab.Pane>
