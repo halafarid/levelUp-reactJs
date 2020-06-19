@@ -41,7 +41,11 @@ const Profile = props => {
                         }
                         <Card.Body>
                             <Card.Title className="card__card-title">Namrata Parmar</Card.Title>
+                            {isEdit ?
+                                    <Form.Control className="course__control course__control--text" type="text" placeholder="Job Title" />
+                            : 
                             <Card.Text className="card__card-text">Photographer, Travel Bloger</Card.Text>
+                            }
                             { !(type === 'user' && path === '/profile') &&
                                 <div className="stars">
                                     <AiFillStar/>
@@ -57,12 +61,16 @@ const Profile = props => {
                         <div className="profile__header">
                             <div>
                                 {isEdit ?
+                                 <div className="edit"> 
                                     <Form.Control className="course__control course__control--text" type="text" placeholder="Name" />
+                                    <Form.Control className="course__control course__control--text" type="text" placeholder="Email" />
+                                    <Form.Control className="course__control course__control--text" type="text" placeholder="Password" />
+                                  </div>
                                     :
                                     <h1>Namrata Parmar</h1>
                                 }
 
-                                { path ==="/profile/:id" &&
+                                { (path ==="/profile/:id" && !isEdit) &&
                                     <div className="stars">
                                         <AiOutlineStar/>
                                         <AiOutlineStar/>
@@ -73,7 +81,7 @@ const Profile = props => {
                                 }
                             </div>
                             <div>
-                                { path ==="/profile/:id" &&
+                                { (path ==="/profile/:id" && !isEdit)&& 
                                     <Button className={`btn btn--full btn--pd ${isFollowing? 'btn--success' : 'btn--secondary'}`} onClick={() => setIsFollowing(!isFollowing)}>{isFollowing ? 'Following' : 'Follow'}</Button>
                                 }
                             </div>
@@ -82,7 +90,7 @@ const Profile = props => {
                                     <Link to="/profile/edit" onClick={() => setIsEdit(true)}> <AiFillEdit  className="profile__edit"/></Link>
                                 }
                             </div>
-                            <div>
+                            <div className="prof-icons">
                                 <FaFacebook className="profile__icons profile__icons--facebook" />
                                 <AiFillTwitterCircle className="profile__icons profile__icons--twitter" />
                                 <AiFillInstagram className="profile__icons profile__icons--instagram" />
