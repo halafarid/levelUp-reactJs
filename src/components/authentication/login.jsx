@@ -142,7 +142,7 @@ class Login extends Component {
                     value="student"
                   />{" "}
                   <span style={{ color: "#808080", marginRight: "10px" }}>
-                    Student
+                    User
                   </span>
                   <input
                     className="radioInput"
@@ -150,7 +150,7 @@ class Login extends Component {
                     name="loginType"
                     value="teacher"
                   />{" "}
-                  <span style={{ color: "#808080" }}>Teacher</span>
+                  <span style={{ color: "#808080" }}>Instructor</span>
                 </div>
                 <div className="flex-sb-m w-full p-b-30">
                   <div className="contact100-form-checkbox">
@@ -172,12 +172,11 @@ class Login extends Component {
                     </a>
                   </div>
                 </div>
-
-                <div className="container-login100-form-btn">
+               <Link to="/home" className=" container-login100-form-btn">
                   <button className="login100-form-btn" type="submit">
                     Login
                   </button>
-                </div>
+                </Link>
               </form>
             </div>
           </div>

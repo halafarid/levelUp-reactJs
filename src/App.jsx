@@ -59,7 +59,10 @@ const App = () => {
 
   return (
     <React.Fragment>
+      {console.log(window.location.href)}
+      {/* { window.location.href !=="http://localhost:3000/login"  && */}
       <Navbar />
+      {/* //  } */}
       <Switch>
         <Route
           path="/home"
@@ -149,7 +152,10 @@ const App = () => {
         <Redirect exact from="/" to="/home" />
         <Redirect to="/notfound" />
       </Switch>
+      
+      {window.location.href !=="http://localhost:3000/login" &&
       <Footer />
+        }
     </React.Fragment>
   );
 };

@@ -59,9 +59,9 @@ const Navbar = () => {
                 0
               </Badge>
             </div>
-            <div className="logout" >
+            <Link to="/login" className="logout" >
             <FiLogOut className="logout_icon"/>
-            </div>
+            </Link>
           </div>
         </div>
       </nav>
