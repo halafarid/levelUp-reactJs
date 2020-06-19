@@ -17,6 +17,7 @@ import Profile from './components/profile';
 import Payment from './components/features/payment';
 import PaymentForm from './components/forms/paymentForm';
 import Login from "./components/authentication/login";
+import Registration from "./components/authentication/registration";
 
 
 const App = () => {
@@ -139,11 +140,16 @@ const App = () => {
           path="/courses/add"
           render={props => <CourseData {...props} />}
         />
+<<<<<<< HEAD
         
         <Route path="/login" render={ props => (
           <Login {...props} />
         )} />
 
+=======
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Registration} />
+>>>>>>> login
         <Route path="/notfound" component={PageNotFound} />
         <Route 
         path="/follows" 

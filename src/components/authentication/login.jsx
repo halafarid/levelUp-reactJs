@@ -1,12 +1,17 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import Joi from "joi-browser";
+<<<<<<< HEAD
+=======
+import { Link } from "react-router-dom";
+>>>>>>> login
 
 class Login extends Component {
   state = {
     account: {
       email: "",
       password: "",
+      type: "student",
       isSaved: false
     },
     errors: {}
@@ -51,7 +56,8 @@ class Login extends Component {
     errors["password"] = error.password;
     //set state
     this.setState({ errors });
-    console.log(this.state.errors);
+    // console.log(this.state.errors);
+    console.log(this.state);
   };
   validate = () => {
     const res = Joi.validate(this.state.account, this.schema, {
@@ -136,8 +142,9 @@ class Login extends Component {
                   <input
                     className="radioInput"
                     type="radio"
-                    name="loginType"
+                    name="type"
                     value="student"
+                    onClick={this.handleChange}
                   />{" "}
                   <span style={{ color: "#808080", marginRight: "10px" }}>
                     User
@@ -145,8 +152,9 @@ class Login extends Component {
                   <input
                     className="radioInput"
                     type="radio"
-                    name="loginType"
+                    name="type"
                     value="teacher"
+                    onClick={this.handleChange}
                   />{" "}
                   <span style={{ color: "#808080" }}>Instructor</span>
                 </div>
@@ -165,9 +173,11 @@ class Login extends Component {
                   </div>
 
                   <div>
-                    <a href="#/" className="txt1">
-                      Forgot Password?
-                    </a>
+
+                    <Link to="/register" className="txt1">
+                      New user? Register Here!
+                    </Link>
+
                   </div>
                 </div>
                <Link to="/home" className=" container-login100-form-btn">
