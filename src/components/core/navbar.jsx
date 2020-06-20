@@ -4,6 +4,7 @@ import { FiShoppingCart } from "react-icons/fi";
 import Badge from "react-bootstrap/Badge";
 import { FiLogOut } from "react-icons/fi";
 import Search from '../features/search'
+import {LogOut} from '../../services/authService'
 
 
 const Navbar = props => {
@@ -15,6 +16,7 @@ const Navbar = props => {
   const handleClosingSearch=()=>{
     setSearchComp(false)
   }
+ 
   const [searchComp,setSearchComp]=useState(false)
 
   return (
@@ -91,7 +93,7 @@ const Navbar = props => {
                 </Badge>
               </Link>
             </div>
-            <Link to="/login" className="logout" >
+            <Link to="/login" onClick={LogOut} className="logout" >
               <FiLogOut className="logout_icon"/>
             </Link>
           </div>
