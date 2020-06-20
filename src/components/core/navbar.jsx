@@ -5,6 +5,7 @@ import Badge from "react-bootstrap/Badge";
 import { FiLogOut } from "react-icons/fi";
 import Search from '../features/search'
 import {LogOut} from '../../services/authService'
+import { string } from "joi";
 
 
 const Navbar = props => {
@@ -16,13 +17,19 @@ const Navbar = props => {
   const handleClosingSearch=()=>{
     setSearchComp(false)
   }
+  const handleChange=({target})=>{
+    console.log(target.value)
+    setSearchWord(target.value)
+  }
  
   const [searchComp,setSearchComp]=useState(false)
+  const [searchWord,setSearchWord]=useState("")
 
   return (
     <React.Fragment>
       {searchComp&&<Search
       onClosingSearch={handleClosingSearch}
+      searchWord={searchWord}
       />}
       <nav className="nav fixed-top navbar navbar-expand-lg  py-3 border-bottom">
         <div className="container navContainer">
@@ -81,6 +88,7 @@ const Navbar = props => {
                 placeholder="Search"
                 aria-label="Search"
                 onFocus={handleSearch}
+                onChange={handleChange}
               />
               
               {/* <button className="btn btn-warning my-2 my-sm-0" type="submit">Search</button> */}

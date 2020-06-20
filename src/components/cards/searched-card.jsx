@@ -1,6 +1,6 @@
 import React from "react";
 
-const SearchedCard = () => {
+const SearchedCard = (props) => {
   return (
     <React.Fragment>
       <div className="search-card">
@@ -9,8 +9,8 @@ const SearchedCard = () => {
             <img className="search-img" src={require("../../images/instructor/photo.jpg")} alt="" />
           </div>
           <div className="col">
-            <h6 className="search-name">bella</h6>
-            <p className="search-job">Photographer, Travel Bloger</p>
+            <h6 className="search-name">{props.instructor.fullName}</h6>
+            <p className="search-job">{props.instructor.job}</p>
           </div>
         </div>
       </div>

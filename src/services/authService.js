@@ -8,6 +8,9 @@ export function Login(account) {
 export function Register(account) {
     return axios.post(`${apiUrl}/users/registeration`, account);
 }
+export function getAllInstructors() {
+    return axios.get(`${apiUrl}/users/instructors`);
+}
 
 export function LogOut() {
     localStorage.removeItem('JWT');
