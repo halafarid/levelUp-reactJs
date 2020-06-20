@@ -16,8 +16,7 @@ import Footer from "./components/core/footer";
 import Profile from "./components/profile";
 import Payment from "./components/features/payment";
 import PaymentForm from "./components/forms/paymentForm";
-import Login from "./components/authentication/login";
-import Registration from "./components/authentication/registration";
+import SigningForm from "./components/authentication/signingForm";
 
 const App = () => {
   // const type = 'user';
@@ -104,9 +103,12 @@ const App = () => {
         />
         <Route
           path="/login"
-          render={props => <Login {...props} />}
+          render={props => <SigningForm {...props} />}
         />
-        <Route path="/register" component={Registration} />
+       <Route
+          path="/register"
+          render={props => <SigningForm {...props} />}
+        />
 
         <Route path="/notfound" component={PageNotFound} />
         <Route
