@@ -1,62 +1,76 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import Joi from "joi-browser";
+import axios from "axios";
+import { useState } from 'react';
 
-class Login extends Component {
-  state = {
-    account: {
+const Login = (props) => {
+  const [state, setState] = useState({
+     account: {
       email: "",
       password: "",
-      type: "student",
+      type: "",
       isSaved: false
     },
     errors: {}
-  };
-
-  schema = {
+  })
+  const schema = {
     email: Joi.string()
       .email()
       .lowercase()
       .required(),
-    password: Joi.string()
+      password: Joi.string()
       .required()
-      .min(8),
-    isSaved: Joi.required()
-  };
-  handleChange = ({ target }) => {
-    const account = { ...this.state.account };
+      .min(6),
+      isSaved: Joi.required(),
+      type: Joi.string().required()
+    };
+    const handleChange = ({ target }) => {
+    const account = { ...state.account };
     account[target.name] = target.value;
     //set state
-    this.setState({ account });
+    console.log(account)
+    setState({account });
   };
-  handleCheckBox = () => {
-    const account = { ...this.state.account };
+  const handleCheckBox = () => {
+    const account = { ...state.account };
     account.isSaved = !account.isSaved;
-    this.setState({ account });
+    setState({...state,account });
   };
-  handleSubmit = e => {
+  const handleSubmit =async e => {
     e.preventDefault();
     //validate
-
-    const error = this.validate();
-    if (error === null) {
+    
+    const errors = validate();
+    if (errors === null) {
+      setState({...state, errors:{} });
       // call backend
-      this.setState({ errors: {} });
-      this.props.history.replace("/home");
-      return;
-    }
-    //clone
-    const errors = { ...this.state.errors };
-    //edit
-    errors["email"] = error.email;
-    errors["password"] = error.password;
-    //set state
-    this.setState({ errors });
-    // console.log(this.state.errors);
-    console.log(this.state);
+      const path=props.match.path;
+      const account={...state.account}
+      console.log(path)
+      if(path=="/login"){
+        
+        const { data } = await axios.post(
+          "http://localhost:3000/users/login",account
+          );
+        console.log(data)
+
+          //Update State
+          // props.onAdd(data);
+          //Redirect to home Page
+          props.history.replace("/home");
+        }
+        
+        return;
+      }
+      //clone
+      console.log("errors",errors)
+      setState({...state, errors });
+
+    
   };
-  validate = () => {
-    const res = Joi.validate(this.state.account, this.schema, {
+  const validate = () => {
+    const res = Joi.validate(state.account, schema, {
       abortEarly: false
     });
     if (res.error === null) {
@@ -69,7 +83,7 @@ class Login extends Component {
     }
     return errors;
   };
-  render() {
+
     return (
       <React.Fragment>
         <div className="limiter">
@@ -84,18 +98,18 @@ class Login extends Component {
 
               <form
                 className="login100-form validate-form"
-                onSubmit={this.handleSubmit}
+                onSubmit={handleSubmit}
               >
                 <div
                   className={
-                    this.state.errors.email
+                    state.errors!=undefined&&state.errors.email
                       ? "wrap-input100 validate-input m-b-26 alert-validate"
                       : "wrap-input100 validate-input m-b-26 "
                   }
                   data-validate={
-                    this.state.errors.email == null
+                    state.errors!=undefined&&state.errors.email == null
                       ? "Email is required"
-                      : this.state.errors.email
+                      : state.errors!=undefined&&state.errors.email
                   }
                 >
                   <span className="label-input100">Email</span>
@@ -104,7 +118,7 @@ class Login extends Component {
                     type="text"
                     name="email"
                     placeholder="Enter email"
-                    onChange={this.handleChange}
+                    onChange={handleChange}
                   />
 
                   <span className="focus-input100"></span>
@@ -113,22 +127,22 @@ class Login extends Component {
 
                 <div
                   className={
-                    this.state.errors.password
+                    state.errors!=undefined&&state.errors.password
                       ? "wrap-input100 validate-input m-b-18 alert-validate"
                       : "wrap-input100 validate-input m-b-18"
                   }
                   data-validate={
-                    this.state.errors.password == null
+                    state.errors!=undefined&&state.errors.password == null
                       ? "Password is required"
-                      : this.state.errors.password
+                      : state.errors!=undefined&&state.errors.password
                   }
-                  onChange={this.handleChange}
+                  onChange={handleChange}
                 >
                   <span className="label-input100">Password</span>
                   <input
                     className="input100"
                     type="password"
-                    name="pass"
+                    name="password"
                     placeholder="Enter password"
                   />
                   <span className="focus-input100"></span>
@@ -140,7 +154,7 @@ class Login extends Component {
                     type="radio"
                     name="type"
                     value="student"
-                    onClick={this.handleChange}
+                    onClick={handleChange}
                   />{" "}
                   <span style={{ color: "#808080", marginRight: "10px" }}>
                     User
@@ -150,7 +164,7 @@ class Login extends Component {
                     type="radio"
                     name="type"
                     value="teacher"
-                    onClick={this.handleChange}
+                    onClick={handleChange}
                   />{" "}
                   <span style={{ color: "#808080" }}>Instructor</span>
                 </div>
@@ -161,7 +175,7 @@ class Login extends Component {
                       id="ckb1"
                       type="checkbox"
                       name="remember-me"
-                      onClick={this.handleCheckBox}
+                      onClick={handleCheckBox}
                     />
                     <label className="label-checkbox100" htmlFor="ckb1">
                       Remember me
@@ -174,11 +188,11 @@ class Login extends Component {
                     </Link>
                   </div>
                 </div>
-                <Link to="/home" className=" container-login100-form-btn">
+          
                   <button className="login100-form-btn" type="submit">
                     Login
                   </button>
-                </Link>
+
               </form>
             </div>
           </div>
@@ -186,6 +200,6 @@ class Login extends Component {
       </React.Fragment>
     );
   }
-}
+
 
 export default Login;

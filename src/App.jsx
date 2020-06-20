@@ -63,23 +63,23 @@ const App = () => {
     <React.Fragment>
       {console.log(window.location.href)}
       {/* { window.location.href !=="http://localhost:3000/login"  && */}
-      <Navbar 
-        type = {type}
+      <Navbar
+        type={type}
       />
       {/* //  } */}
       <Switch>
         <Route
           path="/home"
-          render={props => <Home {...props} Instructor={Instructor} type = {type} />}
+          render={props => <Home {...props} Instructor={Instructor} type={type} />}
         />
 
         <Route path="/about" render={() => <About />} />
 
 
-        <Route path="/profile/:id" render={props => <Profile {...props} type = {type} />} />
-        <Route path="/profile/edit" render={props => <Profile {...props} type = {type} />} />
+        <Route path="/profile/:id" render={props => <Profile {...props} type={type} />} />
+        <Route path="/profile/edit" render={props => <Profile {...props} type={type} />} />
 
-        <Route path="/profile" render={props => <Profile {...props} type = {type} />} />
+        <Route path="/profile" render={props => <Profile {...props} type={type} />} />
 
         <Route
           path="/courses/:id/details"
@@ -100,7 +100,10 @@ const App = () => {
           path="/courses/add"
           render={props => <CourseData {...props} />}
         />
-        <Route path="/login" component={Login} />
+        <Route
+          path="/login"
+          render={props => <Login {...props} />}
+        />
         <Route path="/register" component={Registration} />
 
         <Route path="/notfound" component={PageNotFound} />
