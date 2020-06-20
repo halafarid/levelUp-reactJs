@@ -7,6 +7,7 @@ import Filters from "../features/filters";
 import About from "../core/about";
 import { Link } from "react-router-dom";
 import { Container, Carousel } from 'react-bootstrap';
+import axios from "axios";
 
 import { BsFillPlusCircleFill } from 'react-icons/bs';
 
@@ -14,7 +15,11 @@ const Home = props => {
     const { type, match } = props;
     const courses = [1, 2, 3];
     const path = match.path;
-
+    const getById =async()=>{ await axios.get(
+        "http://localhost:3000/users/profile/5eee4cc16286dc0f8834007d"
+      ).then((data)=>{console.log(data)})
+    }
+      getById()
     return (
         <React.Fragment>
             <BackGround />

@@ -5,8 +5,7 @@ import axios from "axios";
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Container } from 'react-bootstrap';
-import { Login,Register } from '../../services/authService';
+import { Login, Register } from '../../services/authService';
 
 const SigningForm = (props) => {
   const [state, setState] = useState({
@@ -15,7 +14,7 @@ const SigningForm = (props) => {
       password: "",
       userType: "",
       isSaved: false,
-      fullName:""
+      fullName: ""
     },
     errors: {}
   })
@@ -27,7 +26,7 @@ const SigningForm = (props) => {
     password: Joi.string()
       .required()
       .min(6),
-    fullName:Joi.string().required().max(15),
+    fullName: Joi.string().required().max(15),
     isSaved: Joi.required(),
     userType: Joi.string().required()
   };
@@ -35,7 +34,6 @@ const SigningForm = (props) => {
     const account = { ...state.account };
     account[target.name] = target.value;
     //set state
-    console.log(account)
     setState({ account });
   };
   const handleCheckBox = () => {
@@ -57,32 +55,34 @@ const SigningForm = (props) => {
       if (path === "/login") {
         delete errors.fullName;
         Login(account)
-        .then(async({ data }) => {
-          console.log(data)
-          axios.defaults.headers.common["Authorization"] = data.token;
-          localStorage.setItem("JWT", data.token);
-     
-            props.history.replace("/home");
-        })
-        .catch((err) => {
-          console.log("err", err.response.status)
-          if (err.response.status === 404) {
-            toast.warning("Invalid Data!!", {
-              position: toast.POSITION.BOTTOM_RIGHT
-            });
-          } else {
-            toast.warning("Something went wrong");
-          }
+          .then(async ({ data }) => {
+            console.log(data)
+            localStorage.setItem("JWT", data.token);
 
-        })
+            props.history.replace("/home");
+          })
+          .catch((err) => {
+            if (err.response.status === 404) {
+              toast.warning("Invalid Data!!", {
+                position: toast.POSITION.BOTTOM_RIGHT
+              });
+            } else {
+              toast.warning("Something went wrong");
+            }
+
+          })
 
       }
-      else if(path === "/register"){
-        Register(account).then((data)=>{
-            props.history.replace("/home");
+      else if (path === "/register") {
+        Register(account).then(({data}) => {
+          Login(account)
+          .then(async ({ data }) => {
+            localStorage.setItem("JWT", data.token);
 
-          console.log(data)
-        }).catch((err)=>{
+            props.history.replace("/home");
+          })
+
+        }).catch((err) => {
           if (err.response.status === 400) {
             toast.warning("This email is already exists!!", {
               position: toast.POSITION.BOTTOM_RIGHT
@@ -113,9 +113,8 @@ const SigningForm = (props) => {
     for (const err of res.error.details) {
       errors[err.path] = err.message;
     }
-    if(props.match.path==="/login" && errors.fullName){
+    if (props.match.path === "/login" && errors.fullName) {
       delete errors.fullName;
-      console.log(errors)
     }
     return errors;
   };
@@ -124,7 +123,6 @@ const SigningForm = (props) => {
 
     <React.Fragment>
       <ToastContainer />
-      <Container>
 
         <div className="limiter ">
           <div className="container-login100">
@@ -133,25 +131,25 @@ const SigningForm = (props) => {
                 className="login100-form-title"
                 style={{ backgroundImage: "url(/assets/auth/bg-01.jpg)" }}
               >
-                <span className="login100-form-title-1">{window.location.pathname=='/login'?"Sign In":"Sign Up"}</span>
+                <span className="login100-form-title-1">{window.location.pathname == '/login' ? "Sign In" : "Sign Up"}</span>
               </div>
 
               <form
                 className="login100-form validate-form"
                 onSubmit={handleSubmit}
               >
-                 {/* Name */}
+                {/* Name */}
 
-                 {window.location.pathname=='/register'&&<div
+                {window.location.pathname == '/register' && <div
                   className={
-                    state.errors&&state.errors.fullName
+                    state.errors && state.errors.fullName
                       ? "wrap-input100 validate-input m-b-26 alert-validate"
                       : "wrap-input100 validate-input m-b-26 "
                   }
                   data-validate={
-                    state.errors&&state.errors.fullName == null
+                    state.errors && state.errors.fullName == null
                       ? "Email is required"
-                      : state.errors&&state.errors.fullName
+                      : state.errors && state.errors.fullName
                   }
                 >
                   <span className="label-input100">Name</span>
@@ -166,7 +164,7 @@ const SigningForm = (props) => {
                   <span className="focus-input100"></span>
                   {/* <MdError style={{ color: "red" }} /> */}
                 </div>
-               }
+                }
                 <div
                   className={
                     state.errors && state.errors.email
@@ -251,29 +249,28 @@ const SigningForm = (props) => {
                   </div>
 
                   <div>
-                {
-                window.location.pathname=='/login'?
-                <Link to="/register" className="txt1">
-                      New user? Register Here!
-                    </Link>:
-                <Link to="/login" className="txt1">
-                Have an account? SIGN IN!
+                    {
+                      window.location.pathname == '/login' ?
+                        <Link to="/register" className="txt1">
+                          New user? Register Here!
+                    </Link> :
+                        <Link to="/login" className="txt1">
+                          Have an account? SIGN IN!
               </Link>
-                }
-                    
-                    
+                    }
+
+
                   </div>
                 </div>
 
                 <button className="login100-form-btn" type="submit">
-                {window.location.pathname=='/login'?"Login":"Register"}
-                  </button>
+                  {window.location.pathname == '/login' ? "Login" : "Register"}
+                </button>
 
               </form>
             </div>
           </div>
         </div>
-      </Container>
     </React.Fragment>
   );
 }

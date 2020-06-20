@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState,useEffect} from "react";
 import { Link } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
 import Badge from "react-bootstrap/Badge";
 import { FiLogOut } from "react-icons/fi";
 import Search from '../features/search'
+
 
 const Navbar = props => {
   const { type } = props;
@@ -15,6 +16,7 @@ const Navbar = props => {
     setSearchComp(false)
   }
   const [searchComp,setSearchComp]=useState(false)
+
   return (
     <React.Fragment>
       {searchComp&&<Search

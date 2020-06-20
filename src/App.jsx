@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.scss";
+import axios from "axios";
+
 
 import Navbar from "./components/core/navbar";
 import Home from "./components/core/home";
@@ -17,7 +19,7 @@ import Profile from "./components/profile";
 import Payment from "./components/features/payment";
 import PaymentForm from "./components/forms/paymentForm";
 import SigningForm from "./components/authentication/signingForm";
-
+import authorizationToken from './services/tokenService'
 const App = () => {
   // const type = 'user';
   const type = 'instructor';
@@ -57,16 +59,22 @@ const App = () => {
       reviews: "14"
     }
   ]);
+  axios.interceptors.request.use(function (config) {
+      console.log("dkal")
+  const jwt = localStorage.getItem("JWT");
+    config.headers.Authorization =  jwt;
 
-  localStorage.setItem("token","jdj");
+    return config;
+});
+  
   return (
     <React.Fragment>
       {console.log(window.location.href)}
       {/* { window.location.href !=="http://localhost:3000/login"  && */}
-      {localStorage.getItem("token") !==null ? <Navbar 
-        type = {type}
+      {localStorage.getItem("JWT") !== null ? <Navbar
+        type={type}
       /> : null}
-      
+
       {/* //  } */}
       <Switch>
         <Route
@@ -105,7 +113,7 @@ const App = () => {
           path="/login"
           render={props => <SigningForm {...props} />}
         />
-       <Route
+        <Route
           path="/register"
           render={props => <SigningForm {...props} />}
         />
