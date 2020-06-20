@@ -59,13 +59,15 @@ const App = () => {
     }
   ]);
 
+  localStorage.setItem("token","jdj");
   return (
     <React.Fragment>
       {console.log(window.location.href)}
       {/* { window.location.href !=="http://localhost:3000/login"  && */}
-      <Navbar 
+      {localStorage.getItem("token") !==null ? <Navbar 
         type = {type}
-      />
+      /> : null}
+      
       {/* //  } */}
       <Switch>
         <Route
