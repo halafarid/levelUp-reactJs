@@ -36,7 +36,11 @@ export function removeCourse(id) {
     return axios.delete(`${apiUrl}/courses/${id}`);
 }
 
+export function getReviews(cid) {
+    return axios.get(`${apiUrl}/courses/${cid}/reviews`);
+}
+
 // Add a review on course.. passing courseID as parameter
 export function addReview(cid) {
-    return axios.delete(`${apiUrl}/courses/${cid}/reviews`);
+    return axios.post(`${apiUrl}/courses/${cid}/reviews`);
 }
