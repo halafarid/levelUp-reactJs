@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React , {useState,useEffect} from 'react';
 import { Link } from 'react-router-dom';
 
 import { Card, Container,Nav,Button,Form } from 'react-bootstrap';
@@ -7,8 +7,12 @@ import { AiFillTwitterCircle, AiFillInstagram,AiFillStar,AiOutlineStar,AiFillEdi
 
 import CourseCard from './cards/courseCard';
 import PageNoResult from './core/pageNoResult';
+import * as userService from '../services/userService';
+
+
 
 const Profile = props => {
+    const [profile,setProfile]=useState([])
     const { type, match } = props;
     const path = match.path;
     const courses = [1, 2, 3];
@@ -21,10 +25,20 @@ const Profile = props => {
         setIsEdit(false);
         props.history.push('/profile')
     }
+    
+  useEffect(()=>{
 
-    // useEffect(() => {
-    //     window.scrollTo(0, 0)
-    // });
+    async function fetchProfile(){
+      const {data} = await userService.getProfile();
+      console.log(data);
+      setProfile(data);
+     }
+     fetchProfile();
+
+  },[])
+
+  console.log(profile);
+  
     return (
         <React.Fragment>
            
@@ -143,13 +157,14 @@ const Profile = props => {
                                         <React.Fragment>
                                             <div className="courseCardsContainer courseCardsContainer--ml">
                                                 <div className="courseCardsContainer__sub">
-                                                    {courses.map( course => (
+                                                    {profile.ownCourses?.map( course => (
                                                         <div className="CourseCard CourseCard--width" key={course}>
                                                             <CourseCard 
                                                                 {...props}
                                                                 type = {type}
                                                                 path = {props.match.path}
                                                                 tab = {tab}
+                                                                course={course}
                                                             />
                                                         </div>
                                                     ))}
@@ -185,13 +200,14 @@ const Profile = props => {
                                         <React.Fragment>
                                             <div className="courseCardsContainer courseCardsContainer--ml">
                                                 <div className="courseCardsContainer__sub">
-                                                    {courses.map( course => (
+                                                    {profile.ownCourses?.map( course => (
                                                         <div className="CourseCard CourseCard--width" key={course}>
                                                             <CourseCard 
                                                                 {...props}
                                                                 type = {type}
                                                                 path = {props.match.path}
                                                                 tab = {tab}
+                                                                course={course}
                                                             />
                                                         </div>
                                                     ))}

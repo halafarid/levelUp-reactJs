@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import BackGround from "./backGround";
 import InstructorCard from "../cards/instructorCard";
 
@@ -8,18 +8,44 @@ import About from "../core/about";
 import { Link } from "react-router-dom";
 import { Container, Carousel } from 'react-bootstrap';
 import axios from "axios";
+import * as courseService from '../../services/courseService';
+import * as userService from '../../services/userService';
 
 import { BsFillPlusCircleFill } from 'react-icons/bs';
 
 const Home = props => {
     const { type, match } = props;
+    const [freeCourses,setFreeCourses]=useState([]);
+    const [paidCourses,setPaidCourses]=useState([]);
+    const [profile,setProfile]=useState([])
+
     const courses = [1, 2, 3];
+    const courseType="free";
     const path = match.path;
-    const getById =async()=>{ await axios.get(
-        "http://localhost:3000/users/profile/5eee4cc16286dc0f8834007d"
-      ).then((data)=>{console.log(data)})
-    }
-      getById()
+
+      useEffect(()=>{
+
+        async function fetchFreeCourses(){
+         const {data} = await courseService.getFreeCourses()
+         setFreeCourses(data);
+        }
+         async function fetchPaidCourses(){
+             const{data}=await courseService.getPaidCourses()
+             setPaidCourses(data) 
+        }
+        async function fetchProfile(){
+            const {data} = await userService.getProfile();
+            console.log(data);
+            setProfile(data);
+           }
+
+        fetchFreeCourses();
+        fetchPaidCourses();
+        // fetchProfile();
+     
+      },[])
+
+    console.log(profile);
     return (
         <React.Fragment>
             <BackGround />
@@ -43,8 +69,8 @@ const Home = props => {
                                     Instructor={props.Instructor[0]}
                                 />
                             </div>
-
                         </Carousel.Item>
+
                         <Carousel.Item>
                             <div className="InstCard">
                                 <InstructorCard
@@ -59,6 +85,7 @@ const Home = props => {
                             </div>
                         </Carousel.Item>
                     </Carousel>
+
                 </div>
             </Container>
             <div className="FixedSection">
@@ -85,27 +112,32 @@ const Home = props => {
                         <div className="courseCardsContainer__sub">
                           
                             <Carousel interval={null}>
-                                <Carousel.Item className="carousel-new-item">
-                                    {courses.map( course => (
+                                 <Carousel.Item className="carousel-new-item">
+                                    {freeCourses.map( course => (
                                         <div className="CourseCard" key={course}>
                                             <CourseCard
                                                 {...props}
                                                 path={path}
+                                                courseType={courseType}
+                                                 course={course}
+                                               
                                             />
                                         </div>
                                     ))}
 
-                                </Carousel.Item>
-                                <Carousel.Item  className="carousel-new-item">
-                                    {courses.map( course => (
+                                </Carousel.Item> 
+                                 <Carousel.Item  className="carousel-new-item">
+                                    {freeCourses.map( course => (
                                         <div className="CourseCard" key={course}>
                                             <CourseCard
                                                 {...props}
                                                 path={path}
+                                                courseType={courseType}
+                                                course={course}
                                             />
                                         </div>
                                     ))}
-                                </Carousel.Item>
+                                </Carousel.Item> 
                             </Carousel>
                         </div>
                     </div>
@@ -116,59 +148,65 @@ const Home = props => {
                     <div className="courseCardsContainer">
                         <div className="courseCardsContainer__sub courseCardsContainer__sub">
                             <Carousel interval={null}>
-                                <Carousel.Item className="carousel-new-item">
-                                    {courses.map( course => (
+                                 <Carousel.Item className="carousel-new-item"> 
+                                     {paidCourses.map( course => (
                                         <div className="CourseCard" key={course}>
                                             <CourseCard
                                                 {...props}
                                                 path={path}
+                                                course={course}
+                                                
                                             />
                                         </div>
-                                    ))}
+                                    ))} 
 
-                                </Carousel.Item>
-                                <Carousel.Item className="carousel-new-item">
-                                  {courses.map( course => (
+                                 </Carousel.Item>
+                                 <Carousel.Item className="carousel-new-item">
+                                  {paidCourses.map( course => (
                                         <div className="CourseCard" key={course}>
                                             <CourseCard
                                                 {...props}
                                                 path={path}
+                                                course={course}
+                                            
                                             />
                                         </div>
-                                    ))}
-                                </Carousel.Item>
+                                    ))} 
+                                 </Carousel.Item>
                             </Carousel>
                         </div>
                     </div>
-                    <div className=" instructor ">
+                    {/* <div className=" instructor ">
                         <h2 className="instructor__Inst-title">Courses Related To Following</h2>
                     </div>
                     <div className="courseCardsContainer">
                         <div className="courseCardsContainer__sub">
-                            <Carousel interval={null}>
-                                <Carousel.Item className="carousel-new-item">
+                            <Carousel interval={null}> */}
+                                {/* <Carousel.Item className="carousel-new-item">
                                     {courses.map( course => (
                                         <div className="CourseCard" key={course}>
                                             <CourseCard
                                                 {...props}
                                                 path={path}
+                                                
                                             />
                                         </div>
-                                    ))}
-                                </Carousel.Item>
-                                <Carousel.Item className="carousel-new-item">
+                                    ))} */}
+                                {/* </Carousel.Item> */}
+                                {/* <Carousel.Item className="carousel-new-item">
                                     {courses.map( course => (
                                         <div className="CourseCard" key={course}>
                                             <CourseCard
                                                 {...props}
                                                 path={path}
+                                              
                                             />
                                         </div>
                                     ))}
-                                </Carousel.Item>
-                            </Carousel>
-                        </div>
-                    </div>
+                                </Carousel.Item> */}
+                            {/* </Carousel> */}
+                        {/* </div> */}
+                    {/* </div> */}
                 </div>
             </div>
             {type === 'instructor' && 
