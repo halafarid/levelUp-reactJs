@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
 import Badge from "react-bootstrap/Badge";
 import { FiLogOut } from "react-icons/fi";
+import {BsFillHeartFill} from "react-icons/bs";
 import Search from '../features/search'
 
 const Navbar = props => {
@@ -83,10 +84,7 @@ const Navbar = props => {
             </form>
             <div className="shopping-cart">
               <Link to="/shoppingcart" className="shopping-cart-link">
-                <FiShoppingCart className="shopping-cart-icon"/>
-                <Badge className="shopping-cart-badge" pill variant="danger">
-                  0
-                </Badge>
+                <BsFillHeartFill className="wishlist-icon"/>
               </Link>
             </div>
             <Link to="/login" className="logout" >

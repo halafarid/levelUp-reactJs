@@ -3,7 +3,7 @@ import ShoppingListItem from '../cards/shoppingListItem';
 import PaymentCard from '../cards/paymentCard';
 
 const Payment = (props) => {
-    const items=[1,2,3,4,5,6,7,8,9];
+    const items=[1];
  
     return ( 
         <React.Fragment>
