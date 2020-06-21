@@ -60,7 +60,6 @@ const App = () => {
     }
   ]);
   axios.interceptors.request.use(function (config) {
-      console.log("dkal")
   const jwt = localStorage.getItem("JWT");
     config.headers.Authorization =  jwt;
 

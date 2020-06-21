@@ -9,8 +9,8 @@ const SearchedCard = (props) => {
             <img className="search-img" src={require("../../images/instructor/photo.jpg")} alt="" />
           </div>
           <div className="col">
-            <h6 className="search-name">{props.instructor.fullName}</h6>
-            <p className="search-job">{props.instructor.job}</p>
+            <h6 className="search-name">{props.data[props.searchBy]}</h6>
+            {props.searchBy==="fullName"&&<p className="search-job">{props.data.job.title}</p>}
           </div>
         </div>
       </div>
