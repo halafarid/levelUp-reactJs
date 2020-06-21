@@ -7,13 +7,13 @@ export function getAllCourses() {
 }
 
 // Get All Free Courses
-export function getFreeCourses() {
-    return axios.get(`${apiUrl}/courses/free`);
+export function getFreeCourses(no, size) {
+    return axios.get(`${apiUrl}/courses/free?pageNo=${no}&size=${size}`);
 }
 
 // Get All Paid Courses
-export function getPaidCourses() {
-    return axios.get(`${apiUrl}/courses/paid`);
+export function getPaidCourses(no, size) {
+    return axios.get(`${apiUrl}/courses/paid?pageNo=${no}&size=${size}`);
 }
 
 // Get Course By ID

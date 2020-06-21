@@ -6,9 +6,24 @@ export function getAllUsers() {
     return axios.get(`${apiUrl}/users`);
 };
 
-// Get current user with his own courses and enrolled courses
+// Get All Instructors
+export function getAllInstructors(no, size) {
+    return axios.get(`${apiUrl}/users/instructors?pageNo=${no}&size=${size}`);
+};
+
+// Get current user with his own data (without courses)
 export function getProfile() {
     return axios.get(`${apiUrl}/users/profile`);
+}
+
+// Get Free Courses of current user (tab 1 in profile)
+export function getProfileFreeCourses(no, size) {
+    return axios.get(`${apiUrl}/users/profile/free?pageNo=${no}&size=${size}`);
+}
+
+// Get Paid Courses of current user (tab 2 in profile)
+export function getProfilePaidCourses(no, size) {
+    return axios.get(`${apiUrl}/users/profile/paid?pageNo=${no}&size=${size}`);
 }
 
 // Get another user with his own courses
