@@ -42,7 +42,9 @@ const Profile = props => {
                         <Card.Body>
                             <Card.Title className="card__card-title">Namrata Parmar</Card.Title>
                             {isEdit ?
-                                    <Form.Control className="course__control course__control--text" type="text" placeholder="Job Title" />
+                            <div>
+                                    <input className="course__control course__control--text" value="Front-End Developer"/>
+                                     </div>
                             : 
                             <Card.Text className="card__card-text">Photographer, Travel Bloger</Card.Text>
                             }
@@ -62,9 +64,9 @@ const Profile = props => {
                             <div>
                                 {isEdit ?
                                  <div className="edit"> 
-                                    <Form.Control className="course__control course__control--text" type="text" placeholder="Name" />
-                                    <Form.Control className="course__control course__control--text" type="text" placeholder="Email" />
-                                    <Form.Control className="course__control course__control--text" type="text" placeholder="Password" />
+                                    <input className="course__control course__control--text" type="text" placeholder="Name" value="Sara Tarek"/>
+                                    <input className="course__control course__control--text" type="text" placeholder="Email" value="sara123@gmail.com"/>
+                                    <input className="course__control course__control--text" type="password" placeholder="Password" value="12344556677" />
                                   </div>
                                     :
                                     <h1>Namrata Parmar</h1>
@@ -102,7 +104,8 @@ const Profile = props => {
 
                         {isEdit ?         
                             <React.Fragment>
-                                <Form.Control className="course__control course__control--text" as="textarea" rows="8" placeholder="Job Description"/>
+                                <textarea className="course__control course__control--text"  rows="8" placeholder="Job Description" value="Sara are responsible for implementing visual elements that users see and interact within a web application. In general, they are supported by back-end web developers, who are responsible for server-side 
+                                application logic and integration of the work front-end developers do."></textarea>
                                 <Button className="btn btn--primary-dark btn--pd btn--mt0 btn--mr0" onClick={handleBtn}>Save</Button>
                                 <Button className="btn btn--danger btn--pd btn--mt0 btn--mr0" onClick={handleBtn}>Cancel</Button>
                             </React.Fragment>

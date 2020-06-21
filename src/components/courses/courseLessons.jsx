@@ -15,17 +15,41 @@ const CourseLessons = () => {
     <Col  sm={3} >
       <Nav variant="pills" className="flex-column" id="shadow">
         <Nav.Item >
-          <Nav.Link className="activeColor" eventKey="key_1">lesson 1 <div className="float"><FiCheckCircle/></div> </Nav.Link>
+          <Nav.Link className="activeColor" eventKey="key_1">JavaScript History  <div className="float"><FiCheckCircle/></div> </Nav.Link>
          
         </Nav.Item>
         <Nav.Item >
-          <Nav.Link className="activeColor" eventKey="key_2">lesson 2</Nav.Link>
+          <Nav.Link className="activeColor" eventKey="key_2">JavaScript Syntax</Nav.Link>
         </Nav.Item>
         <Nav.Item >
-          <Nav.Link className="activeColor" eventKey="key_3">lesson 3</Nav.Link>
+          <Nav.Link className="activeColor" eventKey="key_3">JavaScript Commnets</Nav.Link>
         </Nav.Item>
         <Nav.Item >
-          <Nav.Link className="activeColor" eventKey="key_4">lesson 4</Nav.Link>
+          <Nav.Link className="activeColor" eventKey="key_4">Variables</Nav.Link>
+        </Nav.Item>
+        <Nav.Item >
+          <Nav.Link className="activeColor" eventKey="key_4">Data Type</Nav.Link>
+        </Nav.Item>
+        <Nav.Item >
+          <Nav.Link className="activeColor" eventKey="key_4">Concatenation</Nav.Link>
+        </Nav.Item>
+        <Nav.Item >
+          <Nav.Link className="activeColor" eventKey="key_4">Output</Nav.Link>
+        </Nav.Item>
+        <Nav.Item >
+          <Nav.Link className="activeColor" eventKey="key_4">JavaScript Operators</Nav.Link>
+        </Nav.Item>
+        <Nav.Item >
+          <Nav.Link className="activeColor" eventKey="key_4">Function-Basic</Nav.Link>
+        </Nav.Item>
+        <Nav.Item >
+          <Nav.Link className="activeColor" eventKey="key_4">Arrays</Nav.Link>
+        </Nav.Item>
+        <Nav.Item >
+          <Nav.Link className="activeColor" eventKey="key_4">Loop-Practice</Nav.Link>
+        </Nav.Item>
+        <Nav.Item >
+          <Nav.Link className="activeColor" eventKey="key_4">Regular Expression</Nav.Link>
         </Nav.Item>
       </Nav>
     </Col>

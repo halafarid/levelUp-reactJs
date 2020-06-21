@@ -17,7 +17,7 @@ const CourseData = () => {
                     <Row>
                         <Col sm={9}>
                             <div className="course__intro">
-                                <Form.Control className="course__control course__control--text" type="text" placeholder="Course Title" />
+                                <input className="course__control course__control--text" type="text" placeholder="Course Title" />
                                 
                                 <div className="course__data course__add">
 
@@ -60,13 +60,13 @@ const CourseData = () => {
                                             </div>
                                             <Form.File id="exampleFormControlFile1" label="Upload course image" />
                                         </div>
-                                        <Form.Control className="course__control course__control--text" as="textarea" rows="8" placeholder="Course Description"/>
+                                        <textarea className="course__control course__control--text"  rows="8" placeholder="Course Description"></textarea>
                                     </Form.Group>
                                 </div>
 
                                 <div className="course__details-inf">
                                     <h2 className="course__details-title">Main Features</h2>
-                                    <Form.Control className="course__control course__control--text course__control--text--w" type="text" placeholder="Enter Feature" />
+                                    <input className="course__control course__control--text course__control--text--w" type="text" placeholder="Enter Feature" />
                                     <span className="course__add-icon">
                                         <BsFillPlusCircleFill />
                                     </span>
@@ -82,10 +82,10 @@ const CourseData = () => {
                                     <h2 className="course__details-title course__add-title">Course Material</h2>
                                     <Row>
                                         <Col>
-                                            <Form.Control className="course__control course__control--text" type="text" placeholder="Lesson Link" />
+                                            <input className="course__control course__control--text" type="text" placeholder="Lesson Link" />
                                         </Col>
                                         <Col>
-                                            <Form.Control className="course__control course__control--text" type="text" placeholder="Lesson Title" />
+                                            <input className="course__control course__control--text" type="text" placeholder="Lesson Title" />
                                         </Col>
                                         <span className="course__add-icon">
                                             <BsFillPlusCircleFill />
@@ -122,11 +122,6 @@ const CourseData = () => {
                                     <li className="course__features-item">
                                         Duration: <input className="course__num course__control" type="number"/>
                                         <span className="course__features-icon"><MdAccessAlarms /></span>
-                                    </li>
-                                    
-                                    <li className="course__features-item">
-                                        Videos: <input className="course__num course__control" type="number"/>
-                                        <span className="course__features-icon"><AiOutlineVideoCamera /></span>
                                     </li>
                                     
                                     <li className="course__features-item">
