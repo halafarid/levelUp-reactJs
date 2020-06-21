@@ -12,11 +12,10 @@ import {
 import { useState } from "react";
 
 const CourseCard = props => {
-  const { type, tab, path, history } = props;
-
+  const { type, tab, path, history,courseType,course} = props;
   const stars = [1, 2, 3, 4];
   const [progressPercent, setProgressPercent] = useState(30);
-
+   console.log(courseType);
   return (
     <React.Fragment>
         <div className="CourseCard__container" onClick={() => history.push('/courses/1/details')}>
@@ -29,14 +28,13 @@ const CourseCard = props => {
           </div>
           <div className="CourseCard--box">
             <p className="CourseCard__text CourseCard__text--font ">
-              Learning How To Learn: Powerful mental tools to help you master
-              ...
+              {course.title}
             </p>
           </div>
          
           <div className="CourseCard__items-container">
             <span className="CourseCard__text CourseCard__text--space CourseCard__text--font">
-              Expert
+              {course.levelId.title}
             </span>
             <div className="CourseCard__icon-container">
               <AiOutlineTeam className="CourseCard__icon" />
@@ -48,9 +46,10 @@ const CourseCard = props => {
 
           <div className="CourseCard__items-container">
             <span className="CourseCard__text CourseCard__text--space CourseCard__text--font">
-              Duration : 2H{" "}
+              Duration : {course.duration}H
             </span>
-            <span className="CourseCard__text CourseCard__text--space CourseCard__text--font">$149.99</span>
+            { courseType !=="free" &&
+            <span className="CourseCard__text CourseCard__text--space CourseCard__text--font">${course.payment}</span>}
           </div>
             <div className="CourseCard__items-container">
                 <div className="CourseCard__stars-container">
@@ -76,16 +75,18 @@ const CourseCard = props => {
                             <AiFillEdit className="crud__edit"/>
                             <AiFillDelete className="crud__delete"/>
                         </div>
-                    : path !== '/profile' ?
+                    : (courseType!=="free" && path !== '/profile') ?
                         <span className=" CourseCard__btn CourseCard__text--font" onClick={e => e.stopPropagation()}>Add to cart</span>
-                    :
+                    : tab===3?
                         <Link
                             className=" CourseCard__btn CourseCard__text--font"
                             to="/courses/lessons"
                             onClick={e => e.stopPropagation()}
-                        >
+                        >  
                             {progressPercent === 0 ? 'Start Course' : 'Continue'}
                         </Link>
+                        : 
+                       null
                 }
             </div>
         </div>

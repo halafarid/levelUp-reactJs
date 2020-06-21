@@ -7,8 +7,8 @@ export function getAllCourses() {
 }
 
 // Get All Free Courses
-export function getFreeCourses() {
-    return axios.get(`${apiUrl}/courses/free`);
+export async function getFreeCourses () {
+    return await axios.get(`${apiUrl}/courses/free`);
 }
 
 // Get All Paid Courses
