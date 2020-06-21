@@ -10,9 +10,9 @@ import PageNoResult from './core/pageNoResult';
 import * as userService from '../services/userService';
 
 
-
 const Profile = props => {
-    const [profile,setProfile]=useState([])
+    const [profile,setProfile]=useState([]);
+    const [freeCourses,setFreeCourses]=useState([]);
     const { type, match } = props;
     const path = match.path;
     const courses = [1, 2, 3];
@@ -20,6 +20,8 @@ const Profile = props => {
     const [isEdit, setIsEdit] = useState(path === '/profile/edit');
     const [isFollowing, setIsFollowing] = useState(false);
     const [tab, setTap] = useState(1);
+    let pageNo = 1;
+    const size = 3;
 
     const handleBtn = () => {
         setIsEdit(false);
@@ -33,8 +35,13 @@ const Profile = props => {
       console.log(data);
       setProfile(data);
      }
+     async function fetchFreeCourses(){
+        const {data} = await userService.getProfileFreeCourses(pageNo, size);
+        console.log(data);
+        setFreeCourses(data);
+    }
      fetchProfile();
-
+     fetchFreeCourses();
   },[])
 
   console.log(profile);
@@ -153,12 +160,12 @@ const Profile = props => {
                                 
                             {
                                 tab === 1 ?
-                                    courses.length > 0 ?
+                                    freeCourses.length > 0 ?
                                         <React.Fragment>
                                             <div className="courseCardsContainer courseCardsContainer--ml">
                                                 <div className="courseCardsContainer__sub">
-                                                    {profile.ownCourses?.map( course => (
-                                                        <div className="CourseCard CourseCard--width" key={course}>
+                                                    {freeCourses?.map( course => (
+                                                        <div className="CourseCard CourseCard--width" key={course._id}>
                                                             <CourseCard 
                                                                 {...props}
                                                                 type = {type}
@@ -196,12 +203,12 @@ const Profile = props => {
                                     // :
                                     <PageNoResult />
                                 :
-                                    courses.length > 0 ?
+                                    freeCourses.length > 0 ?
                                         <React.Fragment>
                                             <div className="courseCardsContainer courseCardsContainer--ml">
                                                 <div className="courseCardsContainer__sub">
-                                                    {profile.ownCourses?.map( course => (
-                                                        <div className="CourseCard CourseCard--width" key={course}>
+                                                    {freeCourses?.map( course => (
+                                                        <div className="CourseCard CourseCard--width" key={course._id}>
                                                             <CourseCard 
                                                                 {...props}
                                                                 type = {type}

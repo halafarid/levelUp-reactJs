@@ -114,7 +114,7 @@ const Home = props => {
                             <Carousel interval={null}>
                                  <Carousel.Item className="carousel-new-item">
                                     {freeCourses.map( course => (
-                                        <div className="CourseCard" key={course}>
+                                        <div className="CourseCard" key={course._id}>
                                             <CourseCard
                                                 {...props}
                                                 path={path}
@@ -128,7 +128,7 @@ const Home = props => {
                                 </Carousel.Item> 
                                  <Carousel.Item  className="carousel-new-item">
                                     {freeCourses.map( course => (
-                                        <div className="CourseCard" key={course}>
+                                        <div className="CourseCard" key={course._id}>
                                             <CourseCard
                                                 {...props}
                                                 path={path}
@@ -150,7 +150,7 @@ const Home = props => {
                             <Carousel interval={null}>
                                  <Carousel.Item className="carousel-new-item"> 
                                      {paidCourses.map( course => (
-                                        <div className="CourseCard" key={course}>
+                                        <div className="CourseCard" key={course._id}>
                                             <CourseCard
                                                 {...props}
                                                 path={path}
@@ -163,7 +163,7 @@ const Home = props => {
                                  </Carousel.Item>
                                  <Carousel.Item className="carousel-new-item">
                                   {paidCourses.map( course => (
-                                        <div className="CourseCard" key={course}>
+                                        <div className="CourseCard" key={course._id}>
                                             <CourseCard
                                                 {...props}
                                                 path={path}
