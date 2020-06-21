@@ -54,13 +54,16 @@ const Profile = props => {
                             </div>
                         }
                         <Card.Body>
-                            <Card.Title className="card__card-title">Namrata Parmar</Card.Title>
+                            <Card.Title className="card__card-title">{profile.fullName}</Card.Title>
                             {isEdit ?
                             <div>
                                     <input className="course__control course__control--text" value="Front-End Developer"/>
                                      </div>
-                            : 
-                            <Card.Text className="card__card-text">Photographer, Travel Bloger</Card.Text>
+                            : profile.job?.title ?
+                            <Card.Text className="card__card-text">{profile.job.title}</Card.Text>
+                            :
+                            <Card.Text className="card__card-text">You don't have job title </Card.Text>
+
                             }
                             { !(type === 'user' && path === '/profile') &&
                                 <div className="stars">
@@ -83,7 +86,7 @@ const Profile = props => {
                                     <input className="course__control course__control--text" type="password" placeholder="Password" value="12344556677" />
                                   </div>
                                     :
-                                    <h1>Namrata Parmar</h1>
+                                    <h1>{profile.fullName}</h1>
                                 }
 
                                 { (path ==="/profile/:id" && !isEdit) &&
@@ -123,13 +126,15 @@ const Profile = props => {
                                 <Button className="btn btn--primary-dark btn--pd btn--mt0 btn--mr0" onClick={handleBtn}>Save</Button>
                                 <Button className="btn btn--danger btn--pd btn--mt0 btn--mr0" onClick={handleBtn}>Cancel</Button>
                             </React.Fragment>
+                            : profile.job?.description?
+                            <div>
+                            <h2 className="profile__header">Bio </h2>
+                            <p className="about__prg">{profile.job.description}</p>
+                            </div>
                             :
-                            <div>  
-                                <h2 className="profile__header">Bio</h2>
-                                <p className="about__prg">John studied Software Development at UC Berkeley and has more than 15 years
-                                    of experience in software quality assurance. He's been building software and tooling,
-                                    managing software engineer team many years. When he's not reading about the latest
-                                    trends in computing he spends his time with his wife, snowboarding, or running..</p>
+                            <div>
+                             <h2 className="profile__header">Bio </h2>
+                             <p className="about__prg--center">You don't have job decription</p>
                             </div>
                         }
                         <hr className="line" />
