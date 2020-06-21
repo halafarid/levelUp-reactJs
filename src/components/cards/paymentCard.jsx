@@ -23,11 +23,6 @@ const PaymentCard = (props) => {
                     <p className="PaymentCard__text-m">Pay 391.00 EGP ( Save 69.00 EGP ) By using Commercial International Bank - CIB</p>
                 </div>
                 <hr className="PaymentCard__hr"></hr>
-
-                <Link  to="/paymentform">
-                <Button className="PaymentCard__btn">PROCEED TO CHECKOUT </Button>
-                </Link>
-                {/* </div> */}
                          
             </div>
             </div>
