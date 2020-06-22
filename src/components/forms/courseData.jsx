@@ -46,14 +46,8 @@ const CourseData = (props) => {
     useEffect(() => {
         const path = props.match.path;
         if (path === "/courses/:id/edit") {
-<<<<<<< HEAD
-          
-            const courseId = "5ef0208bfd59b331c41ac6f1";
-=======
-            // const courseId = props.match.params.id;
-            //    console.log(courseId)
+         
             const courseId = "5ef0a3f29fd19d2df401e8ce";
->>>>>>> 5eadd09232195d7c871aafbe8b1aef9a7f293a04
             Promise.all([getAllCategories(), getAllLevels(), getCourseById(courseId)]).then(function (values) {
                 setState({ ...state, categories: values[0].data, levels: values[1].data, course: values[2].data })
             })

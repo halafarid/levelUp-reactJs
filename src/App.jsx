@@ -21,17 +21,12 @@ import PaymentForm from "./components/forms/paymentForm";
 import SigningForm from "./components/authentication/signingForm";
 
 const App = () => {
-<<<<<<< HEAD
     
   // const type = 'user';
-  const type = 'instructor';
+  // const type = 'instructor';
  
  
   const [Instructor] = useState([
-=======
-
-  const [Instructor, setInstructor] = useState([
->>>>>>> 5eadd09232195d7c871aafbe8b1aef9a7f293a04
     {
       id: "1",
       imgUrl: "",
@@ -79,7 +74,7 @@ const App = () => {
   return (
     <React.Fragment>
       {/* {localStorage.getItem("JWT") !== null ?  */}
-        <Navbar type={type} />
+        {/* <Navbar type={type} /> */}
       {/* // :
       //  null
       // } */}
