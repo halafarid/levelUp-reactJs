@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Joi from "joi-browser";
-import axios from "axios";
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -186,7 +185,6 @@ const SigningForm = (props) => {
                 />
 
                 <span className="focus-input100"></span>
-                {/* <MdError style={{ color: "red" }} /> */}
               </div>
 
               <div

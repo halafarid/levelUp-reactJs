@@ -34,21 +34,19 @@ const Profile = props => {
     const [paidCourses,setPaidCourses]=useState([]);
     const { type, match } = props;
     const path = match.path;
-    const courses = [1, 2, 3];
     const courseType="free";
     const [follow,setFollow]=useState([])
     const [isEdit, setIsEdit] = useState(path === '/profile/edit');
     let [isFollowing, setIsFollowing] = useState(profile.following?.includes(userId));
     const [tab, setTap] = useState(1);
     let pageNo = 1;
+    let pageno=1
     const size = 3;
-    console.log(profile)
-    // console.log(follow.includes(userId));
+   
   useEffect(()=>{
    
-    Promise.all([userService.getProfile(),userService.getProfileFreeCourses(pageNo,size),userService.getProfilePaidCourses(pageNo,size)
+    Promise.all([userService.getProfile(),userService.getProfileFreeCourses(pageNo,size),userService.getProfilePaidCourses(pageno,size)
         ,userService.getProfile(),]).then((data)=>{
-            console.log(data);
             setProfile(data[0].data);
             setFreeCourses(data[1].data);
             setPaidCourses(data[2].data);
@@ -62,25 +60,21 @@ const handleFollow=()=>{
     isFollowing=!isFollowing
     setIsFollowing(isFollowing);
     userService.handleFollows(userId).then(({data})=>{
-        console.log(data);
         setFollow(data);
        
     })
   
 
 }
- console.log(follow);
 
   const handleChange = ({ target }) => {
     const editUser = {...currentUser};
-    console.log("before",currentUser)
 
     if (target.name === 'title' || target.name === 'description') {
         editUser.job[target.name] = target.value;
     } else {
         editUser[target.name] = target.value;
     }
-    console.log("after",editUser);
     setCurrentUser(editUser);
     
 };
@@ -247,7 +241,7 @@ const handleCancel=async e=>{
                                     :
                                     <PageNoResult />
                                 : tab === 2 ?
-                                    paidCourses.length > 0 ?
+                                     paidCourses.length > 0 ?
                                         <React.Fragment>
                                             <div className="courseCardsContainer courseCardsContainer--ml">
                                                 <div className="courseCardsContainer__sub">

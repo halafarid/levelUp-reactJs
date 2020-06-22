@@ -1,7 +1,5 @@
-import React, { useState,useEffect} from "react";
+import React, { useState} from "react";
 import { Link } from "react-router-dom";
-import { FiShoppingCart } from "react-icons/fi";
-import Badge from "react-bootstrap/Badge";
 import { FiLogOut } from "react-icons/fi";
 import {BsFillHeartFill} from "react-icons/bs";
 import Search from '../features/search'
@@ -92,7 +90,6 @@ const Navbar = props => {
                 onChange={handleChange}
               />
               
-              {/* <button className="btn btn-warning my-2 my-sm-0" type="submit">Search</button> */}
             </form>
             <div className="shopping-cart">
               <Link to="/shoppingcart" className="shopping-cart-link">
