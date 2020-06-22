@@ -27,8 +27,9 @@ const Profile = props => {
         job:{title:"", description:""}
      })
 
+     const userId="5ef0a1dd9fd19d2df401e8cd"
 
-    const [profile,setProfile]=useState([]);
+    const [profile,setProfile]=useState({});
     const [freeCourses,setFreeCourses]=useState([]);
     const [paidCourses,setPaidCourses]=useState([]);
     const { type, match } = props;
@@ -37,49 +38,16 @@ const Profile = props => {
     const courseType="free";
     const [follow,setFollow]=useState([])
     const [isEdit, setIsEdit] = useState(path === '/profile/edit');
-    const [isFollowing, setIsFollowing] = useState(false);
+    let [isFollowing, setIsFollowing] = useState(profile.following?.includes(userId));
     const [tab, setTap] = useState(1);
     let pageNo = 1;
     const size = 3;
-
-  
-    
+    console.log(profile)
+    // console.log(follow.includes(userId));
   useEffect(()=>{
    
-    //   async function fetchFollow(){
-    //       isFollowing=!isFollowing
-    //       setIsFollowing(isFollowing);
-    //   const userId="5ef0a1dd9fd19d2df401e8cd"
-    //   const {data} = await userService.handleFollows(userId);
-    //   console.log(data);
-    //   setFollow(data);
-    //  }
-    //   fetchFollow();
-      
-    // async function fetchProfile(){
-    //   const {data} = await userService.getProfile();
-    //   setProfile(data);
-    //  }
-    //  async function fetchFreeCourses(){
-    //     const {data} = await userService.getProfileFreeCourses(pageNo,size);
-    //     setFreeCourses(data);
-    // }
-    // async function fetchPaidCourses(){
-    //     const {data} = await userService.getProfilePaidCourses(pageNo,size)
-    //     setPaidCourses(data);
-    // }
-    
-    // async function handleEdit(){
-    //     const {data}= await userService.getProfile();
-    //     setCurrentUser(data)
-    // }
-    // if(isEdit){
-    //     console.log("hii");
-    //     handleEdit();
-    // }
-   
     Promise.all([userService.getProfile(),userService.getProfileFreeCourses(pageNo,size),userService.getProfilePaidCourses(pageNo,size)
-        ,userService.getProfile()]).then((data)=>{
+        ,userService.getProfile(),]).then((data)=>{
             console.log(data);
             setProfile(data[0].data);
             setFreeCourses(data[1].data);
@@ -87,11 +55,21 @@ const Profile = props => {
             setCurrentUser(data[3].data);
             setOldUser(data[3].data)
         })
-    //  fetchProfile();
-    //  fetchFreeCourses();
-    //  fetchPaidCourses();
+    
   },[])
 
+const handleFollow=()=>{
+    isFollowing=!isFollowing
+    setIsFollowing(isFollowing);
+    userService.handleFollows(userId).then(({data})=>{
+        console.log(data);
+        setFollow(data);
+       
+    })
+  
+
+}
+ console.log(follow);
 
   const handleChange = ({ target }) => {
     const editUser = {...currentUser};
@@ -189,7 +167,7 @@ const handleCancel=async e=>{
                             </div>
                             <div>
                                 { (path ==="/profile/:id" && !isEdit)&& 
-                                    <Button className={`btn btn--full btn--pd ${isFollowing? 'btn--success' : 'btn--secondary'}`} onClick="">{isFollowing ? 'Following' : 'Follow'}</Button>
+                                    <Button className={`btn btn--full btn--pd ${isFollowing? 'btn--success' : 'btn--secondary'}`} onClick={handleFollow}>{isFollowing ? 'Following' : 'Follow'}</Button>
                                 }
                             </div>
                             <div >
