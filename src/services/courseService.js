@@ -47,7 +47,7 @@ export function addReview(cid) {
 
 // Get all Materials({title, link}) in a course
 export function getMaterials(cid) {
-    return axios.get(`${apiUrl}courses/${cid}/materials`);
+    return axios.get(`${apiUrl}/courses/${cid}/materials`);
 }
 
 // Edit the progress on the course when user start watching

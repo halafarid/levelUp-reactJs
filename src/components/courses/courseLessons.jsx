@@ -3,19 +3,25 @@ import { Tab, Col, Row, Nav, Container, Button } from 'react-bootstrap'
 import { IoMdArrowDropright } from "react-icons/io";
 import { FiCheckCircle } from "react-icons/fi";
 import { useState, useEffect } from 'react';
-import { getCourseById } from '../../services/courseService'
+import { getCourseById, updateCourse } from '../../services/courseService'
 
 
 const CourseLessons = () => {
   const [materials, setMaterials] = useState([])
   const [activeMaterial, setActiveMaterial] = useState(1)
   let [count, setCount] = useState(0)
+  const [course, setCourse] = useState({})
+
 
   useEffect(() => {
-    const courseId = "5ef0a3f29fd19d2df401e8ce";
+    const courseId = "5ef130d49df30152541e8af5";
     getCourseById(courseId).then(({ data }) => {
+      setCourse(data)
+      console.log(data)
       embedVideo(data.materials)
+      data.materials[0].isOpen = true
       setActiveMaterial(data.materials[0]._id)
+
     }).catch((err) => {
       console.log(err)
     })
@@ -24,32 +30,54 @@ const CourseLessons = () => {
   }, [])
   const embedVideo = (materials) => {
     const embedMaterials = materials.map(m => {
-      const embedLink=`https://www.youtube.com/embed/${m.link.split('v=')[1].split('&')[0]}`
-      m.link = embedLink
+      if (!m.link.includes('embed')) {
+
+        const embedLink = `https://www.youtube.com/embed/${m.link.split('v=')[1].split('&')[0]}`
+        m.link = embedLink
+      }
       return m
     });
     setMaterials(embedMaterials)
   }
-  const handleNext=()=>{
-    if(count+1<materials.length &&count+1>0){
+  const handleNext = () => {
+    if (count + 1 < materials.length && count + 1 > 0) {
       count++;
       setCount(count)
-      const active=materials[count]._id
+      const active = materials[count]._id
       setActiveMaterial(active)
     }
   }
-  const handleEventClick=(e)=>{
-    const key=e.target.attributes[2].value;
-    const index=materials.findIndex(m=>m._id===key)
+  const handleEventClick = (e) => {
+    const key = e.target.attributes[2].value;
+    const index = materials.findIndex(m => m._id === key)
     setCount(index)
     setActiveMaterial(key)
+  }
+  const handleWatched = (e) => {
+    const newCourse = { ...course }
+    let index = 0;
+    if (e.target.attributes[2]) {
+      const key = e.target.attributes[2].value;
+      index = materials.findIndex(m => m._id === key)
+    }
+    else {
+      index = count;
+    }
+    newCourse.materials[index].isOpen = true;
+    const courseId = "5ef130d49df30152541e8af5";
+    updateCourse(courseId, newCourse).then(({ data }) => {
+      console.log(data)
+    }).catch((err) => {
+      console.log(err)
+    })
+
   }
   return (
     <React.Fragment>
       <div >
 
         <Container >
-          
+
           <Tab.Container id="left-tabs-example" activeKey={activeMaterial}>
 
             <Row>
@@ -58,7 +86,8 @@ const CourseLessons = () => {
                 <Nav variant="pills" className="flex-column" id="shadow">
                   {materials.map(material => (
                     <Nav.Item >
-                      <Nav.Link className="activeColor" onClick={handleEventClick} eventKey={material._id}>{material.title}<div className="float"></div> </Nav.Link>
+                      {console.log(material.isOpen)}
+                      <Nav.Link className="activeColor" onClick={(event) => { handleEventClick(event); handleWatched(event) }} eventKey={material._id}>{material.title}<div className="float">{material.isOpen && <FiCheckCircle />}</div> </Nav.Link>
 
                     </Nav.Item>
                   ))}
@@ -112,7 +141,7 @@ const CourseLessons = () => {
 
                   ))}
 
-                  <Button onClick={handleNext} variant="outline-info" className="float">Next <IoMdArrowDropright /> </Button>{' '}
+                  <Button onClick={(event) => { handleNext(event); handleWatched(event) }} variant="outline-info" className="float">Next <IoMdArrowDropright /> </Button>{' '}
                 </Tab.Content>
               </Col>
             </Row>
