@@ -11,4 +11,6 @@ export function Register(account) {
 
 export function LogOut() {
     localStorage.removeItem('JWT');
+    localStorage.removeItem('Name');
+    localStorage.removeItem('Id');
 }

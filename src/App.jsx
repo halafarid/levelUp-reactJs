@@ -134,7 +134,7 @@ const App = () => {
           render={() => <Follows Instructor={Instructor} />}
         />
         <Route path="/shoppingcart" component={Payment} />
-        <Route path="/courses/lessons" component={CourseLessons} />
+        <Route path="/courses/:id/lessons" component={CourseLessons} />
         <Route path="/paymentform" component={PaymentForm} />
         <Redirect exact from="/" to="/home" />
         <Redirect to="/notfound" />

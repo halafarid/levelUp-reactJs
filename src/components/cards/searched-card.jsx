@@ -1,8 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const SearchedCard = (props) => {
+  console.log(props.data._id)
   return (
     <React.Fragment>
+      <Link to={`/profile/${props.data._id}`}>
+
       <div className="search-card">
         <div className="row">
           <div >
@@ -14,6 +18,7 @@ const SearchedCard = (props) => {
           </div>
         </div>
       </div>
+      </Link>
 
     </React.Fragment>
   );
