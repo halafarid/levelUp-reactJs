@@ -22,11 +22,7 @@ import SigningForm from "./components/authentication/signingForm";
 
 import authorizationToken from './services/tokenService'
 const App = () => {
-    
-  // const type = 'user';
-  const type = 'instructor';
- 
- 
+
   const [Instructor, setInstructor] = useState([
     {
       id: "1",
@@ -67,18 +63,18 @@ const App = () => {
     config.headers.Authorization =  jwt;
 
     return config;
-});
+  });
+      
+  const type = localStorage.getItem("UserType"); 
+  console.log(type);
   
   return (
     <React.Fragment>
-      {console.log(window.location.href)}
-      {/* { window.location.href !=="http://localhost:3000/login"  && */}
-      {/* {localStorage.getItem("JWT") !== null ? 
-        type={type}
-      /> : null} */}
-      <Navbar/>
-
-      {/* //  } */}
+      {/* {localStorage.getItem("JWT") !== null ?  */}
+        <Navbar type={type} />
+      {/* // :
+      //  null
+      // } */}
       <Switch>
         <Route
           path="/home"
@@ -140,7 +136,11 @@ const App = () => {
         <Redirect to="/notfound" />
       </Switch>
 
-      {window.location.href !== "http://localhost:3000/login" && <Footer />}
+      {/* {localStorage.getItem("JWT") !== null ? 
+      : */}
+      <Footer/>
+       {/* null
+      } */}
     </React.Fragment>
   );
 };

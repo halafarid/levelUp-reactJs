@@ -13,4 +13,5 @@ export function LogOut() {
     localStorage.removeItem('JWT');
     localStorage.removeItem('Name');
     localStorage.removeItem('Id');
+    localStorage.removeItem('UserType');
 }

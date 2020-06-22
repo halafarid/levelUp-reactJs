@@ -44,3 +44,13 @@ export function getReviews(cid) {
 export function addReview(cid) {
     return axios.post(`${apiUrl}/courses/${cid}/reviews`);
 }
+
+// Get all Materials({title, link}) in a course
+export function getMaterials(cid) {
+    return axios.get(`${apiUrl}courses/${cid}/materials`);
+}
+
+// Edit the progress on the course when user start watching
+export function handleProgress(cid) {
+    return axios.patch(`${apiUrl}/courses/${cid}/progress`);
+}

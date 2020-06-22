@@ -51,7 +51,7 @@ const SigningForm = (props) => {
       // call backend
       const path = props.match.path;
       const account = { ...state.account }
-      console.log(path)
+
       if (path === "/login") {
         delete errors.fullName;
         Login(account)
@@ -60,6 +60,7 @@ const SigningForm = (props) => {
             localStorage.setItem("Id", data.user._id);
             localStorage.setItem("Name", data.user.fullName);
             localStorage.setItem("JWT", data.token);
+            localStorage.setItem("UserType", data.user.userType);
 
             props.history.replace("/home");
           })
@@ -81,6 +82,7 @@ const SigningForm = (props) => {
           localStorage.setItem("Id", data.user._id);
           localStorage.setItem("Name", data.user.fullName);
           localStorage.setItem("JWT", data.token);
+          localStorage.setItem("UserType", data.user.userType);
           props.history.replace("/home");
 
         }).catch((err) => {
