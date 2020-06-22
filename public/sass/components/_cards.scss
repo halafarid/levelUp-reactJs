@@ -32,6 +32,9 @@
     &--box {
         padding: 11px;
     }
+    &__pagination {
+        margin: 20px 25%;
+    }
     &__container
     {
         display: flex;
@@ -579,15 +582,15 @@
     right: 20%;
 }
 .courseCardsContainer__sub a.carousel-control-next
+,
+.courseCardsContainer__sub a.carousel-control-prev
 {
-    right: 15%;
+    display: none;
 }
 .courseCardsContainer__sub ol{
-    left: -15%;
-    bottom: -9%;
-   
-    
+    display: none;  
 }
+
 .progress
 {
     width: 60%;
