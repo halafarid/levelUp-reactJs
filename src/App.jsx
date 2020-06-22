@@ -21,12 +21,17 @@ import PaymentForm from "./components/forms/paymentForm";
 import SigningForm from "./components/authentication/signingForm";
 
 const App = () => {
+<<<<<<< HEAD
     
   // const type = 'user';
   const type = 'instructor';
  
  
   const [Instructor] = useState([
+=======
+
+  const [Instructor, setInstructor] = useState([
+>>>>>>> 5eadd09232195d7c871aafbe8b1aef9a7f293a04
     {
       id: "1",
       imgUrl: "",
@@ -66,18 +71,18 @@ const App = () => {
     config.headers.Authorization =  jwt;
 
     return config;
-});
+  });
+      
+  const type = localStorage.getItem("UserType"); 
+  console.log(type);
   
   return (
     <React.Fragment>
-      {console.log(window.location.href)}
-      {/* { window.location.href !=="http://localhost:3000/login"  && */}
-      {/* {localStorage.getItem("JWT") !== null ? 
-        type={type}
-      /> : null} */}
-      <Navbar/>
-
-      {/* //  } */}
+      {/* {localStorage.getItem("JWT") !== null ?  */}
+        <Navbar type={type} />
+      {/* // :
+      //  null
+      // } */}
       <Switch>
         <Route
           path="/home"
@@ -133,13 +138,17 @@ const App = () => {
           render={() => <Follows Instructor={Instructor} />}
         />
         <Route path="/shoppingcart" component={Payment} />
-        <Route path="/courses/lessons" component={CourseLessons} />
+        <Route path="/courses/:id/lessons" component={CourseLessons} />
         <Route path="/paymentform" component={PaymentForm} />
         <Redirect exact from="/" to="/home" />
         <Redirect to="/notfound" />
       </Switch>
 
-      {window.location.href !== "http://localhost:3000/login" && <Footer />}
+      {/* {localStorage.getItem("JWT") !== null ? 
+      : */}
+      <Footer/>
+       {/* null
+      } */}
     </React.Fragment>
   );
 };
