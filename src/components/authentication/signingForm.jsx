@@ -78,6 +78,8 @@ const SigningForm = (props) => {
       else if (path === "/register") {
         Register(account).then(({ data }) => {
           console.log(data)
+          localStorage.setItem("Id", data.user._id);
+          localStorage.setItem("Name", data.user.fullName);
           localStorage.setItem("JWT", data.token);
           props.history.replace("/home");
 

@@ -51,7 +51,7 @@ const CourseData = (props) => {
         if (path === "/courses/:id/edit") {
             // const courseId = props.match.params.id;
             //    console.log(courseId)
-            const courseId = "5ef0208bfd59b331c41ac6f1";
+            const courseId = "5ef0a3f29fd19d2df401e8ce";
             Promise.all([getAllCategories(), getAllLevels(), getCourseById(courseId)]).then(function (values) {
                 setState({ ...state, categories: values[0].data, levels: values[1].data, course: values[2].data })
             })
@@ -152,7 +152,7 @@ const CourseData = (props) => {
             }
             else if (path === "/courses/:id/edit") {
                 console.log("edit")
-                const courseId = "5ef0208bfd59b331c41ac6f1";
+                const courseId = "5ef0a3f29fd19d2df401e8ce";
 
                 updateCourse(courseId, course).then((data) => {
                     console.log("editedData", data)
