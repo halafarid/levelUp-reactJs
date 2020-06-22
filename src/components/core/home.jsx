@@ -1,48 +1,69 @@
 import React,{useState,useEffect} from "react";
-import BackGround from "./backGround";
-import InstructorCard from "../cards/instructorCard";
-
-import CourseCard from "../cards/courseCard";
-import Filters from "../features/filters";
-import About from "../core/about";
 import { Link } from "react-router-dom";
 import { Container, Carousel } from 'react-bootstrap';
-import axios from "axios";
+
+import About from "../core/about";
+import BackGround from "./backGround";
+import Filters from "../features/filters";
+import CourseCard from "../cards/courseCard";
+import InstructorCard from "../cards/instructorCard";
+import PaginationList from './../features/pagination';
 import * as courseService from '../../services/courseService';
-import * as userService from '../../services/userService';
+
 import { BsFillPlusCircleFill } from 'react-icons/bs';
 
 const Home = props => {
     const { type, match } = props;
-    const [freeCourses,setFreeCourses]=useState([]);
-  
-    const [paidCourses,setPaidCourses]=useState([]);
-    const [profile,setProfile]=useState([])
-
-    const courses = [1, 2, 3];
-    const courseType="free";
     const path = match.path;
-    let freePageNo=1;
-    let paidPageNo=1;
-    let size=3
 
-      useEffect(()=>{
+    const [freeCourses,setFreeCourses]=useState([]);
+    const [paidCourses,setPaidCourses]=useState([]);
 
+    //we should call api to set count
+    const [pageSize,setPageSize]=useState(3);
+    
+    const [coursesCount,setCourseCount]=useState(0);
+    const [coursesCountFree,setCourseCountFree]=useState(0);
+
+    const [activePage,setActivePage]=useState(1);
+    const [activePageFree,setActivePageFree]=useState(1);
+
+    useEffect(()=>{
         async function fetchFreeCourses(){
-         const {data:{courses}} = await courseService.getFreeCourses(freePageNo,size)
-         setFreeCourses(courses);
+            const {data: {courses, totalCourses} } = await courseService.getFreeCourses(activePageFree,pageSize);
+            setFreeCourses(courses);
+            setCourseCountFree(totalCourses);
         }
-         async function fetchPaidCourses(){
-             const{data:{courses}}=await courseService.getPaidCourses(paidPageNo,size)
-             setPaidCourses(courses) 
+        async function fetchPaidCourses(){
+            const{data: {courses, totalCourses} }=await courseService.getPaidCourses(activePage,pageSize)
+            setPaidCourses(courses);
+            setCourseCount(totalCourses);
         }
-      
-     
-
         fetchFreeCourses();
         fetchPaidCourses();
-     
-      },[])
+    },[]);
+
+    const handlePageClick=(pageNum,type)=>{
+        if(type==="free courses")
+        {
+            setActivePageFree(pageNum);
+            async function fetchFreeCourses() {
+                const { data: {courses} } = await courseService.getFreeCourses(activePageFree,pageSize);
+                setFreeCourses(courses);   
+            }
+            fetchFreeCourses();
+  
+        }
+        else if(type="paid courses")
+        {
+            setActivePage(pageNum);
+            async function fetchPaidCourses() {
+                const { data: {courses} } = await courseService.getPaidCourses(activePage,pageSize);
+                setPaidCourses(courses);   
+            }
+            fetchPaidCourses();
+        }
+    }
 
     return (
         <React.Fragment>
@@ -99,112 +120,65 @@ const Home = props => {
             <div className="courses">
 
                 <Filters />
-
+            
                 <div className="courses__container">
-
                     <div className=" instructor ">
                         <h2 className="instructor__Inst-title">Free Courses</h2>
                     </div>
                     <div className="courseCardsContainer">
-
-                        <div className="courseCardsContainer__sub">
-                          
-                            <Carousel interval={null}>
-                                 <Carousel.Item className="carousel-new-item">
-                                    {freeCourses.map( course => (
-                                        <div className="CourseCard" key={course._id}>
-                                            <CourseCard
-                                                {...props}
-                                                path={path}
-                                                courseType={courseType}
-                                                 course={course}
-                                               
-                                            />
-                                        </div>
-                                    ))}
-
-                                </Carousel.Item> 
-                                 <Carousel.Item  className="carousel-new-item">
-                                    {freeCourses.map( course => (
-                                        <div className="CourseCard" key={course._id}>
-                                            <CourseCard
-                                                {...props}
-                                                path={path}
-                                                courseType={courseType}
-                                                course={course}
-                                            />
-                                        </div>
-                                    ))}
-                                </Carousel.Item> 
-                            </Carousel>
+                        <div className="CourseCard__container">
+                            <div className="courseCardsContainer__sub">
+                                <Carousel interval={null}>
+                                    <Carousel.Item className="carousel-new-item">
+                                        {freeCourses.map((course) => (
+                                            <div className="CourseCard" key={course._id}>
+                                                <CourseCard {...props} path={path} course={course} />
+                                            </div>
+                                        ))}
+                                    </Carousel.Item>
+                                </Carousel>
+                            </div>
+                            <div className="CourseCard__pagination">
+                                <PaginationList
+                                    key={activePageFree}
+                                    type="free courses"
+                                    coursesCount={coursesCountFree}
+                                    pageSize={pageSize}
+                                    activePage={activePageFree}
+                                    handlePageClick={handlePageClick}  
+                                />
+                            </div>
                         </div>
                     </div>
-
+            
                     <div className=" instructor">
                         <h2 className="instructor__Inst-title"> Paid Courses</h2>
                     </div>
                     <div className="courseCardsContainer">
-                        <div className="courseCardsContainer__sub courseCardsContainer__sub">
-                            <Carousel interval={null}>
-                                 <Carousel.Item className="carousel-new-item"> 
-                                     {paidCourses.map( course => (
-                                        <div className="CourseCard" key={course._id}>
-                                            <CourseCard
-                                                {...props}
-                                                path={path}
-                                                course={course}
-                                                
-                                            />
-                                        </div>
-                                    ))} 
-
-                                 </Carousel.Item>
-                                 <Carousel.Item className="carousel-new-item">
-                                  {paidCourses.map( course => (
-                                        <div className="CourseCard" key={course._id}>
-                                            <CourseCard
-                                                {...props}
-                                                path={path}
-                                                course={course}
-                                            
-                                            />
-                                        </div>
-                                    ))} 
-                                 </Carousel.Item>
+                        <div className="CourseCard__container">
+                            <div className="courseCardsContainer__sub courseCardsContainer__sub">
+                                <Carousel interval={null}>
+                                    <Carousel.Item className="carousel-new-item">
+                                        {paidCourses.map((course) => (
+                                            <div className="CourseCard" key={course._id}>
+                                                <CourseCard {...props} path={path} course={course} />
+                                            </div>
+                                        ))}
+                                    </Carousel.Item>
                             </Carousel>
+                            </div>
+                            <div className="CourseCard__pagination">
+                                <PaginationList
+                                    type="paid courses"
+                                    key={activePage}
+                                    coursesCount={coursesCount}
+                                    pageSize={pageSize}
+                                    activePage={activePage}
+                                    handlePageClick={handlePageClick}  
+                                />
+                            </div>
                         </div>
                     </div>
-                    {/* <div className=" instructor ">
-                        <h2 className="instructor__Inst-title">Courses Related To Following</h2>
-                    </div>
-                    <div className="courseCardsContainer">
-                        <div className="courseCardsContainer__sub">
-                            <Carousel interval={null}> */}
-                                {/* <Carousel.Item className="carousel-new-item">
-                                    {courses.map( course => (
-                                        <div className="CourseCard" key={course}>
-                                            <CourseCard
-                                                {...props}
-                                                path={path}
-                                                
-                                            />
-                                        </div>
-                                    ))} */}
-                                {/* </Carousel.Item> */}
-                                {/* <Carousel.Item className="carousel-new-item">
-                                    {courses.map( course => (
-                                        <div className="CourseCard" key={course}>
-                                            <CourseCard
-                                                {...props}
-                                                path={path}
-                                              
-                                            />
-                                        </div>
-                                    ))}
-                                </Carousel.Item> */}
-                            {/* </Carousel> */}
-                        {/* </div> */}
-                    {/* </div> */}
                 </div>
             </div>
             {type === 'instructor' && 
