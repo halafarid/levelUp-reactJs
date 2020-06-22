@@ -30,8 +30,6 @@ const CourseData = (props) => {
             instructorId: "",
             users: number,
             reviews: [],
-
-
         },
         nestedInfo: {
             title: "",

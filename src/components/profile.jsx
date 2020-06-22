@@ -11,6 +11,16 @@ import * as userService from '../services/userService';
 
 
 const Profile = props => {
+    const [currentUser,setCurrentUser]=useState({
+        user: {
+           fullName:"",
+            email: "",
+            password: "",
+            jobtitle: "",
+            jobdescription: "",
+            
+        }})
+
     const [profile,setProfile]=useState([]);
     const [freeCourses,setFreeCourses]=useState([]);
     const [paidCourses,setPaidCourses]=useState([]);
@@ -31,27 +41,64 @@ const Profile = props => {
     }
     
   useEffect(()=>{
-
-    async function fetchProfile(){
-      const {data} = await userService.getProfile();
-      setProfile(data);
-     }
-     async function fetchFreeCourses(){
-        const {data} = await userService.getProfileFreeCourses(pageNo,size);
-        setFreeCourses(data);
-    }
-    async function fetchPaidCourses(){
-        const {data} = await userService.getProfilePaidCourses(pageNo,size)
-        setPaidCourses(data);
-    }
-     fetchProfile();
-     fetchFreeCourses();
-     fetchPaidCourses();
+  
+ 
+    // async function fetchProfile(){
+    //   const {data} = await userService.getProfile();
+    //   setProfile(data);
+    //  }
+    //  async function fetchFreeCourses(){
+    //     const {data} = await userService.getProfileFreeCourses(pageNo,size);
+    //     setFreeCourses(data);
+    // }
+    // async function fetchPaidCourses(){
+    //     const {data} = await userService.getProfilePaidCourses(pageNo,size)
+    //     setPaidCourses(data);
+    // }
+    
+    // async function handleEdit(){
+    //     const {data}= await userService.getProfile();
+    //     setCurrentUser(data)
+    // }
+    // if(isEdit){
+    //     console.log("hii");
+    //     handleEdit();
+    // }
+   
+    Promise.all([userService.getProfile(),userService.getProfileFreeCourses(pageNo,size),userService.getProfilePaidCourses(pageNo,size)
+    ,userService.getProfile()]).then((data)=>{
+        console.log(data);
+        setProfile(data[0].data);
+        setFreeCourses(data[1].data);
+        setPaidCourses(data[2].data);
+        setCurrentUser(data[3].data);
+    })
+    //  fetchProfile();
+    //  fetchFreeCourses();
+    //  fetchPaidCourses();
   },[])
+
+  const handleChange = ({ target }) => {
+    const editUser = {...currentUser.user};
+    
+    editUser[target.name] = target.value;
+    console.log(editUser);
+    setCurrentUser({...currentUser,editUser});
+    
+};
+  
+
+
+ 
+
+
+
+
+
+
   
     return (
         <React.Fragment>
-           
             <div className="InstCard ">
                 <Container className="profileContainer">
                     <Card className="card--borderless">
@@ -67,7 +114,7 @@ const Profile = props => {
                             <Card.Title className="card__card-title">{profile.fullName}</Card.Title>
                             {isEdit ?
                             <div>
-                                    <input className="course__control course__control--text" value="Front-End Developer"/>
+                                    <input className="course__control course__control--text" name="jobtitle" onChange={handleChange} value="jkjk"/>
                                      </div>
                             : profile.job?.title ?
                             <Card.Text className="card__card-text">{profile.job.title}</Card.Text>
@@ -91,9 +138,9 @@ const Profile = props => {
                             <div>
                                 {isEdit ?
                                  <div className="edit"> 
-                                    <input className="course__control course__control--text" type="text" placeholder="Name" value="Sara Tarek"/>
-                                    <input className="course__control course__control--text" type="text" placeholder="Email" value="sara123@gmail.com"/>
-                                    <input className="course__control course__control--text" type="password" placeholder="Password" value="12344556677" />
+                                    <input className="course__control course__control--text" type="text" placeholder="Name" name="fullName" onChange={handleChange} />
+                                    <input className="course__control course__control--text" type="text" placeholder="Email" name="email" onChange={handleChange} />
+                                    <input className="course__control course__control--text" type="password" placeholder="Password" name="password" onChange={handleChange}  />
                                   </div>
                                     :
                                     <h1>{profile.fullName}</h1>
@@ -131,8 +178,7 @@ const Profile = props => {
 
                         {isEdit ?         
                             <React.Fragment>
-                                <textarea className="course__control course__control--text"  rows="8" placeholder="Job Description" value="Sara are responsible for implementing visual elements that users see and interact within a web application. In general, they are supported by back-end web developers, who are responsible for server-side 
-                                application logic and integration of the work front-end developers do."></textarea>
+                                <textarea className="course__control course__control--text"  rows="8" placeholder="Job Description" name="job description" onChange={handleChange} value="dssd"></textarea>
                                 <Button className="btn btn--primary-dark btn--pd btn--mt0 btn--mr0" onClick={handleBtn}>Save</Button>
                                 <Button className="btn btn--danger btn--pd btn--mt0 btn--mr0" onClick={handleBtn}>Cancel</Button>
                             </React.Fragment>
@@ -219,7 +265,7 @@ const Profile = props => {
                                         <React.Fragment>
                                             <div className="courseCardsContainer courseCardsContainer--ml">
                                                 <div className="courseCardsContainer__sub">
-                                                    {/* {profile.enrolledCourses?.map( course => (
+                                                    {profile.enrolledCourses?.map( course => (
                                                         <div className="CourseCard CourseCard--width" key={course._id}>
                                                             <CourseCard 
                                                                 {...props}
@@ -229,7 +275,7 @@ const Profile = props => {
                                                                 course={course}
                                                             />
                                                         </div>
-                                                    ))} */}
+                                                    ))}
                                                 </div>
                                             </div>
                                             <Button className="btn btn--secondary btn--mg-left btn--pd">Load more..</Button>

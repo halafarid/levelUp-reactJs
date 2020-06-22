@@ -31,8 +31,8 @@ const CourseCard = props => {
       })
 
 }
-console.log(isAdded);
-console.log(addToWishlist)
+// console.log(isAdded);
+// console.log(addToWishlist)
 
   return (
     <React.Fragment>
