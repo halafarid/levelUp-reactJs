@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React , {useState,useEffect} from 'react';
 import { Link } from 'react-router-dom';
 
 import { Card, Container,Nav,Button,Form } from 'react-bootstrap';
@@ -7,8 +7,12 @@ import { AiFillTwitterCircle, AiFillInstagram,AiFillStar,AiOutlineStar,AiFillEdi
 
 import CourseCard from './cards/courseCard';
 import PageNoResult from './core/pageNoResult';
+import * as userService from '../services/userService';
+
 
 const Profile = props => {
+    const [profile,setProfile]=useState([]);
+    const [freeCourses,setFreeCourses]=useState([]);
     const { type, match } = props;
     const path = match.path;
     const courses = [1, 2, 3];
@@ -16,15 +20,32 @@ const Profile = props => {
     const [isEdit, setIsEdit] = useState(path === '/profile/edit');
     const [isFollowing, setIsFollowing] = useState(false);
     const [tab, setTap] = useState(1);
+    let pageNo = 1;
+    const size = 3;
 
     const handleBtn = () => {
         setIsEdit(false);
         props.history.push('/profile')
     }
+    
+  useEffect(()=>{
 
-    // useEffect(() => {
-    //     window.scrollTo(0, 0)
-    // });
+    async function fetchProfile(){
+      const {data} = await userService.getProfile();
+      console.log(data);
+      setProfile(data);
+     }
+     async function fetchFreeCourses(){
+        const {data} = await userService.getProfileFreeCourses(pageNo, size);
+        console.log(data);
+        setFreeCourses(data);
+    }
+     fetchProfile();
+     fetchFreeCourses();
+  },[])
+
+  console.log(profile);
+  
     return (
         <React.Fragment>
            
@@ -40,13 +61,16 @@ const Profile = props => {
                             </div>
                         }
                         <Card.Body>
-                            <Card.Title className="card__card-title">Namrata Parmar</Card.Title>
+                            <Card.Title className="card__card-title">{profile.fullName}</Card.Title>
                             {isEdit ?
                             <div>
                                     <input className="course__control course__control--text" value="Front-End Developer"/>
                                      </div>
-                            : 
-                            <Card.Text className="card__card-text">Photographer, Travel Bloger</Card.Text>
+                            : profile.job?.title ?
+                            <Card.Text className="card__card-text">{profile.job.title}</Card.Text>
+                            :
+                            <Card.Text className="card__card-text">You don't have job title </Card.Text>
+
                             }
                             { !(type === 'user' && path === '/profile') &&
                                 <div className="stars">
@@ -69,7 +93,7 @@ const Profile = props => {
                                     <input className="course__control course__control--text" type="password" placeholder="Password" value="12344556677" />
                                   </div>
                                     :
-                                    <h1>Namrata Parmar</h1>
+                                    <h1>{profile.fullName}</h1>
                                 }
 
                                 { (path ==="/profile/:id" && !isEdit) &&
@@ -109,13 +133,15 @@ const Profile = props => {
                                 <Button className="btn btn--primary-dark btn--pd btn--mt0 btn--mr0" onClick={handleBtn}>Save</Button>
                                 <Button className="btn btn--danger btn--pd btn--mt0 btn--mr0" onClick={handleBtn}>Cancel</Button>
                             </React.Fragment>
+                            : profile.job?.description?
+                            <div>
+                            <h2 className="profile__header">Bio </h2>
+                            <p className="about__prg">{profile.job.description}</p>
+                            </div>
                             :
-                            <div>  
-                                <h2 className="profile__header">Bio</h2>
-                                <p className="about__prg">John studied Software Development at UC Berkeley and has more than 15 years
-                                    of experience in software quality assurance. He's been building software and tooling,
-                                    managing software engineer team many years. When he's not reading about the latest
-                                    trends in computing he spends his time with his wife, snowboarding, or running..</p>
+                            <div>
+                             <h2 className="profile__header">Bio </h2>
+                             <p className="about__prg--center">You don't have job decription</p>
                             </div>
                         }
                         <hr className="line" />
@@ -139,17 +165,18 @@ const Profile = props => {
                                 
                             {
                                 tab === 1 ?
-                                    courses.length > 0 ?
+                                    freeCourses.length > 0 ?
                                         <React.Fragment>
                                             <div className="courseCardsContainer courseCardsContainer--ml">
                                                 <div className="courseCardsContainer__sub">
-                                                    {courses.map( course => (
-                                                        <div className="CourseCard CourseCard--width" key={course}>
+                                                    {freeCourses?.map( course => (
+                                                        <div className="CourseCard CourseCard--width" key={course._id}>
                                                             <CourseCard 
                                                                 {...props}
                                                                 type = {type}
                                                                 path = {props.match.path}
                                                                 tab = {tab}
+                                                                course={course}
                                                             />
                                                         </div>
                                                     ))}
@@ -181,17 +208,18 @@ const Profile = props => {
                                     // :
                                     <PageNoResult />
                                 :
-                                    courses.length > 0 ?
+                                    freeCourses.length > 0 ?
                                         <React.Fragment>
                                             <div className="courseCardsContainer courseCardsContainer--ml">
                                                 <div className="courseCardsContainer__sub">
-                                                    {courses.map( course => (
-                                                        <div className="CourseCard CourseCard--width" key={course}>
+                                                    {freeCourses?.map( course => (
+                                                        <div className="CourseCard CourseCard--width" key={course._id}>
                                                             <CourseCard 
                                                                 {...props}
                                                                 type = {type}
                                                                 path = {props.match.path}
                                                                 tab = {tab}
+                                                                course={course}
                                                             />
                                                         </div>
                                                     ))}

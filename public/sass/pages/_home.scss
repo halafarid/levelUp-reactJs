@@ -63,6 +63,11 @@
   }
   &__prg {
     color: $info;
+    &--center{
+      text-align: center;
+      font-size: 20px;
+      color: $secondary;
+    }
   }
   &__section {
     width: 100%;

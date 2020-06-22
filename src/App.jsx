@@ -19,11 +19,14 @@ import Profile from "./components/profile";
 import Payment from "./components/features/payment";
 import PaymentForm from "./components/forms/paymentForm";
 import SigningForm from "./components/authentication/signingForm";
+
 import authorizationToken from './services/tokenService'
 const App = () => {
+    
   // const type = 'user';
   const type = 'instructor';
-
+ 
+ 
   const [Instructor, setInstructor] = useState([
     {
       id: "1",
@@ -70,9 +73,10 @@ const App = () => {
     <React.Fragment>
       {console.log(window.location.href)}
       {/* { window.location.href !=="http://localhost:3000/login"  && */}
-      {localStorage.getItem("JWT") !== null ? <Navbar
+      {/* {localStorage.getItem("JWT") !== null ? 
         type={type}
-      /> : null}
+      /> : null} */}
+      <Navbar/>
 
       {/* //  } */}
       <Switch>
@@ -87,7 +91,10 @@ const App = () => {
         <Route path="/profile/:id" render={props => <Profile {...props} type={type} />} />
         <Route path="/profile/edit" render={props => <Profile {...props} type={type} />} />
 
-        <Route path="/profile" render={props => <Profile {...props} type={type} />} />
+        <Route path="/profile" render={props =>
+         <Profile {...props}
+          type={type}
+         />} />
 
         <Route
           path="/courses/:id/details"

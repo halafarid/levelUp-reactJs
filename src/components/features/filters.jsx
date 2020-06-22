@@ -1,9 +1,28 @@
-import React from 'react';
+import React ,{useState,useEffect}from 'react';
 import {FormCheck} from 'react-bootstrap';
+
+import * as featureService from '../../services/featuresService';
+
 const Filters = () => {
 
-    const levels = ['Beginner','Intermediate','Expert']
-    const Categories = ['Development','Finance','Accounting','IT & Software']
+    const [categories,setCategories]=useState([])
+    const [levels,setLevels]=useState([])
+    
+    useEffect(()=>{
+        async function fetchCategories(){
+        const {data} = await featureService.getAllCategories();
+        setCategories(data);
+        }
+        async function fetchLevels(){
+            const {data} = await featureService.getAllLevels();
+            setLevels(data);
+            }
+        fetchCategories();
+        fetchLevels();
+    },[])
+   console.log(levels);
+
+
 
     return ( 
         <React.Fragment>
@@ -14,10 +33,10 @@ const Filters = () => {
                 <div className="filter__items-container">
             
                     <p  className="filter__pg">All Categories</p>
-                    {Categories.map( (Category, i) =>(
+                    {categories.map( (category, i) =>(
                         <div className="filter__checkbox-container" key={i}>
                         <FormCheck  type="checkbox" />
-                        <span >{Category}</span>
+                        <span >{category.title}</span>
                         </div>
                     ))}
                  
@@ -29,7 +48,7 @@ const Filters = () => {
                     {levels.map( (level, i) =>(
                         <div className="filter__checkbox-container" key={i}>
                         <FormCheck type="checkbox" />
-                        <span >{level}</span>
+                        <span >{level.title}</span>
                         </div>
                     ))}
                   
