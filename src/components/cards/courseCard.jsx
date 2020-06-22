@@ -73,7 +73,9 @@ const CourseCard = props => {
                 { 
                     type === 'instructor' && path === '/profile' && tab !== 3 ?
                         <div className="crud">
-                            <AiFillEdit className="crud__edit"/>
+                            <Link to="/courses/1/edit">
+                              <AiFillEdit className="crud__edit" onClick={e => e.stopPropagation()}/>
+                            </Link>
                             <AiFillDelete className="crud__delete"/>
                         </div>
                     : path !== '/profile' ?
