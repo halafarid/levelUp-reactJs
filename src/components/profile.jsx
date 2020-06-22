@@ -13,10 +13,12 @@ import * as userService from '../services/userService';
 const Profile = props => {
     const [profile,setProfile]=useState([]);
     const [freeCourses,setFreeCourses]=useState([]);
+    const [paidCourses,setPaidCourses]=useState([]);
     const { type, match } = props;
     const path = match.path;
     const courses = [1, 2, 3];
-
+    const courseType="free";
+    
     const [isEdit, setIsEdit] = useState(path === '/profile/edit');
     const [isFollowing, setIsFollowing] = useState(false);
     const [tab, setTap] = useState(1);
@@ -32,19 +34,20 @@ const Profile = props => {
 
     async function fetchProfile(){
       const {data} = await userService.getProfile();
-      console.log(data);
       setProfile(data);
      }
      async function fetchFreeCourses(){
-        const {data} = await userService.getProfileFreeCourses(pageNo, size);
-        console.log(data);
+        const {data} = await userService.getProfileFreeCourses(pageNo,size);
         setFreeCourses(data);
+    }
+    async function fetchPaidCourses(){
+        const {data} = await userService.getProfilePaidCourses(pageNo,size)
+        setPaidCourses(data);
     }
      fetchProfile();
      fetchFreeCourses();
+     fetchPaidCourses();
   },[])
-
-  console.log(profile);
   
     return (
         <React.Fragment>
@@ -177,6 +180,8 @@ const Profile = props => {
                                                                 path = {props.match.path}
                                                                 tab = {tab}
                                                                 course={course}
+                                                                courseType={courseType}
+
                                                             />
                                                         </div>
                                                     ))}
@@ -187,32 +192,34 @@ const Profile = props => {
                                     :
                                     <PageNoResult />
                                 : tab === 2 ?
-                                    // courses.length > 0 ?
-                                    //     <React.Fragment>
-                                    //         <div className="courseCardsContainer courseCardsContainer--ml">
-                                    //             <div className="courseCardsContainer__sub">
-                                    //                 {courses.map( course => (
-                                    //                     <div className="CourseCard CourseCard--width" key={course}>
-                                    //                         <CourseCard 
-                                    //                             {...props}
-                                    //                             type = {type}
-                                    //                             path = {props.match.path}
-                                    //                             tab = {tab}
-                                    //                         />
-                                    //                     </div>
-                                    //                 ))}
-                                    //             </div>
-                                    //         </div>
-                                    //         <Button className="btn btn--secondary btn--mg-left btn--pd">Load more..</Button>
-                                    //     </React.Fragment>
-                                    // :
-                                    <PageNoResult />
-                                :
-                                    freeCourses.length > 0 ?
+                                    paidCourses.length > 0 ?
                                         <React.Fragment>
                                             <div className="courseCardsContainer courseCardsContainer--ml">
                                                 <div className="courseCardsContainer__sub">
-                                                    {freeCourses?.map( course => (
+                                                    {paidCourses.map( course => (
+                                                        <div className="CourseCard CourseCard--width" key={course}>
+                                                            <CourseCard 
+                                                                {...props}
+                                                                type = {type}
+                                                                path = {props.match.path}
+                                                                tab = {tab}
+                                                                course={course}
+
+                                                            />
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                            <Button className="btn btn--secondary btn--mg-left btn--pd">Load more..</Button>
+                                        </React.Fragment>
+                                    :
+                                    <PageNoResult />
+                                :
+                                    profile.enrolledCourses.length > 0 ?
+                                        <React.Fragment>
+                                            <div className="courseCardsContainer courseCardsContainer--ml">
+                                                <div className="courseCardsContainer__sub">
+                                                    {/* {profile.enrolledCourses?.map( course => (
                                                         <div className="CourseCard CourseCard--width" key={course._id}>
                                                             <CourseCard 
                                                                 {...props}
@@ -222,7 +229,7 @@ const Profile = props => {
                                                                 course={course}
                                                             />
                                                         </div>
-                                                    ))}
+                                                    ))} */}
                                                 </div>
                                             </div>
                                             <Button className="btn btn--secondary btn--mg-left btn--pd">Load more..</Button>

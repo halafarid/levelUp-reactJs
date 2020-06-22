@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ProgressBar } from "react-bootstrap";
+import * as wishlistService from '../../services/wishlistService';
 
 import {
   AiOutlineTeam,
@@ -12,10 +13,27 @@ import {
 import { useState } from "react";
 
 const CourseCard = props => {
+
+  const[ addToWishlist,setAddtoWishlist]=useState([])
   const { type, tab, path, history,courseType,course} = props;
   const stars = [1, 2, 3, 4];
   const [progressPercent, setProgressPercent] = useState(30);
-   console.log(courseType);
+  let [isAdded, setIsAdded] = useState(false);
+
+   const handleWish=async e=>{
+      e.stopPropagation();
+      isAdded=!isAdded
+      setIsAdded(isAdded)
+
+      wishlistService.handleWishlist(course._id).then(async ({ data }) => {
+       setAddtoWishlist(data);     
+
+      })
+
+}
+console.log(isAdded);
+console.log(addToWishlist)
+
   return (
     <React.Fragment>
         <div className="CourseCard__container" onClick={() => history.push('/courses/1/details')}>
@@ -34,22 +52,22 @@ const CourseCard = props => {
          
           <div className="CourseCard__items-container">
             <span className="CourseCard__text CourseCard__text--space CourseCard__text--font">
-              {course.levelId.title}
+            {course.materials?.length} Videos
             </span>
             <div className="CourseCard__icon-container">
-              <AiOutlineTeam className="CourseCard__icon" />
+            { courseType !=="free" &&
               <span className="CourseCard__text CourseCard__text--space CourseCard__text--font">
-                100
+                ${course?.payment}
               </span>
+            }
             </div>
           </div>
 
-          <div className="CourseCard__items-container">
+          <div className="CourseCard__items-container"> 
+            <span className="CourseCard__text CourseCard__text--space CourseCard__text--font">{course.levelId.title}</span>
             <span className="CourseCard__text CourseCard__text--space CourseCard__text--font">
-              Duration : {course.duration}H
+              {course.duration} Hours
             </span>
-            { courseType !=="free" &&
-            <span className="CourseCard__text CourseCard__text--space CourseCard__text--font">${course.payment}</span>}
           </div>
             <div className="CourseCard__items-container">
                 <div className="CourseCard__stars-container">
@@ -75,8 +93,8 @@ const CourseCard = props => {
                             <AiFillEdit className="crud__edit"/>
                             <AiFillDelete className="crud__delete"/>
                         </div>
-                    : (courseType!=="free" && path !== '/profile') ?
-                        <span className=" CourseCard__btn CourseCard__text--font" onClick={e => e.stopPropagation()}>Add to cart</span>
+                    : (  path !== '/profile') ?
+                        <span className=" CourseCard__btn CourseCard__text--font" onClick={handleWish}>{isAdded? 'Added' : 'Add to wishlist'}</span>
                     : tab===3?
                         <Link
                             className=" CourseCard__btn CourseCard__text--font"

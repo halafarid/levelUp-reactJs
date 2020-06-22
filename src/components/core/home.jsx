@@ -10,42 +10,40 @@ import { Container, Carousel } from 'react-bootstrap';
 import axios from "axios";
 import * as courseService from '../../services/courseService';
 import * as userService from '../../services/userService';
-
 import { BsFillPlusCircleFill } from 'react-icons/bs';
 
 const Home = props => {
     const { type, match } = props;
     const [freeCourses,setFreeCourses]=useState([]);
+  
     const [paidCourses,setPaidCourses]=useState([]);
     const [profile,setProfile]=useState([])
 
     const courses = [1, 2, 3];
     const courseType="free";
     const path = match.path;
+    let freePageNo=1;
+    let paidPageNo=1;
+    let size=3
 
       useEffect(()=>{
 
         async function fetchFreeCourses(){
-         const {data} = await courseService.getFreeCourses()
-         setFreeCourses(data);
+         const {data:{courses}} = await courseService.getFreeCourses(freePageNo,size)
+         setFreeCourses(courses);
         }
          async function fetchPaidCourses(){
-             const{data}=await courseService.getPaidCourses()
-             setPaidCourses(data) 
+             const{data:{courses}}=await courseService.getPaidCourses(paidPageNo,size)
+             setPaidCourses(courses) 
         }
-        async function fetchProfile(){
-            const {data} = await userService.getProfile();
-            console.log(data);
-            setProfile(data);
-           }
+      
+     
 
         fetchFreeCourses();
         fetchPaidCourses();
-        // fetchProfile();
      
       },[])
 
-    console.log(profile);
     return (
         <React.Fragment>
             <BackGround />
