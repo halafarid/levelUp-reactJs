@@ -2,7 +2,7 @@ import { apiUrl } from './config.json';
 import axios from 'axios';
 
 export function getAllWishlist() {
-    return axios.get(`${apiUrl}/wishlist`);
+    return axios.get(`${apiUrl}/users/wishlist`);
 };
 
 // Add or Delete Course in Wishlist.. by passing course id in parameter
