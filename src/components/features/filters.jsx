@@ -20,7 +20,6 @@ const Filters = () => {
         fetchCategories();
         fetchLevels();
     },[])
-   console.log(levels);
 
 
 
