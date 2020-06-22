@@ -30,6 +30,7 @@ const CourseData = (props) => {
             instructorId: "",
             users: number,
             reviews: [],
+            progress:number
         },
         nestedInfo: {
             title: "",
@@ -47,9 +48,7 @@ const CourseData = (props) => {
     useEffect(() => {
         const path = props.match.path;
         if (path === "/courses/:id/edit") {
-            // const courseId = props.match.params.id;
-            //    console.log(courseId)
-            const courseId = "5ef0a3f29fd19d2df401e8ce";
+            const courseId = props.match.params.id;
             Promise.all([getAllCategories(), getAllLevels(), getCourseById(courseId)]).then(function (values) {
                 setState({ ...state, categories: values[0].data, levels: values[1].data, course: values[2].data })
             })
@@ -76,6 +75,7 @@ const CourseData = (props) => {
         instructorId: Joi.required(),
         users: Joi,
         reviews: Joi,
+        progress: Joi,
 
 
     };
@@ -150,8 +150,7 @@ const CourseData = (props) => {
             }
             else if (path === "/courses/:id/edit") {
                 console.log("edit")
-                const courseId = "5ef0a3f29fd19d2df401e8ce";
-
+                const courseId = props.match.params.id;
                 updateCourse(courseId, course).then((data) => {
                     console.log("editedData", data)
                     props.history.replace("/home");

@@ -90,7 +90,7 @@ const CourseCard = props => {
                 { 
                     type === 'instructor' && path === '/profile' && tab !== 3 ?
                         <div className="crud">
-                            <Link to="/courses/1/edit">
+                            <Link to={`/courses/${course._id}/edit`}>
                               <AiFillEdit className="crud__edit" onClick={e => e.stopPropagation()}/>
                             </Link>
                             <AiFillDelete className="crud__delete"/>
