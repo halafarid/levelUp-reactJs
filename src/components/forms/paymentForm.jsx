@@ -2,28 +2,16 @@ import React, { useState } from "react";
 import { Button, Collapse, Form } from "react-bootstrap";
 import { BsCreditCard } from "react-icons/bs";
 import { FaIdCard } from "react-icons/fa";
+import * as userService from "../../services/userService";
 
 const PaymentForm = (props) => {
   const [opencredit, setOpenCredit] = useState(true);
   const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  const years = [
-    2020,
-    2021,
-    2022,
-    2023,
-    2024,
-    2025,
-    2026,
-    2027,
-    2028,
-    2029,
-    2030,
-    2031,
-    2032,
-    2033,
-    2034,
-    2035,
-  ];
+  const years = [2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035 ];
+
+  const enrollCourse = async id => {
+    await userService.enrollCourse(id);
+  }
 
   return (
     <React.Fragment>
@@ -101,7 +89,7 @@ const PaymentForm = (props) => {
             <Form.Group controlId="formBasicCheckbox">
               <Form.Check type="checkbox" label="Save for future use" />
             </Form.Group>
-            <Button className="paymentFormCard__btn btn--secondary" type="submit">
+            <Button className="paymentFormCard__btn btn--secondary" onClick={() => enrollCourse(props.match.params.id)}>
               Place Order
             </Button>
           </Form>

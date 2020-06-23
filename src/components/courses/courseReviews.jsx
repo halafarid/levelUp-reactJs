@@ -1,7 +1,11 @@
 import React from 'react';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import * as wishlistService from '../../services/wishlistService';
 
-const CourseReviews = () => {
+
+const CourseReviews = props=> {
+    const{reviewData}=props
+
     return ( 
         <React.Fragment>
             <div className="course__info">
@@ -21,7 +25,7 @@ const CourseReviews = () => {
                 </div>
 
                 <p className="course__details-desc">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum quod distinctio obcaecati dolor repellat animi repudiandae excepturi, aliquid porro! Qui!
+                   {reviewData.title}
                 </p>
             </div>
 
