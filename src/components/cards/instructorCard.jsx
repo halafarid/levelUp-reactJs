@@ -2,15 +2,13 @@ import React    from 'react';
 import { Link } from 'react-router-dom';
 import {Card} from 'react-bootstrap';
 import {Container} from 'react-bootstrap';
-import {AiFillStar,AiOutlineStar} from 'react-icons/ai'
+import {AiFillStar,AiOutlineStar} from 'react-icons/ai';
+
 const InstructorCard = props => {
-  
-    const id=1;
-  
     return ( 
         <React.Fragment>
             <Container className="InstructorContainer">
-                <Link  className="InstructorContainer__link" to={`/profile/${id}`}>
+                <Link  className="InstructorContainer__link" to={`/profile/${props.Instructor._id}`}>
                     <Card >
                         <Card.Img  className="card__card-img" src={require("../../images/instructor/photo.jpg")} alt="Instructor"/>
                         <Card.Body>

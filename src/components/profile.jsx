@@ -9,7 +9,6 @@ import CourseCard from './cards/courseCard';
 import PageNoResult from './core/pageNoResult';
 import * as userService from '../services/userService';
 
-
 const Profile = props => {
     const [currentUser,setCurrentUser]=useState({
 
@@ -27,7 +26,7 @@ const Profile = props => {
         job:{title:"", description:""}
      })
 
-     const userId="5ef0a1dd9fd19d2df401e8cd"
+    const userId=props.match.params?.id;
 
     const [profile,setProfile]=useState({});
     const [freeCourses,setFreeCourses]=useState([]);
@@ -42,19 +41,29 @@ const Profile = props => {
     let pageNo = 1;
     let pageno=1
     const size = 3;
+
+    console.log(profile.following?.includes(userId));
    
-  useEffect(()=>{
-   
-    Promise.all([userService.getProfile(),userService.getProfileFreeCourses(pageNo,size),userService.getProfilePaidCourses(pageno,size)
-        ,userService.getProfile(),]).then((data)=>{
-            setProfile(data[0].data);
-            setFreeCourses(data[1].data);
-            setPaidCourses(data[2].data);
-            setCurrentUser(data[3].data);
-            setOldUser(data[3].data)
-        })
-    
-  },[])
+    useEffect( () => {
+        async function fetchProfile(){
+            if (props.match.path === '/profile/:id') {
+                const { data: userProfile} = await userService.getUserById(userId);
+                setCurrentUser(userProfile);
+                setFreeCourses(userProfile.ownFreeCourses);
+                setPaidCourses(userProfile.ownPaidCourses);
+            } else {
+                Promise.all([userService.getProfile(),userService.getProfileFreeCourses(pageNo,size),userService.getProfilePaidCourses(pageno,size)
+                    ,userService.getProfile(),]).then((data)=>{
+                        setProfile(data[0].data);
+                        setFreeCourses(data[1].data);
+                        setPaidCourses(data[2].data);
+                        setCurrentUser(data[3].data);
+                        setOldUser(data[3].data)
+                });
+            }
+        }
+        fetchProfile();
+    },[props.match.params.id]);
 
 const handleFollow=()=>{
     isFollowing=!isFollowing

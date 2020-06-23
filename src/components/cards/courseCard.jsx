@@ -4,7 +4,6 @@ import { ProgressBar } from "react-bootstrap";
 import * as wishlistService from '../../services/wishlistService';
 
 import {
-  AiOutlineTeam,
   AiFillStar,
   AiOutlineStar,
   AiFillDelete,
@@ -20,23 +19,19 @@ const CourseCard = props => {
   // const [progressPercent, setProgressPercent] = useState(30);
   let [isAdded, setIsAdded] = useState(false);
 
-   const handleWish=async e=>{
+  const handleWish=async e=>{
       e.stopPropagation();
       isAdded=!isAdded
       setIsAdded(isAdded)
 
       wishlistService.handleWishlist(course._id).then(async ({ data }) => {
        setAddtoWishlist(data);     
-
       })
-
-}
-// console.log(isAdded);
-// console.log(addToWishlist)
+  }
 
   return (
     <React.Fragment>
-        <div className="CourseCard__container" onClick={() => history.push('/courses/1/details')}>
+        <div className="CourseCard__container" onClick={() => history.push(`/courses/${course._id}/details`)}>
           <div className="CourseCard__img">
             <img
               className="CourseCard__img-sm"
