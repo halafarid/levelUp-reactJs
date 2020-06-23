@@ -2,16 +2,15 @@ import React from 'react';
 import { Row, Col, Button, Container, Form, Dropdown } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import Joi from "joi-browser";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { FaChartLine } from 'react-icons/fa';
 import { MdAccessAlarms } from 'react-icons/md';
 import { FiBookmark } from 'react-icons/fi';
-import { AiOutlineVideoCamera } from 'react-icons/ai';
 import { RiUploadLine } from 'react-icons/ri';
 import { BsFillPlusCircleFill } from 'react-icons/bs';
-import { number, array } from 'joi';
+import { number} from 'joi';
 import { addCourse, updateCourse, getCourseById } from '../../services/courseService'
 import { getAllLevels, getAllCategories } from '../../services/featuresService'
 

@@ -9,7 +9,7 @@ const Follows = props => {
     return ( 
         <React.Fragment>
             <Container>
-                {/* {
+                {
                     Instructor.length > 0 ?
                         <div className="InstCard">
                             {Instructor.map(instructor => (
@@ -19,9 +19,9 @@ const Follows = props => {
                                 />
                             ))}
                         </div>
-                    : */}
+                    :
                     <PageNoResult />
-                {/* } */}
+                        }
             </Container>
         </React.Fragment>
     );

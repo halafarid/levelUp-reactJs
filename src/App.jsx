@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -20,10 +20,13 @@ import Payment from "./components/features/payment";
 import PaymentForm from "./components/forms/paymentForm";
 import SigningForm from "./components/authentication/signingForm";
 
-import authorizationToken from './services/tokenService'
 const App = () => {
-
-  const [Instructor, setInstructor] = useState([
+    
+  // const type = 'user';
+  // const type = 'instructor';
+ 
+ 
+  const [Instructor] = useState([
     {
       id: "1",
       imgUrl: "",
@@ -71,7 +74,7 @@ const App = () => {
   return (
     <React.Fragment>
       {/* {localStorage.getItem("JWT") !== null ?  */}
-        <Navbar type={type} />
+        {/* <Navbar type={type} /> */}
       {/* // :
       //  null
       // } */}

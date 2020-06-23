@@ -1,9 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-import {Button} from 'react-bootstrap';
-
-import {AiFillInfoCircle} from  'react-icons/ai';
 
 const PaymentCard = (props) => {
     return ( 

@@ -27,7 +27,6 @@ const InstructorCard = props => {
                     <AiOutlineStar/>
                     <span className="rating__num">{props.Instructor.rating}</span>
                     </div>
-                    {/* <p className="card__card-text card__card-text--color"> {props.Instructor.reviews} Reviews </p> */}
                 </Card.Body>
 
             </Card>

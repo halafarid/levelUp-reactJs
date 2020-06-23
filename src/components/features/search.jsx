@@ -22,7 +22,8 @@ const Search = (props) => {
         })
             .catch((err) => console.log(err))
 
-    }, [])
+    },[])
+    
     const handleSearchInstructors = () => {
  
         setState({...state,activeData:state.instructors,allData:false})
