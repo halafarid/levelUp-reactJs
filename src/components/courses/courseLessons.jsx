@@ -11,15 +11,24 @@ const CourseLessons = () => {
   const [activeMaterial, setActiveMaterial] = useState(1)
   let [count, setCount] = useState(0)
   const [course, setCourse] = useState({})
+  const [progress, setProgress] = useState({})
 
 
   useEffect(() => {
     const courseId = "5ef130d49df30152541e8af5";
     getCourseById(courseId).then(({ data }) => {
       setCourse(data)
-      console.log(data)
       embedVideo(data.materials)
       data.materials[0].isOpen = true
+      
+      if (data.progress == 0) {
+        setProgress(data.progress + (100/data.materials.length))
+      }
+      else {
+
+        setProgress(data.progress)
+      }
+
       setActiveMaterial(data.materials[0]._id)
 
     }).catch((err) => {
@@ -53,6 +62,11 @@ const CourseLessons = () => {
     setCount(index)
     setActiveMaterial(key)
   }
+  const calculateProgress = () => {
+    const length = materials.length;
+    const progress = 100 / length;
+    return progress;
+  }
   const handleWatched = (e) => {
     const newCourse = { ...course }
     let index = 0;
@@ -63,14 +77,18 @@ const CourseLessons = () => {
     else {
       index = count;
     }
-    newCourse.materials[index].isOpen = true;
-    const courseId = "5ef130d49df30152541e8af5";
-    updateCourse(courseId, newCourse).then(({ data }) => {
-      console.log(data)
-    }).catch((err) => {
-      console.log(err)
-    })
+    if (!newCourse.materials[index].isOpen) {
+      const newProgress=progress+calculateProgress()
+      newCourse.progress = newProgress;
+      newCourse.materials[index].isOpen = true;
+      const courseId = "5ef130d49df30152541e8af5";
+      updateCourse(courseId, newCourse).then(({ data }) => {
+        console.log(data)
+      }).catch((err) => {
+        console.log(err)
+      })
 
+    }
   }
   return (
     <React.Fragment>
@@ -86,7 +104,6 @@ const CourseLessons = () => {
                 <Nav variant="pills" className="flex-column" id="shadow">
                   {materials.map(material => (
                     <Nav.Item >
-                      {console.log(material.isOpen)}
                       <Nav.Link className="activeColor" onClick={(event) => { handleEventClick(event); handleWatched(event) }} eventKey={material._id}>{material.title}<div className="float">{material.isOpen && <FiCheckCircle />}</div> </Nav.Link>
 
                     </Nav.Item>

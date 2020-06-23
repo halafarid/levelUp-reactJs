@@ -17,7 +17,7 @@ const CourseCard = props => {
   const[ addToWishlist,setAddtoWishlist]=useState([])
   const { type, tab, path, history,courseType,course} = props;
   const stars = [1, 2, 3, 4];
-  const [progressPercent, setProgressPercent] = useState(30);
+  // const [progressPercent, setProgressPercent] = useState(30);
   let [isAdded, setIsAdded] = useState(false);
 
    const handleWish=async e=>{
@@ -80,9 +80,9 @@ const CourseCard = props => {
             </div>
             { ( (tab === 3 && path === '/profile') || (type === 'user' && path === '/profile') ) && 
                 <div className="CourseCard__items-container">
-                    <ProgressBar variant="info" animated now={progressPercent} />
+                    <ProgressBar variant="info" animated now={course.progress} />
                     <div className="CourseCard__text--colored">
-                        {progressPercent} %
+                        {course.progress} %
                     </div>
                 </div>
             }
@@ -103,7 +103,7 @@ const CourseCard = props => {
                             to="/courses/lessons"
                             onClick={e => e.stopPropagation()}
                         >  
-                            {progressPercent === 0 ? 'Start Course' : 'Continue'}
+                            {course.progress === 0 ? 'Start Course' : 'Continue'}
                         </Link>
                         : 
                        null

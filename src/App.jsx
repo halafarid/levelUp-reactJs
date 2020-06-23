@@ -74,7 +74,7 @@ const App = () => {
   return (
     <React.Fragment>
       {/* {localStorage.getItem("JWT") !== null ?  */}
-        {/* <Navbar type={type} /> */}
+        <Navbar type={type} />
       {/* // :
       //  null
       // } */}
