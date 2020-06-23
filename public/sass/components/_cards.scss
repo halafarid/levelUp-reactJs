@@ -34,6 +34,11 @@
     }
     &__pagination {
         margin: 20px 25%;
+
+        &--inst
+        {
+            margin:0 auto;
+        }
     }
     &__container
     {
@@ -580,9 +585,9 @@
 {
     right: 20%;
 }
-.courseCardsContainer__sub a.carousel-control-next
+a.carousel-control-next
 ,
-.courseCardsContainer__sub a.carousel-control-prev
+a.carousel-control-prev
 {
     display: none;
 }

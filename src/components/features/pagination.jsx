@@ -3,7 +3,7 @@ import { Pagination } from "react-bootstrap";
 
 const PaginationList = (props) => {
   let elements = [];
-  for (let i = 1; i <= Math.round(props.coursesCount / props.pageSize); i++) {
+  for (let i = 1; i <= Math.ceil(props.coursesCount / props.pageSize); i++) {
     elements.push(i);
   }
 

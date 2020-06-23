@@ -36,6 +36,7 @@ const CourseCard = props => {
 
   return (
     <React.Fragment>
+    {console.log("courseProgress",course)}
         <div className="CourseCard__container" onClick={() => history.push('/courses/1/details')}>
           <div className="CourseCard__img">
             <img
@@ -100,7 +101,7 @@ const CourseCard = props => {
                     : tab===3?
                         <Link
                             className=" CourseCard__btn CourseCard__text--font"
-                            to="/courses/lessons"
+                            to={`/courses/${course._id}/lessons`}
                             onClick={e => e.stopPropagation()}
                         >  
                             {course.progress === 0 ? 'Start Course' : 'Continue'}
