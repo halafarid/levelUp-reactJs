@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import { getCourseById, updateCourse } from '../../services/courseService'
 
 
-const CourseLessons = () => {
+const CourseLessons = (props) => {
   const [materials, setMaterials] = useState([])
   const [activeMaterial, setActiveMaterial] = useState(1)
   let [count, setCount] = useState(0)
@@ -15,16 +15,19 @@ const CourseLessons = () => {
 
 
   useEffect(() => {
-    const courseId = "5ef130d49df30152541e8af5";
+    const courseId = props.match.params.id;
+    console.log(courseId)
     getCourseById(courseId).then(({ data }) => {
       setCourse(data)
       embedVideo(data.materials)
       data.materials[0].isOpen = true
       
       if (data.progress == 0) {
+        console.log("0")
         setProgress(data.progress + (100/data.materials.length))
       }
       else {
+        console.log(">0")
 
         setProgress(data.progress)
       }
@@ -81,7 +84,7 @@ const CourseLessons = () => {
       const newProgress=progress+calculateProgress()
       newCourse.progress = newProgress;
       newCourse.materials[index].isOpen = true;
-      const courseId = "5ef130d49df30152541e8af5";
+      const courseId = props.match.params.id;
       updateCourse(courseId, newCourse).then(({ data }) => {
         console.log(data)
       }).catch((err) => {
