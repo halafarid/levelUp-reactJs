@@ -23,7 +23,7 @@ const ShoppingListItem = (props) => {
                 </div>
                 <hr className="shoppingList__hr"></hr>
                 <div className="shoppingList__btnContainer">
-                <Link to="/paymentform" className="shoppingList__Text--sm shoppingList__btn  ">Proceed to checkout</Link>
+                <Link to={`/courses/${wishlist._id}/paymentform`} className="shoppingList__Text--sm shoppingList__btn  ">Proceed to checkout</Link>
                          <span  className="shoppingList__Text--sm  shoppingList__vr">|</span>
                     <p className="shoppingList__Text--sm shoppingList__btn " onClick={() => deleteWishlist(wishlist._id)}>Delete</p>
                 </div>

@@ -1,37 +1,35 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Row, Col, Button, Container, Nav } from "react-bootstrap";
+import { Row, Col, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import { FaChartLine } from "react-icons/fa";
 import { MdAccessAlarms } from "react-icons/md";
-import { FiBookmark, FiUsers } from "react-icons/fi";
+import { FiBookmark } from "react-icons/fi";
 import { BsFillHeartFill } from "react-icons/bs";
 import * as wishlistService from '../../services/wishlistService';
 
 import {
   AiFillStar,
   AiOutlineStar,
-  AiOutlineShoppingCart,
   AiOutlineVideoCamera,
 } from "react-icons/ai";
 
 import CourseReviews from "./courseReviews";
 import AddReview from "./addReview";
 import * as courseService from "../../services/courseService";
+import * as userService from "../../services/userService";
 
 const CourseDetails = (props) => {
-  const id = 1;
   const path = props.match.path;
+  const id = props.match.params.id;
   const [courseDetails, setCourse] = useState({});
   const[reviews,setReview]=useState([])
   const[ addToWishlist,setAddtoWishlist]=useState([])
 
-  const courseId = "5ef0a1f6d821322c7cdc6c91";
-
   useEffect(()=>{
       async function fetchCourseData() {
-          const { data } = await courseService.getCourseById(courseId);
+          const { data } = await courseService.getCourseById(id);
           setCourse(data);   
       }
       async function fetchReviewData(){
@@ -42,21 +40,24 @@ const CourseDetails = (props) => {
       fetchCourseData();
       fetchReviewData();
   },[]);
+  
   const handleWish=async e=>{
     e.stopPropagation();
 
     wishlistService.handleWishlist(courseId).then(async ({ data }) => {
      setAddtoWishlist(data);     
     })
+  } 
+      
+  const enrollCourse = async id => {
+    await userService.enrollCourse(id);
+    console.log('success');
   }
 
- 
-      
-console.log(reviews);
+  const handleAdd=review=>{
+    reviews.push(review)
+  }
 
-    const handleAdd=review=>{
-      reviews.push(review)
-    }
   return (
     <React.Fragment>
       <Container>
@@ -156,7 +157,7 @@ console.log(reviews);
                     <h2 className="course__details-title">Main Features</h2>
                     <ul className="course__details-list">
                       {courseDetails.features?.map((feature) => (
-                        <li>{feature}</li>
+                        <li key={feature}>{feature}</li>
                       ))}
                     </ul>
                   </div>
@@ -184,23 +185,17 @@ console.log(reviews);
                 </div>
                 {
                   courseDetails.payment===0?
-                   <Link className="btn btn--secondary btn--full btn--upper" to="/courses/lessons">
-                  Start Course
+                   <Link className="btn btn--secondary btn--full btn--upper" to={`/courses/${id}/lessons`} onClick={() => enrollCourse(id)}>
+                  Go to Course
                   </Link> :
-                  <Link className="btn btn--secondary btn--full btn--upper" to="/paymentform">
-                  Get Course
-                    <span className="course__features-pounds">${courseDetails.payment}</span>
+                  <Link className="btn btn--secondary btn--full btn--upper" to={`/courses/${id}/paymentform`}>
+                  Buy Course
+                    <span className="course__features-pounds"> &nbsp; ${courseDetails.payment}</span>
                   </Link>
                 }
                 
 
                 <ul className="list--none course__features-list">
-                  <li className="course__features-item">
-                    Enrolled: {courseDetails.users} Students
-                    <span className="course__features-icon">
-                      <FiUsers />
-                    </span>
-                  </li>
                   <li className="course__features-item">
                     Duration: {courseDetails.duration} hours
                     <span className="course__features-icon">

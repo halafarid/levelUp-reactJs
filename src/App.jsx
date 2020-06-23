@@ -110,6 +110,9 @@ const App = () => {
           render={props => <CourseData {...props} />}
         />
 
+        <Route path="/courses/:id/lessons" component={CourseLessons} />
+        <Route path="/courses/:id/paymentform" component={PaymentForm} />
+
         <Route
           path="/courses/add"
           render={props => <CourseData {...props} />}
@@ -133,8 +136,6 @@ const App = () => {
           render={() => <Follows Instructor={Instructor} />}
         />
         <Route path="/shoppingcart" component={Payment} />
-        <Route path="/courses/:id/lessons" component={CourseLessons} />
-        <Route path="/paymentform" component={PaymentForm} />
         <Redirect exact from="/" to="/home" />
         <Redirect to="/notfound" />
       </Switch>
