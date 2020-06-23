@@ -12,93 +12,90 @@ import * as userService from '../services/userService';
 
 const Profile = props => {
     const [currentUser,setCurrentUser]=useState({
+        user: {
+           fullName:"",
+            email: "",
+            password: "",
+            jobtitle: "",
+            jobdescription: "",
+            
+        }})
 
-        fullName:"",
-         email: "",
-         password: "",
-         job:{title:"",description:""}
-         
-     })
-    
-     const [oldUser,setOldUser]=useState({
-        fullName:"",
-        email: "",
-        password: "",
-        job:{title:"", description:""}
-     })
-
-     const userId="5ef0a1dd9fd19d2df401e8cd"
-
-    const [profile,setProfile]=useState({});
+    const [profile,setProfile]=useState([]);
     const [freeCourses,setFreeCourses]=useState([]);
     const [paidCourses,setPaidCourses]=useState([]);
     const { type, match } = props;
     const path = match.path;
+    const courses = [1, 2, 3];
     const courseType="free";
-    const [follow,setFollow]=useState([])
+    
     const [isEdit, setIsEdit] = useState(path === '/profile/edit');
-    let [isFollowing, setIsFollowing] = useState(profile.following?.includes(userId));
+    const [isFollowing, setIsFollowing] = useState(false);
     const [tab, setTap] = useState(1);
     let pageNo = 1;
-    let pageno=1
     const size = 3;
-   
-  useEffect(()=>{
-   
-    Promise.all([userService.getProfile(),userService.getProfileFreeCourses(pageNo,size),userService.getProfilePaidCourses(pageno,size)
-        ,userService.getProfile(),]).then((data)=>{
-            setProfile(data[0].data);
-            setFreeCourses(data[1].data);
-            setPaidCourses(data[2].data);
-            setCurrentUser(data[3].data);
-            setOldUser(data[3].data)
-        })
+
+    const handleBtn = () => {
+        setIsEdit(false);
+        props.history.push('/profile')
+    }
     
+  useEffect(()=>{
+  
+ 
+    // async function fetchProfile(){
+    //   const {data} = await userService.getProfile();
+    //   setProfile(data);
+    //  }
+    //  async function fetchFreeCourses(){
+    //     const {data} = await userService.getProfileFreeCourses(pageNo,size);
+    //     setFreeCourses(data);
+    // }
+    // async function fetchPaidCourses(){
+    //     const {data} = await userService.getProfilePaidCourses(pageNo,size)
+    //     setPaidCourses(data);
+    // }
+    
+    // async function handleEdit(){
+    //     const {data}= await userService.getProfile();
+    //     setCurrentUser(data)
+    // }
+    // if(isEdit){
+    //     console.log("hii");
+    //     handleEdit();
+    // }
+   
+    Promise.all([userService.getProfile(),userService.getProfileFreeCourses(pageNo,size),userService.getProfilePaidCourses(pageNo,size)
+    ,userService.getProfile()]).then((data)=>{
+        console.log(data);
+        setProfile(data[0].data);
+        setFreeCourses(data[1].data);
+        setPaidCourses(data[2].data);
+        setCurrentUser(data[3].data);
+    })
+    //  fetchProfile();
+    //  fetchFreeCourses();
+    //  fetchPaidCourses();
   },[])
 
-const handleFollow=()=>{
-    isFollowing=!isFollowing
-    setIsFollowing(isFollowing);
-    userService.handleFollows(userId).then(({data})=>{
-        setFollow(data);
-       
-    })
-  
-
-}
-
   const handleChange = ({ target }) => {
-    const editUser = {...currentUser};
-
-    if (target.name === 'title' || target.name === 'description') {
-        editUser.job[target.name] = target.value;
-    } else {
-        editUser[target.name] = target.value;
-    }
-    setCurrentUser(editUser);
+    const editUser = {...currentUser.user};
+    
+    editUser[target.name] = target.value;
+    console.log(editUser);
+    setCurrentUser({...currentUser,editUser});
     
 };
-const handleSubmit = async e => {
-    e.preventDefault();
-    if(isEdit){
-       await userService.updateUser(profile._id,currentUser).then((data) => {
-            console.log(data)
-            setIsEdit(false);
-            props.history.push('/profile')
+  
 
-        })
-      
-    }
 
-}
-const handleCancel=async e=>{
-    e.preventDefault();
-    if(isEdit){
+ 
 
-       setCurrentUser(oldUser);
 
-    }
-}
+
+
+
+
   
     return (
         <React.Fragment>
@@ -114,13 +111,13 @@ const handleCancel=async e=>{
                             </div>
                         }
                         <Card.Body>
-                            <Card.Title className="card__card-title">{currentUser.fullName}</Card.Title>
+                            <Card.Title className="card__card-title">{profile.fullName}</Card.Title>
                             {isEdit ?
                             <div>
-                                    <input className="course__control course__control--text" name="title" onChange={handleChange} value={currentUser.job?.title}/>
+                                    <input className="course__control course__control--text" name="jobtitle" onChange={handleChange} value="jkjk"/>
                                      </div>
-                            : currentUser.job?.title ?
-                            <Card.Text className="card__card-text">{currentUser.job?.title}</Card.Text>
+                            : profile.job?.title ?
+                            <Card.Text className="card__card-text">{profile.job.title}</Card.Text>
                             :
                             <Card.Text className="card__card-text">You don't have job title </Card.Text>
 
@@ -141,12 +138,12 @@ const handleCancel=async e=>{
                             <div>
                                 {isEdit ?
                                  <div className="edit"> 
-                                    <input className="course__control course__control--text" type="text" placeholder="Name" name="fullName" onChange={handleChange} value={currentUser.fullName} />
-                                    <input className="course__control course__control--text" type="text" placeholder="Email" name="email" onChange={handleChange} value={currentUser.email} />
-                                    <input className="course__control course__control--text" type="password" placeholder="Password" name="password" onChange={handleChange} value={currentUser.password} />
+                                    <input className="course__control course__control--text" type="text" placeholder="Name" name="fullName" onChange={handleChange} />
+                                    <input className="course__control course__control--text" type="text" placeholder="Email" name="email" onChange={handleChange} />
+                                    <input className="course__control course__control--text" type="password" placeholder="Password" name="password" onChange={handleChange}  />
                                   </div>
                                     :
-                                    <h1>{currentUser.fullName}</h1>
+                                    <h1>{profile.fullName}</h1>
                                 }
 
                                 { (path ==="/profile/:id" && !isEdit) &&
@@ -161,7 +158,7 @@ const handleCancel=async e=>{
                             </div>
                             <div>
                                 { (path ==="/profile/:id" && !isEdit)&& 
-                                    <Button className={`btn btn--full btn--pd ${isFollowing? 'btn--success' : 'btn--secondary'}`} onClick={handleFollow}>{isFollowing ? 'Following' : 'Follow'}</Button>
+                                    <Button className={`btn btn--full btn--pd ${isFollowing? 'btn--success' : 'btn--secondary'}`} onClick={() => setIsFollowing(!isFollowing)}>{isFollowing ? 'Following' : 'Follow'}</Button>
                                 }
                             </div>
                             <div >
@@ -181,14 +178,14 @@ const handleCancel=async e=>{
 
                         {isEdit ?         
                             <React.Fragment>
-                                <textarea className="course__control course__control--text"  rows="8" placeholder="Job Description" name="description" onChange={handleChange} value={currentUser.job?.description} ></textarea>
-                                <Button className="btn btn--primary-dark btn--pd btn--mt0 btn--mr0" onClick={handleSubmit}>Save</Button>
-                                <Button className="btn btn--danger btn--pd btn--mt0 btn--mr0" onClick={handleCancel}>Cancel</Button>
+                                <textarea className="course__control course__control--text"  rows="8" placeholder="Job Description" name="job description" onChange={handleChange} value="dssd"></textarea>
+                                <Button className="btn btn--primary-dark btn--pd btn--mt0 btn--mr0" onClick={handleBtn}>Save</Button>
+                                <Button className="btn btn--danger btn--pd btn--mt0 btn--mr0" onClick={handleBtn}>Cancel</Button>
                             </React.Fragment>
-                            : currentUser.job?.description?
+                            : profile.job?.description?
                             <div>
                             <h2 className="profile__header">Bio </h2>
-                            <p className="about__prg">{currentUser.job?.description}</p>
+                            <p className="about__prg">{profile.job.description}</p>
                             </div>
                             :
                             <div>
@@ -241,7 +238,7 @@ const handleCancel=async e=>{
                                     :
                                     <PageNoResult />
                                 : tab === 2 ?
-                                     paidCourses.length > 0 ?
+                                    paidCourses.length > 0 ?
                                         <React.Fragment>
                                             <div className="courseCardsContainer courseCardsContainer--ml">
                                                 <div className="courseCardsContainer__sub">

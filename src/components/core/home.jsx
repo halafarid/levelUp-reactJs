@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Container, Carousel } from 'react-bootstrap';
 
@@ -17,66 +17,71 @@ const Home = props => {
     const { type, match } = props;
     const path = match.path;
 
-    const [freeCourses,setFreeCourses]=useState([]);
-    const [paidCourses,setPaidCourses]=useState([]);
-    const [instructors,setInstructors]=useState([]);
+    const [freeCourses, setFreeCourses] = useState([]);
+    const [paidCourses, setPaidCourses] = useState([]);
+    const [instructors, setInstructors] = useState([]);
 
     //we should call api to set count
-    const [pageSize,setPageSize]=useState(3);
-    
-    const [coursesCount,setCourseCount]=useState(0);
-    const [coursesCountFree,setCourseCountFree]=useState(0);
-    const [instCount, setInstCount]=useState(0);
+    const [pageSize, setPageSize] = useState(3);
 
-    const [activePage,setActivePage]=useState(1);
-    const [activePageFree,setActivePageFree]=useState(1);
-    const [activePageInst,setActivePageInst]=useState(1);
+    const [coursesCount, setCourseCount] = useState(0);
+    const [coursesCountFree, setCourseCountFree] = useState(0);
+    const [instCount, setInstCount] = useState(0);
 
-    useEffect(()=>{
-        async function fetchFreeCourses(){
-            const {data: {courses, totalCourses} } = await courseService.getFreeCourses(activePageFree,pageSize);
+    const [activePage, setActivePage] = useState(1);
+    const [activePageFree, setActivePageFree] = useState(1);
+    const [activePageInst, setActivePageInst] = useState(1);
+
+    useEffect(() => {
+        async function fetchFreeCourses() {
+            const { data: { courses, totalCourses } } = await courseService.getFreeCourses(activePageFree, pageSize);
             setFreeCourses(courses);
             setCourseCountFree(totalCourses);
         }
-        async function fetchPaidCourses(){
-            const{data: {courses, totalCourses} }=await courseService.getPaidCourses(activePage,pageSize)
+        async function fetchPaidCourses() {
+            const { data: { courses, totalCourses } } = await courseService.getPaidCourses(activePage, pageSize)
             setPaidCourses(courses);
             setCourseCount(totalCourses);
         }
-        async function fetchInstructors(){
-            const{data: {instructors, totalInstructors} }=await userService.getAllInstructors(activePage,pageSize)
+        async function fetchInstructors() {
+            const { data: { instructors, totalInstructors } } = await userService.getAllInstructors(activePage, pageSize)
             setInstructors(instructors);
             setInstCount(totalInstructors);
         }
         fetchFreeCourses();
         fetchPaidCourses();
         fetchInstructors();
-    },[]);
-
-    const handlePageClick=(pageNum,type)=>{
-        if(type==="free courses")
-        {
+    }, []);
+    const onFilterFree = (arr) => {
+        console.log("new",arr)
+      setFreeCourses(arr);  
+    }
+    const onFilterPaid = (arr) => {
+        console.log(arr)
+        setPaidCourses(arr);
+    }
+    const handlePageClick = (pageNum, type) => {
+        if (type === "free courses") {
             setActivePageFree(pageNum);
             async function fetchFreeCourses() {
-                const { data: {courses} } = await courseService.getFreeCourses(activePageFree,pageSize);
-                setFreeCourses(courses);   
+                const { data: { courses } } = await courseService.getFreeCourses(activePageFree, pageSize);
+                setFreeCourses(courses);
             }
             fetchFreeCourses();
         }
-        else if(type==="paid courses")
-        {
+        else if (type === "paid courses") {
             setActivePage(pageNum);
             async function fetchPaidCourses() {
-                const { data: {courses} } = await courseService.getPaidCourses(activePage,pageSize);
-                setPaidCourses(courses);   
+                const { data: { courses } } = await courseService.getPaidCourses(activePage, pageSize);
+                setPaidCourses(courses);
             }
             fetchPaidCourses();
         } else {
             console.log('hihj')
             setActivePageInst(pageNum);
             async function fetchInstructors() {
-                const { data: {instructors} } = await userService.getAllInstructors(activePageInst,pageSize);
-                setInstructors(instructors);   
+                const { data: { instructors } } = await userService.getAllInstructors(activePageInst, pageSize);
+                setInstructors(instructors);
             }
             fetchInstructors();
         }
@@ -87,13 +92,13 @@ const Home = props => {
             <BackGround />
 
             <About />
-            
+
             <Container className="InstructorContainer">
                 <div className="CourseCard__container">
                     <div className="instructor">
                         <h2 className="instructor__Inst-title">Top Rating Instructors</h2>
                     </div>
-                    
+
                     <div className="InstCard">
                         <Carousel interval={null}>
                             <Carousel.Item className="carousel-new-item">
@@ -106,14 +111,14 @@ const Home = props => {
                         </Carousel>
                     </div>
                     <div className="CourseCard__pagination CourseCard__pagination--inst">
-                    <PaginationList
-                        key={activePageInst}
-                        type="instructors"
-                        coursesCount={instCount}
-                        pageSize={pageSize}
-                        activePage={activePageInst}
-                        handlePageClick={handlePageClick}  
-                    />
+                        <PaginationList
+                            key={activePageInst}
+                            type="instructors"
+                            coursesCount={instCount}
+                            pageSize={pageSize}
+                            activePage={activePageInst}
+                            handlePageClick={handlePageClick}
+                        />
                     </div>
                 </div>
             </Container>
@@ -130,8 +135,11 @@ const Home = props => {
             </div>
             <div className="courses">
 
-                <Filters />
-            
+                <Filters
+                onFilterFree={onFilterFree}
+                onFilterPaid={onFilterPaid}
+                />
+
                 <div className="courses__container">
                     <div className=" instructor ">
                         <h2 className="instructor__Inst-title">Free Courses</h2>
@@ -156,12 +164,12 @@ const Home = props => {
                                     coursesCount={coursesCountFree}
                                     pageSize={pageSize}
                                     activePage={activePageFree}
-                                    handlePageClick={handlePageClick}  
+                                    handlePageClick={handlePageClick}
                                 />
                             </div>
                         </div>
                     </div>
-            
+
                     <div className=" instructor">
                         <h2 className="instructor__Inst-title"> Paid Courses</h2>
                     </div>
@@ -176,7 +184,7 @@ const Home = props => {
                                             </div>
                                         ))}
                                     </Carousel.Item>
-                            </Carousel>
+                                </Carousel>
                             </div>
                             <div className="CourseCard__pagination">
                                 <PaginationList
@@ -185,14 +193,14 @@ const Home = props => {
                                     coursesCount={coursesCount}
                                     pageSize={pageSize}
                                     activePage={activePage}
-                                    handlePageClick={handlePageClick}  
+                                    handlePageClick={handlePageClick}
                                 />
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            {type === 'instructor' && 
+            {type === 'instructor' &&
                 <Link to="/courses/add" className="addCourse">
                     <BsFillPlusCircleFill />
                 </Link>

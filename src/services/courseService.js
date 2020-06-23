@@ -54,3 +54,6 @@ export function getMaterials(cid) {
 export function handleProgress(cid) {
     return axios.patch(`${apiUrl}/courses/${cid}/progress`);
 }
+export function filterCourses(catsId, levelsId) {
+    return axios.get(`${apiUrl}/categories/filters?catsId=${catsId}&levelsId=${levelsId}`);
+}
