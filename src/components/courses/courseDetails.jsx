@@ -33,7 +33,7 @@ const CourseDetails = (props) => {
           setCourse(data);   
       }
       async function fetchReviewData(){
-        const { data } = await  courseService.getReviews(courseId)
+        const { data } = await  courseService.getReviews(id)
         setReview(data)
 
       }
@@ -44,7 +44,7 @@ const CourseDetails = (props) => {
   const handleWish=async e=>{
     e.stopPropagation();
 
-    wishlistService.handleWishlist(courseId).then(async ({ data }) => {
+    wishlistService.handleWishlist(id).then(async ({ data }) => {
      setAddtoWishlist(data);     
     })
   } 

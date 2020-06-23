@@ -42,8 +42,6 @@ const Profile = props => {
     let pageno=1
     const size = 3;
 
-    console.log(profile.following?.includes(userId));
-   
     useEffect( () => {
         async function fetchProfile(){
             if (props.match.path === '/profile/:id') {
