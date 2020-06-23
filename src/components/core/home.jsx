@@ -8,6 +8,7 @@ import Filters from "../features/filters";
 import CourseCard from "../cards/courseCard";
 import InstructorCard from "../cards/instructorCard";
 import PaginationList from './../features/pagination';
+import * as userService from '../../services/userService';
 import * as courseService from '../../services/courseService';
 
 import { BsFillPlusCircleFill } from 'react-icons/bs';
@@ -18,15 +19,18 @@ const Home = props => {
 
     const [freeCourses,setFreeCourses]=useState([]);
     const [paidCourses,setPaidCourses]=useState([]);
+    const [instructors,setInstructors]=useState([]);
 
     //we should call api to set count
     const [pageSize,setPageSize]=useState(3);
     
     const [coursesCount,setCourseCount]=useState(0);
     const [coursesCountFree,setCourseCountFree]=useState(0);
+    const [instCount, setInstCount]=useState(0);
 
     const [activePage,setActivePage]=useState(1);
     const [activePageFree,setActivePageFree]=useState(1);
+    const [activePageInst,setActivePageInst]=useState(1);
 
     useEffect(()=>{
         async function fetchFreeCourses(){
@@ -39,8 +43,14 @@ const Home = props => {
             setPaidCourses(courses);
             setCourseCount(totalCourses);
         }
+        async function fetchInstructors(){
+            const{data: {instructors, totalInstructors} }=await userService.getAllInstructors(activePage,pageSize)
+            setInstructors(instructors);
+            setInstCount(totalInstructors);
+        }
         fetchFreeCourses();
         fetchPaidCourses();
+        fetchInstructors();
     },[]);
 
     const handlePageClick=(pageNum,type)=>{
@@ -52,9 +62,8 @@ const Home = props => {
                 setFreeCourses(courses);   
             }
             fetchFreeCourses();
-  
         }
-        else if(type="paid courses")
+        else if(type==="paid courses")
         {
             setActivePage(pageNum);
             async function fetchPaidCourses() {
@@ -62,6 +71,14 @@ const Home = props => {
                 setPaidCourses(courses);   
             }
             fetchPaidCourses();
+        } else {
+            console.log('hihj')
+            setActivePageInst(pageNum);
+            async function fetchInstructors() {
+                const { data: {instructors} } = await userService.getAllInstructors(activePageInst,pageSize);
+                setInstructors(instructors);   
+            }
+            fetchInstructors();
         }
     }
 
@@ -70,43 +87,37 @@ const Home = props => {
             <BackGround />
 
             <About />
+            
             <Container className="InstructorContainer">
-                <div className="instructor">
-                    <h2 className="instructor__Inst-title">Top Rating Instructors</h2>
-                </div>
-                <div className="InstCard">
-                    <Carousel interval={null}>
-                        <Carousel.Item>
-                            <div className="InstCard">
-                                <InstructorCard
-                                    Instructor={props.Instructor[0]}
-                                />
-                                <InstructorCard
-                                    Instructor={props.Instructor[0]}
-                                />
-                                <InstructorCard
-                                    Instructor={props.Instructor[0]}
-                                />
-                            </div>
-                        </Carousel.Item>
-
-                        <Carousel.Item>
-                            <div className="InstCard">
-                                <InstructorCard
-                                    Instructor={props.Instructor[0]}
-                                />
-                                <InstructorCard
-                                    Instructor={props.Instructor[0]}
-                                />
-                                <InstructorCard
-                                    Instructor={props.Instructor[0]}
-                                />
-                            </div>
-                        </Carousel.Item>
-                    </Carousel>
-
+                <div className="CourseCard__container">
+                    <div className="instructor">
+                        <h2 className="instructor__Inst-title">Top Rating Instructors</h2>
+                    </div>
+                    
+                    <div className="InstCard">
+                        <Carousel interval={null}>
+                            <Carousel.Item className="carousel-new-item">
+                                {instructors.map((instructor) => (
+                                    <div className="InstCard" key={instructor._id}>
+                                        <InstructorCard Instructor={instructor} />
+                                    </div>
+                                ))}
+                            </Carousel.Item>
+                        </Carousel>
+                    </div>
+                    <div className="CourseCard__pagination CourseCard__pagination--inst">
+                    <PaginationList
+                        key={activePageInst}
+                        type="instructors"
+                        coursesCount={instCount}
+                        pageSize={pageSize}
+                        activePage={activePageInst}
+                        handlePageClick={handlePageClick}  
+                    />
+                    </div>
                 </div>
             </Container>
+
             <div className="FixedSection">
                 <div className="FixedSection__bg"></div>
                 <div className="row">
