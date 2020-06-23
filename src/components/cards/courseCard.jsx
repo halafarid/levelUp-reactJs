@@ -31,7 +31,6 @@ const CourseCard = props => {
 
   return (
     <React.Fragment>
-    {console.log("courseProgress",course)}
         <div className="CourseCard__container" onClick={() => history.push(`/courses/${course._id}/details`)}>
           <div className="CourseCard__img">
             <img

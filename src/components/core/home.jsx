@@ -77,7 +77,6 @@ const Home = props => {
             }
             fetchPaidCourses();
         } else {
-            console.log('hihj')
             setActivePageInst(pageNum);
             async function fetchInstructors() {
                 const { data: { instructors } } = await userService.getAllInstructors(activePageInst, pageSize);

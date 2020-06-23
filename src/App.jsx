@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -21,10 +21,6 @@ import PaymentForm from "./components/forms/paymentForm";
 import SigningForm from "./components/authentication/signingForm";
 
 const App = () => {
-    
-  // const type = 'user';
-  // const type = 'instructor';
- 
  
   const [Instructor] = useState([
     {
@@ -69,15 +65,14 @@ const App = () => {
   });
       
   const type = localStorage.getItem("UserType"); 
-  console.log(type);
   
   return (
     <React.Fragment>
-      {/* {localStorage.getItem("JWT") !== null ?  */}
+      {localStorage.getItem('JWT') ? 
         <Navbar type={type} />
-      {/* // :
-      //  null
-      // } */}
+      :
+        null
+      }
       <Switch>
         <Route
           path="/home"
@@ -129,22 +124,22 @@ const App = () => {
         <Route path="/notfound" component={PageNotFound} />
         <Route
           path="/following"
-          render={() => <Follows Instructor={Instructor} />}
+          render={ props => <Follows {...props} Instructor={Instructor} />}
         />
         <Route
           path="/followers"
-          render={() => <Follows Instructor={Instructor} />}
+          render={ props => <Follows {...props} Instructor={Instructor} />}
         />
         <Route path="/shoppingcart" component={Payment} />
-        <Redirect exact from="/" to="/home" />
+        <Redirect exact from="/" to="/login" />
         <Redirect to="/notfound" />
       </Switch>
 
-      {/* {localStorage.getItem("JWT") !== null ? 
-      : */}
+      {localStorage.getItem("JWT") !== null ? 
       <Footer/>
-       {/* null
-      } */}
+      :
+      null
+      }
     </React.Fragment>
   );
 };
