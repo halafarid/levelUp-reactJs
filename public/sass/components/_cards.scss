@@ -34,6 +34,11 @@
     }
     &__pagination {
         margin: 20px 25%;
+
+        &--inst
+        {
+            margin:0 auto;
+        }
     }
     &__container
     {
@@ -239,7 +244,6 @@
     flex-direction: column;
     position: relative;
     width: 100%;
-    height: 60%;
     margin: 20px;
     padding:15px;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
@@ -581,9 +585,9 @@
 {
     right: 20%;
 }
-.courseCardsContainer__sub a.carousel-control-next
+a.carousel-control-next
 ,
-.courseCardsContainer__sub a.carousel-control-prev
+a.carousel-control-prev
 {
     display: none;
 }
