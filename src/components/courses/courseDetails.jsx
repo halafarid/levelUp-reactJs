@@ -7,6 +7,8 @@ import { FaChartLine } from "react-icons/fa";
 import { MdAccessAlarms } from "react-icons/md";
 import { FiBookmark, FiUsers } from "react-icons/fi";
 import { BsFillHeartFill } from "react-icons/bs";
+import * as wishlistService from '../../services/wishlistService';
+
 import {
   AiFillStar,
   AiOutlineStar,
@@ -22,6 +24,9 @@ const CourseDetails = (props) => {
   const id = 1;
   const path = props.match.path;
   const [courseDetails, setCourse] = useState({});
+  const[reviews,setReview]=useState([])
+  const[ addToWishlist,setAddtoWishlist]=useState([])
+
   const courseId = "5ef0a1f6d821322c7cdc6c91";
 
   useEffect(()=>{
@@ -29,10 +34,29 @@ const CourseDetails = (props) => {
           const { data } = await courseService.getCourseById(courseId);
           setCourse(data);   
       }
+      async function fetchReviewData(){
+        const { data } = await  courseService.getReviews(courseId)
+        setReview(data)
+
+      }
       fetchCourseData();
+      fetchReviewData();
   },[]);
+  const handleWish=async e=>{
+    e.stopPropagation();
 
+    wishlistService.handleWishlist(courseId).then(async ({ data }) => {
+     setAddtoWishlist(data);     
+    })
+  }
 
+ 
+      
+console.log(reviews);
+
+    const handleAdd=review=>{
+      reviews.push(review)
+    }
   return (
     <React.Fragment>
       <Container>
@@ -139,11 +163,14 @@ const CourseDetails = (props) => {
                 </div>
               ) : (
                 <div className="course__reviews">
-                  {courseDetails.reviews?.map((review) => (
-                    <CourseReviews key={review.userId} reviewData={review} />
+                  {reviews?.map((review) => (
+                    <CourseReviews  reviewData={review} />
                   ))}
 
-                  <AddReview />
+                  <AddReview 
+                  handleAdd={handleAdd}
+                  
+                   />
                 </div>
               )}
             </Col>
@@ -151,7 +178,7 @@ const CourseDetails = (props) => {
               <div className="course__features">
                 <div className="course__features-cardlist">
                   <span className="course__features-icon course__features-cardicon">
-                    <BsFillHeartFill className="wishlist-icon" />
+                    <BsFillHeartFill  onClick={handleWish} className="wishlist-icon" />
                   </span>
                   Add to wishlist
                 </div>
